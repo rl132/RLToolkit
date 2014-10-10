@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF1A5D54-D72D-44F7-A324-817E50D73CF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RLToolkit.Tests</RootNamespace>
+    <AssemblyName>RLToolkit.Tests</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\FileHandler\FileHandler.csproj">
+      <Project>{1300718E-72E0-4D48-8331-163574EB3879}</Project>
+      <Name>FileHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\IniParser\IniParser.csproj">
+      <Project>{FDB12945-0133-4969-8ADA-A84308A2B7FE}</Project>
+      <Name>IniParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\OSDetector\OSDetector.csproj">
+      <Project>{76862F47-748A-4432-B6C0-DBE3CD5BDED7}</Project>
+      <Name>OSDetector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\TimerManager\TimerManager.csproj">
+      <Project>{9955F0E9-02C3-42EA-AF3F-2A42064088C4}</Project>
+      <Name>TimerManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\CmdRunner\CmdRunner.csproj">
+      <Project>{57119B6E-B45F-4E98-AFE9-2578629B9486}</Project>
+      <Name>CmdRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper\LoggerLayer\LoggerLayer.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseSystem\ExceptionCatcher.cs" />
+    <Compile Include="BaseSystem\ITestBase.cs" />
+    <Compile Include="BaseSystem\TestHarness.cs" />
+    <Compile Include="Tests\FileHandlerTest.cs" />
+    <Compile Include="Tests\IniParserTest.cs" />
+    <Compile Include="Tests\OsDetectorTest.cs" />
+    <Compile Include="Tests\TimerManagerTest.cs" />
+    <Compile Include="Tests\CmdRunnerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+      <Package>nunit</Package>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseSystem\" />
+    <Folder Include="Tests\" />
+    <Folder Include="Mocks\" />
+  </ItemGroup>
+</Project>
