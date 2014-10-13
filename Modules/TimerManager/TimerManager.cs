@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public static class TimerManager
 	{
@@ -174,4 +174,3 @@ namespace RLToolkit
 		#endregion	
 	}
 }
-

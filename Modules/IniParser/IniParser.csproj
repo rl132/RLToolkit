@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FDB12945-0133-4969-8ADA-A84308A2B7FE}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RLToolkit</RootNamespace>
+    <RootNamespace>RLToolkit.Basic</RootNamespace>
     <AssemblyName>IniParser</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

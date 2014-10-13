@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public delegate void TimerManagerEventHandler(object sender, TimerManagerEventArg e);
 
@@ -10,4 +10,3 @@ namespace RLToolkit
 		public DateTime tickTime { get; set; }
 	}
 }
-

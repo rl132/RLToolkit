@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class DicConfiguration
 	{
@@ -12,10 +12,9 @@ namespace RLToolkit
 
         public DicConfiguration(string headerIn)
         {
-            this.Log().Debug(string.Format("Creating a new DirectoryConfiguration with header: {0}", headerIn));
+            this.Log().Debug(string.Format("Creating a new DictionaryConfiguration with header: {0}", headerIn));
             header = headerIn;
             dicto = new Dictionary<string, string>();
         }
 	}
 }
-

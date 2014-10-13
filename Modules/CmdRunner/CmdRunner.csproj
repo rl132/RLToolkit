@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{57119B6E-B45F-4E98-AFE9-2578629B9486}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RLToolkit</RootNamespace>
+    <RootNamespace>RLToolkit.Basic</RootNamespace>
     <AssemblyName>CmdRunner</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

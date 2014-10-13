@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class NullOutputHandler : IOutputManager
 	{
@@ -30,4 +30,3 @@ namespace RLToolkit
 		}
 	}
 }
-

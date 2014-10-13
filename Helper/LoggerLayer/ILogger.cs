@@ -19,6 +19,4 @@ namespace RLToolkit
 		void Fatal(string message);
 		void Fatal(string message, object[] param);
 	}
-
 }
-

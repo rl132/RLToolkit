@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76862F47-748A-4432-B6C0-DBE3CD5BDED7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RLToolkit</RootNamespace>
+    <RootNamespace>RLToolkit.Basic</RootNamespace>
     <AssemblyName>OSDetector</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

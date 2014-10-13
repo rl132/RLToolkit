@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class TimerManagerEventset
 	{
@@ -17,4 +17,3 @@ namespace RLToolkit
 		}
 	}
 }
-

@@ -10,7 +10,5 @@ namespace RLToolkit.Tests
 		void DataCleanup();
 		string ModuleName();
 		void SetFolderPaths();
-
 	}
 }
-

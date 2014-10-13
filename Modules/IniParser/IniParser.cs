@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class IniParser
 	{
@@ -246,8 +246,5 @@ namespace RLToolkit
 
 			return true;
 		}
-
 	}
-
 }
-

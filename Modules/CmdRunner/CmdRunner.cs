@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class CmdRunner
 	{
@@ -84,4 +84,3 @@ namespace RLToolkit
         #endregion
 	}
 }
-

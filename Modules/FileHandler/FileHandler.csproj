@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1300718E-72E0-4D48-8331-163574EB3879}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RLToolkit</RootNamespace>
+    <RootNamespace>RLToolkit.Basic</RootNamespace>
     <AssemblyName>FileHandler</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

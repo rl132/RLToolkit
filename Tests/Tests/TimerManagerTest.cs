@@ -1,6 +1,7 @@
 using System;
 
 using RLToolkit;
+using RLToolkit.Basic;
 using NUnit.Framework;
 using System.Threading;
 

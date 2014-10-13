@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B3454E3D-0802-4CD3-AC17-D551F8867BB5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Tests", "04-Tests", "{B3454E3D-0802-4CD3-AC17-D551F8867BB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{EF1A5D54-D72D-44F7-A324-817E50D73CF4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{40ECDD84-9726-4676-B852-08E739D7FFE4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02- Modules", "02- Modules", "{40ECDD84-9726-4676-B852-08E739D7FFE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHandler", "Modules\FileHandler\FileHandler.csproj", "{1300718E-72E0-4D48-8331-163574EB3879}"
 EndProject
@@ -17,12 +17,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerManager", "Modules\Tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdRunner", "Modules\CmdRunner\CmdRunner.csproj", "{57119B6E-B45F-4E98-AFE9-2578629B9486}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helper", "Helper", "{716079A1-9895-42D6-860C-FC9F5E08CA64}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLHandler", "Modules\XMLHandler\XMLHandler.csproj", "{2078BDA0-0D96-4053-8679-C021CE3C867E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Helper", "01-Helper", "{716079A1-9895-42D6-860C-FC9F5E08CA64}"
+	ProjectSection(SolutionItems) = preProject
+		Helper\structure.txt = Helper\structure.txt
+	EndProjectSection
 	ProjectSection(MonoDevelopProperties) = preProject
 		BaseDirectory = Helper
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLayer", "Helper\LoggerLayer\LoggerLayer.csproj", "{B488EE1B-7DBB-4D53-A48B-AED51707F12B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Wrappers", "03-Wrappers", "{B8F419A4-BE8F-4801-9B2C-5430D69A6E2F}"
+	ProjectSection(MonoDevelopProperties) = preProject
+		BaseDirectory = Wrappers
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +44,10 @@ Global
 		{1300718E-72E0-4D48-8331-163574EB3879}.Debug|x86.Build.0 = Debug|Any CPU
 		{1300718E-72E0-4D48-8331-163574EB3879}.Release|x86.ActiveCfg = Release|Any CPU
 		{1300718E-72E0-4D48-8331-163574EB3879}.Release|x86.Build.0 = Release|Any CPU
+		{2078BDA0-0D96-4053-8679-C021CE3C867E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2078BDA0-0D96-4053-8679-C021CE3C867E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2078BDA0-0D96-4053-8679-C021CE3C867E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2078BDA0-0D96-4053-8679-C021CE3C867E}.Release|x86.Build.0 = Release|Any CPU
 		{57119B6E-B45F-4E98-AFE9-2578629B9486}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{57119B6E-B45F-4E98-AFE9-2578629B9486}.Debug|x86.Build.0 = Debug|Any CPU
 		{57119B6E-B45F-4E98-AFE9-2578629B9486}.Release|x86.ActiveCfg = Release|Any CPU
@@ -66,6 +80,7 @@ Global
 		{76862F47-748A-4432-B6C0-DBE3CD5BDED7} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
 		{9955F0E9-02C3-42EA-AF3F-2A42064088C4} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
 		{57119B6E-B45F-4E98-AFE9-2578629B9486} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
+		{2078BDA0-0D96-4053-8679-C021CE3C867E} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
 		{B488EE1B-7DBB-4D53-A48B-AED51707F12B} = {716079A1-9895-42D6-860C-FC9F5E08CA64}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution

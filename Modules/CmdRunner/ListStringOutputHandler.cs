@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class ListStringOutputHandler : IOutputManager
 	{
@@ -38,4 +38,3 @@ namespace RLToolkit
 		}
 	}
 }
-

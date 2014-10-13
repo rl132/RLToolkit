@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 
 using RLToolkit;
+using RLToolkit.Basic;
 using NUnit.Framework;
 
 namespace RLToolkit.Tests

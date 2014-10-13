@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class IniParserException : Exception
 	{
@@ -8,5 +8,3 @@ namespace RLToolkit
 		public IniParserException (string s1) : base(s1) {}
 	}
 }
-
-

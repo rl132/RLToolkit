@@ -4,6 +4,7 @@ using System.Threading;
 using System.Collections.Generic;
 
 using RLToolkit;
+using RLToolkit.Basic;
 using NUnit.Framework;
 
 namespace RLToolkit.Tests
@@ -119,7 +120,6 @@ namespace RLToolkit.Tests
 			Assert.That(ret, Is.Not.EqualTo(CmdRunner.UNDEFINED_EXITCODE).After(100), "After the wait, retcode not as expected.");
             Assert.IsTrue(finalized, "Finalized should be true here");
 		}
-
 		#endregion	
 	}
 }

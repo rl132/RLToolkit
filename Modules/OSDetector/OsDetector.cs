@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public static class OsDetector
 	{

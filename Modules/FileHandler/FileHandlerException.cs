@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class FileHandlerException : Exception
 	{
@@ -8,4 +8,3 @@ namespace RLToolkit
 		public FileHandlerException (string s1) : base(s1) {}
 	}
 }
-

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public class FileHandler
 	{
@@ -197,4 +197,3 @@ namespace RLToolkit
 		}
 	}
 }
-

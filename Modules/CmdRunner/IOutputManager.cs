@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace RLToolkit
+namespace RLToolkit.Basic
 {
 	public interface IOutputManager
 	{
@@ -12,4 +12,3 @@ namespace RLToolkit
 		object GetError();
 	}
 }
-

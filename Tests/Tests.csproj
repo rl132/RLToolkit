@@ -56,6 +56,10 @@
       <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
       <Name>LoggerLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\XMLHandler\XMLHandler.csproj">
+      <Project>{2078BDA0-0D96-4053-8679-C021CE3C867E}</Project>
+      <Name>XMLHandler</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSystem\ExceptionCatcher.cs" />
@@ -66,6 +70,7 @@
     <Compile Include="Tests\OsDetectorTest.cs" />
     <Compile Include="Tests\TimerManagerTest.cs" />
     <Compile Include="Tests\CmdRunnerTest.cs" />
+    <Compile Include="Tests\XMLHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">

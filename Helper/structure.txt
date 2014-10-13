@@ -1,0 +1,19 @@
+RLToolkit namespace structure:
+
+* RLToolkit
+  - loggerLayer
+  * Basic
+    -CmdRunner
+    -FileWrapper
+    -IniParser
+    -OSDetector
+    -TimerManager
+    -MailSystem (not in yet)
+    -XMLHandler (not in yet)
+    -OBJLoader (not in yet)
+  * Wrappers
+    -P4Wrapper (not in yet)
+    -SVNWrapper (not in yet)
+
+* = namespace 
+- = module
