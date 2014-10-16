@@ -8,7 +8,7 @@
     <ProjectGuid>{2078BDA0-0D96-4053-8679-C021CE3C867E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Basic</RootNamespace>
-    <AssemblyName>XMLHandler</AssemblyName>
+    <AssemblyName>XMLHelper</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,10 +34,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XMLHandler.cs" />
-    <Compile Include="XMLHandlerWriter.cs" />
-    <Compile Include="XMLHandlerReader.cs" />
-    <Compile Include="XMLHandlerException.cs" />
+    <Compile Include="XmlHelperException.cs" />
+    <Compile Include="XmlHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

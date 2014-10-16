@@ -56,9 +56,9 @@
       <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
       <Name>LoggerLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Modules\XMLHandler\XMLHandler.csproj">
+    <ProjectReference Include="..\Modules\XmlHelper\XmlHelper.csproj">
       <Project>{2078BDA0-0D96-4053-8679-C021CE3C867E}</Project>
-      <Name>XMLHandler</Name>
+      <Name>XmlHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -70,14 +70,16 @@
     <Compile Include="Tests\OsDetectorTest.cs" />
     <Compile Include="Tests\TimerManagerTest.cs" />
     <Compile Include="Tests\CmdRunnerTest.cs" />
-    <Compile Include="Tests\XMLHandlerTest.cs" />
+    <Compile Include="Tests\XmlHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
-      <Package>nunit</Package>
+      <Package>mono-nunit</Package>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />

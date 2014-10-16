@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerManager", "Modules\Tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdRunner", "Modules\CmdRunner\CmdRunner.csproj", "{57119B6E-B45F-4E98-AFE9-2578629B9486}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLHandler", "Modules\XMLHandler\XMLHandler.csproj", "{2078BDA0-0D96-4053-8679-C021CE3C867E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlHelper", "Modules\XmlHelper\XmlHelper.csproj", "{2078BDA0-0D96-4053-8679-C021CE3C867E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Helper", "01-Helper", "{716079A1-9895-42D6-860C-FC9F5E08CA64}"
 	ProjectSection(SolutionItems) = preProject
