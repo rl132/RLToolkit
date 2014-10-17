@@ -8,8 +8,8 @@ RLToolkit namespace structure:
     -IniParser
     -OSDetector
     -TimerManager
+    -XmlHelper
     -MailSystem (not in yet)
-    -XMLHandler (not in yet)
     -OBJLoader (not in yet)
   * Wrappers
     -P4Wrapper (not in yet)

@@ -11,36 +11,60 @@ namespace RLToolkit
 		{
 			// do nothing
 		}
-		public void Debug(string message, object[] param)
+
+        public void Debug (string message, object[] param)
         {
             // do nothing
-		}
+        }
+
+        public void Debug (string message, Exception e)
+        {
+            // do nothing
+        }
 
 		public void Info (string message)
 		{
 			// do nothing
 		}
-		public void Info (string message, object[] param)
+
+        public void Info (string message, object[] param)
 		{
 			// do nothing
 		}
+
+        public void Info (string message, Exception e)
+        {
+            // do nothing
+        }
 
 		public void Warn (string message)
 		{
 			// do nothing
 		}
+
 		public void Warn (string message, object[] param)
 		{
 			// do nothing
 		}
 
+        public void Warn (string message, Exception e)
+        {
+            // do nothing
+        }
+
 		public void Fatal (string message)
 		{
 			// do nothing
 		}
+
 		public void Fatal (string message, object[] param)
 		{
 			// do nothing
 		}
+
+        public void Fatal (string message, Exception e)
+        {
+            // do nothing
+        }
 	}
 }
