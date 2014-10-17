@@ -9,6 +9,6 @@ Currently in the toolkit:<br>
 -OS Detector<br>
 -INI Parser (read for now)<br>
 -Command Runner<br>
--XML Handler (read/write, not yet functional)<br>
+-XML Helper (read/write, Random helper funcs)<br>
 <br>
 And more coming soon...
