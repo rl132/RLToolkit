@@ -9,6 +9,7 @@ Currently in the toolkit:<br>
 -OS Detector<br>
 -INI Parser (read for now)<br>
 -Command Runner<br>
+-Configuration Manager<br>
 -XML Helper (read/write, Random helper funcs)<br>
 <br>
 And more coming soon...
