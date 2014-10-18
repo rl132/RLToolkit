@@ -112,9 +112,10 @@ namespace RLToolkit
         public void Fatal (string message, Exception e)
         {
             if (log.IsFatalEnabled && message != null && e != null) {
-                log.Fatal("Exception thrown: " + message + Environment.NewLine + e.ToString());
+                log.fatal("Exception thrown: " + message + Environment.NewLine + e.ToString());
             }
         }
         #endregion
+
 	}
 }

@@ -3,7 +3,6 @@ RLToolkit namespace structure:
 * RLToolkit
   - loggerLayer
   * Basic
-    -CfgManager
     -CmdRunner
     -FileWrapper
     -IniParser
