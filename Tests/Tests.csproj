@@ -60,6 +60,10 @@
       <Project>{2078BDA0-0D96-4053-8679-C021CE3C867E}</Project>
       <Name>XmlHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\CfgManager\CfgManager.csproj">
+      <Project>{0A6E7188-8820-4B18-BE3B-6F43CDF35D84}</Project>
+      <Name>CfgManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSystem\ExceptionCatcher.cs" />
@@ -71,6 +75,7 @@
     <Compile Include="Tests\TimerManagerTest.cs" />
     <Compile Include="Tests\CmdRunnerTest.cs" />
     <Compile Include="Tests\XmlHelperTest.cs" />
+    <Compile Include="Tests\CfgManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
