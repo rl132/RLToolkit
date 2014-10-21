@@ -10,6 +10,8 @@ Currently in the toolkit:<br>
 -INI Parser (read for now)<br>
 -Command Runner<br>
 -Configuration Manager<br>
+-MD5 Helper<br>
+-StringCrypt<br>
 -XML Helper (read/write, Random helper funcs)<br>
 <br>
 And more coming soon...

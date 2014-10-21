@@ -220,6 +220,11 @@ namespace RLToolkit.Basic
 			return found;
 		}
 
+        public bool WriteContent(string fullPath)
+        {
+            return WriteContent(fullPath, "");
+        }
+
 		public bool WriteContent (string filename, string folder)
 		{
             this.Log().Debug(string.Format("Trying to write the content of the Ini file with paramsL: filename: \"{0}\", folder: \"{1}\"", filename, folder));
@@ -237,6 +242,7 @@ namespace RLToolkit.Basic
                     this.Log().Debug(string.Format("Adding content: {0}={1}", entry.Key, entry.Value));
 					output.Add (entry.Key + "=" + entry.Value);
 				}
+                this.Log().Debug("Adding extra line");
 				output.Add ("");
 			}
 

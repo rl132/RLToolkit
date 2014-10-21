@@ -3,12 +3,15 @@ RLToolkit namespace structure:
 * RLToolkit
   - loggerLayer
   * Basic
+    -CfgManager
     -CmdRunner
     -FileWrapper
     -IniParser
     -OSDetector
     -TimerManager
     -XmlHelper
+    -MD5Helper
+    -StringCrypt
     -MailSystem (not in yet)
     -OBJLoader (not in yet)
   * Wrappers

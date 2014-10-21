@@ -24,13 +24,33 @@ namespace RLToolkit.Basic
             this.Log().Debug(string.Format("FileHandler created with params: Filename: \"{0}\", folder: \"{1}\", ForWrite: {2}", filename, folder, forWrite.ToString()));
 
 			// test if the filenme provided is a complete path
-			if (File.Exists (filename)) {
-                fullPath = filename;
-                this.Log().Debug("Filename exists already, using this as target.");
-			} else {
-				fullPath = Path.Combine(folder,filename);
-                this.Log().Debug("Filename doesn't exist, combining folder and filename.");
-			}
+            if (forWrite)
+            {
+                if (folder == null || folder == "")
+                {
+                    // use the filename as fullpath
+                    fullPath = filename;
+                    this.Log().Debug("no folder provided, using filename as full path");
+                }
+                else
+                {
+                    fullPath = Path.Combine(folder, filename);
+                    this.Log().Debug("combining folder and filename.");
+                }
+            } 
+            else
+            {
+                if (File.Exists(filename))
+                {
+                    fullPath = filename;
+                    this.Log().Debug("Filename exists already, using this as target.");
+                }
+                else
+                {
+                    fullPath = Path.Combine(folder, filename);
+                    this.Log().Debug("Filename doesn't exist, combining folder and filename.");
+                }
+            }
 
 			// cache the params
 			isWrite = forWrite;
@@ -149,7 +169,8 @@ namespace RLToolkit.Basic
 			try
 			{
 				foreach (string s in lines) {
-					sWriter.WriteLine (s);
+                    this.Log().Debug("Writing: " + s);
+                    sWriter.WriteLine (s);
 				}
                 this.Log().Debug(string.Format("wrote {0} lines of content", lines.Count.ToString()));
 			}
