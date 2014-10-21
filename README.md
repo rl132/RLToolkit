@@ -7,7 +7,7 @@ Currently in the toolkit:<br>
 -Loose Timer<br>
 -File Handler (read/write)<br>
 -OS Detector<br>
--INI Parser (read for now)<br>
+-INI Parser (read/write)<br>
 -Command Runner<br>
 -Configuration Manager<br>
 -MD5 Helper<br>
