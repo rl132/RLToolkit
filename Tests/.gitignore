@@ -150,3 +150,6 @@ UpgradeLog*.htm
 *.bim_*.settings
 # Microsoft Fakes
 FakesAssemblies/
+
+#test-results from nunit
+test-results/
