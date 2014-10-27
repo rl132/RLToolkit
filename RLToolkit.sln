@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD5Helper", "Modules\MD5Hel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCrypt", "Modules\StringCrypt\StringCrypt.csproj", "{1543D20B-34EC-40B6-9222-BBC2D1F07F14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextureHandler", "Modules\TextureHandler\TextureHandler.csproj", "{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Helper", "01-Helper", "{716079A1-9895-42D6-860C-FC9F5E08CA64}"
 	ProjectSection(SolutionItems) = preProject
 		Helper\structure.txt = Helper\structure.txt
@@ -34,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Helper", "01-Helper", "{
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLayer", "Helper\LoggerLayer\LoggerLayer.csproj", "{B488EE1B-7DBB-4D53-A48B-AED51707F12B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitAsserts", "Helper\NUnitAsserts\NUnitAsserts.csproj", "{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Wrappers", "03-Wrappers", "{B8F419A4-BE8F-4801-9B2C-5430D69A6E2F}"
 	ProjectSection(MonoDevelopProperties) = preProject
@@ -46,6 +50,10 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7}.Release|x86.Build.0 = Release|Any CPU
 		{0A6E7188-8820-4B18-BE3B-6F43CDF35D84}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{0A6E7188-8820-4B18-BE3B-6F43CDF35D84}.Debug|x86.Build.0 = Debug|Any CPU
 		{0A6E7188-8820-4B18-BE3B-6F43CDF35D84}.Release|x86.ActiveCfg = Release|Any CPU
@@ -70,6 +78,10 @@ Global
 		{76862F47-748A-4432-B6C0-DBE3CD5BDED7}.Debug|x86.Build.0 = Debug|Any CPU
 		{76862F47-748A-4432-B6C0-DBE3CD5BDED7}.Release|x86.ActiveCfg = Release|Any CPU
 		{76862F47-748A-4432-B6C0-DBE3CD5BDED7}.Release|x86.Build.0 = Release|Any CPU
+		{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413}.Debug|x86.ActiveCfg = Debug|x86
+		{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413}.Debug|x86.Build.0 = Debug|x86
+		{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413}.Release|x86.ActiveCfg = Release|x86
+		{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413}.Release|x86.Build.0 = Release|x86
 		{9955F0E9-02C3-42EA-AF3F-2A42064088C4}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{9955F0E9-02C3-42EA-AF3F-2A42064088C4}.Debug|x86.Build.0 = Debug|Any CPU
 		{9955F0E9-02C3-42EA-AF3F-2A42064088C4}.Release|x86.ActiveCfg = Release|Any CPU
@@ -102,7 +114,9 @@ Global
 		{0A6E7188-8820-4B18-BE3B-6F43CDF35D84} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
 		{9E19F9BC-ABAC-4CE4-A285-0008EBDAB91A} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
 		{1543D20B-34EC-40B6-9222-BBC2D1F07F14} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
+		{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7} = {40ECDD84-9726-4676-B852-08E739D7FFE4}
 		{B488EE1B-7DBB-4D53-A48B-AED51707F12B} = {716079A1-9895-42D6-860C-FC9F5E08CA64}
+		{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413} = {716079A1-9895-42D6-860C-FC9F5E08CA64}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Tests\Tests.csproj
@@ -119,16 +133,9 @@ Global
 		$3.IndentInterfaceBody = False
 		$3.IndentStructBody = False
 		$3.IndentSwitchBody = True
-		$3.AlignEmbeddedUsingStatements = False
-		$3.AlignEmbeddedIfStatements = False
 		$3.AnonymousMethodBraceStyle = NextLine
 		$3.PropertyBraceStyle = NextLine
 		$3.StatementBraceStyle = NextLine
-		$3.IfElseBraceForcement = AddBraces
-		$3.ForBraceForcement = AddBraces
-		$3.WhileBraceForcement = AddBraces
-		$3.UsingBraceForcement = AddBraces
-		$3.FixedBraceForcement = AddBraces
 		$3.BeforeMethodDeclarationParentheses = False
 		$3.BeforeMethodCallParentheses = False
 		$3.BeforeConstructorDeclarationParentheses = False

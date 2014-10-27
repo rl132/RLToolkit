@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EF1A5D54-D72D-44F7-A324-817E50D73CF4}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -72,6 +72,14 @@
       <Project>{1543D20B-34EC-40B6-9222-BBC2D1F07F14}</Project>
       <Name>StringCrypt</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\TextureHandler\TextureHandler.csproj">
+      <Project>{04BDEC89-7A50-4FEF-A7CD-9CEFB99BD8E7}</Project>
+      <Name>TextureHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper\NUnitAsserts\NUnitAsserts.csproj">
+      <Project>{8C75A95E-1B8C-4E5D-B2B5-C08DFB639413}</Project>
+      <Name>NUnitAsserts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSystem\ExceptionCatcher.cs" />
@@ -86,15 +94,18 @@
     <Compile Include="Tests\CfgManagerTest.cs" />
     <Compile Include="Tests\StringCryptTest.cs" />
     <Compile Include="Tests\MD5HelperTest.cs" />
+    <Compile Include="Tests\TextureHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
-      <Package>mono-nunit</Package>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Net" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
