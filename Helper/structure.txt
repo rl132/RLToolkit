@@ -12,8 +12,11 @@ RLToolkit namespace structure:
     -XmlHelper
     -MD5Helper
     -StringCrypt
+    -TextureHandler
     -MailSystem (not in yet)
     -OBJLoader (not in yet)
+  * Asserts
+    -BitmapAssert
   * Wrappers
     -P4Wrapper (not in yet)
     -SVNWrapper (not in yet)

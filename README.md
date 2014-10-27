@@ -12,6 +12,12 @@ Currently in the toolkit:<br>
 -Configuration Manager<br>
 -MD5 Helper<br>
 -StringCrypt<br>
+-TextureHandler<br>
 -XML Helper (read/write, Random helper funcs)<br>
 <br>
+
+Also, there's a few extension:<br>
+-BitmapAssert for nUnit Asserts<br>
+<br>
+
 And more coming soon...
