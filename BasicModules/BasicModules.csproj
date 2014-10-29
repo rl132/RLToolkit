@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RLToolkit.Basic</RootNamespace>
+    <AssemblyName>RLToolkit.Basic</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="CfgManager\CfgManager.cs" />
+    <Compile Include="CfgManager\IConfigSystem.cs" />
+    <Compile Include="CfgManager\IniConfigSystem.cs" />
+    <Compile Include="CfgManager\NullConfigSystem.cs" />
+    <Compile Include="CfgManager\TextConfigSystem.cs" />
+    <Compile Include="CmdRunner\NullOutputHandler.cs" />
+    <Compile Include="CmdRunner\ListStringOutputHandler.cs">
+      <DependentUpon>NullOutputHandler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CmdRunner\IOutputManager.cs" />
+    <Compile Include="CmdRunner\CmdRunner.cs" />
+    <Compile Include="FileHandler\FileHandlerException.cs" />
+    <Compile Include="FileHandler\FileHandler.cs">
+      <DependentUpon>FileHandlerException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IniParser\IniParser.cs" />
+    <Compile Include="IniParser\DicConfiguration.cs" />
+    <Compile Include="MD5Helper\MD5Helper.cs" />
+    <Compile Include="OSDetector\OsDetector.cs" />
+    <Compile Include="XmlHelper\XmlHelperException.cs" />
+    <Compile Include="XmlHelper\XmlHelper.cs" />
+    <Compile Include="TimerManager\TimerManager.cs" />
+    <Compile Include="TimerManager\TimerManagerEvent.cs" />
+    <Compile Include="TimerManager\TimerManagerEventset.cs" />
+    <Compile Include="TextureHandler\TextureHandler.cs" />
+    <Compile Include="StringCrypt\RFC2898CryptInfo.cs" />
+    <Compile Include="StringCrypt\RSACryptInfo.cs" />
+    <Compile Include="StringCrypt\StringCrypt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CfgManager\" />
+    <Folder Include="CmdRunner\" />
+    <Folder Include="FileHandler\" />
+    <Folder Include="IniParser\" />
+    <Folder Include="MD5Helper\" />
+    <Folder Include="OSDetector\" />
+    <Folder Include="StringCrypt\" />
+    <Folder Include="TextureHandler\" />
+    <Folder Include="TimerManager\" />
+    <Folder Include="XmlHelper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

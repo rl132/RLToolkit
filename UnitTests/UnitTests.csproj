@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF1A5D54-D72D-44F7-A324-817E50D73CF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RLToolkit.Tests</RootNamespace>
+    <AssemblyName>RLToolkit.UnitTests</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="BaseSystem\ExceptionCatcher.cs" />
+    <Compile Include="BaseSystem\ITestBase.cs" />
+    <Compile Include="BaseSystem\TestHarness.cs" />
+    <Compile Include="Tests\FileHandlerTest.cs" />
+    <Compile Include="Tests\IniParserTest.cs" />
+    <Compile Include="Tests\OsDetectorTest.cs" />
+    <Compile Include="Tests\TimerManagerTest.cs" />
+    <Compile Include="Tests\CmdRunnerTest.cs" />
+    <Compile Include="Tests\XmlHelperTest.cs" />
+    <Compile Include="Tests\CfgManagerTest.cs" />
+    <Compile Include="Tests\StringCryptTest.cs" />
+    <Compile Include="Tests\MD5HelperTest.cs" />
+    <Compile Include="Tests\TextureHandlerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Net" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseSystem\" />
+    <Folder Include="Tests\" />
+    <Folder Include="Mocks\" />
+  </ItemGroup>
+</Project>
