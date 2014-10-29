@@ -18,6 +18,7 @@ Currently in the toolkit:<br>
 
 Also, there's a few extension:<br>
 -BitmapAssert for nUnit Asserts<br>
+-Color Extension<br>
 <br>
 
 And more coming soon...

@@ -15,8 +15,6 @@ namespace RLToolkit.Tests
 	public class XmlHelperTest : TestHarness, ITestBase
 	{
 		#region Local Variables
-		private string localFolder = ""; // to be initialized later
-
         // paths and filename
         private string file_1 = "fileXml1.xml";
         private string file_1_out = "fileXml1_out.xml";
@@ -39,7 +37,7 @@ namespace RLToolkit.Tests
 
 		public override void DataPrepare()
 		{
-            CopyFile (Path.Combine(folder_testdata, file_1), Path.Combine(localFolder, file_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_1), true, false);
 
             // make a reference xml file for docFile1
             String xmlString =
@@ -63,10 +61,7 @@ namespace RLToolkit.Tests
 		public override void DataCleanup()
 		{
             // move the test output to the result folder
-            MoveFile (Path.Combine(localFolder, file_1_out), Path.Combine(folder_testresult, file_1_out), false);
-
-            // delete the test files from the data folder
-            CleanFile (Path.Combine (localFolder, file_1), false);
+            AddOutputFile(Path.Combine(localFolder, file_1_out), false);
         }
 		#endregion
 

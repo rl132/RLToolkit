@@ -14,7 +14,6 @@ namespace RLToolkit.Tests
     {
         #region Local Variables
         private CfgManager configManager;
-        private string localFolder = ""; // to be initialized later
 
         // paths and filename
         private string file_txt_1 = "file1.txt";
@@ -44,8 +43,8 @@ namespace RLToolkit.Tests
         public override void DataPrepare()
         {
             // copy the data locally
-            CopyFile(Path.Combine(folder_testdata, file_txt_1), Path.Combine(localFolder, file_txt_1), true, false);
-            CopyFile(Path.Combine(folder_testdata, file_ini_1), Path.Combine(localFolder, file_ini_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_txt_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_ini_1), true, false);
 
             // fill in the dictionary
             dicoTxt.Add("foo", "bar");
@@ -63,13 +62,9 @@ namespace RLToolkit.Tests
 
         public override void DataCleanup()
         {
-            // move the result files if there
-            MoveFile (Path.Combine (localFolder, file_txt_1_out), Path.Combine (folder_testresult, file_txt_1_out), false);
-            MoveFile (Path.Combine (localFolder, file_ini_1_out), Path.Combine (folder_testresult, file_ini_1_out), false);
-
-            // cleanup the testdata
-            CleanFile (Path.Combine (localFolder, file_txt_1), false);
-            CleanFile (Path.Combine (localFolder, file_ini_1), false);
+            // move the result files if there's any
+            AddOutputFile(Path.Combine(localFolder, file_txt_1_out), false);
+            AddOutputFile(Path.Combine(localFolder, file_ini_1_out), false);
         }
         #endregion
 

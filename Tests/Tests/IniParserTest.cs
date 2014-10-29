@@ -28,7 +28,6 @@ namespace RLToolkit.Tests
 		private string file_1 = "file1.ini";
 		private string file_1_out = "file1_out.ini";
 		private string file_2_out = "file2_out.ini";
-		private string localFolder = ""; // to be initialized later
 		#endregion
 
 		#region Interface Override
@@ -46,7 +45,7 @@ namespace RLToolkit.Tests
 		public override void DataPrepare()
 		{
 			// copy the data locally
-			CopyFile(Path.Combine(folder_testdata, file_1), Path.Combine(localFolder, file_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_1), true, false);
 
 			// prepare the content of File1
 			File1ContentRaw.Add ("#comment");
@@ -83,12 +82,8 @@ namespace RLToolkit.Tests
 		public override void DataCleanup()
 		{
 			// move the result files if there
-			MoveFile (Path.Combine (localFolder, file_1_out), Path.Combine (folder_testresult, file_1_out), false);
-			MoveFile (Path.Combine (localFolder, file_2_out), Path.Combine (folder_testresult, file_2_out), false);
-
-			// cleanup the testdata
-			CleanFile (Path.Combine (localFolder, file_1), false);
-
+            AddOutputFile(Path.Combine(localFolder, file_1_out), false);
+            AddOutputFile(Path.Combine(localFolder, file_2_out), false);
 		}
 		#endregion
 

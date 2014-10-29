@@ -17,6 +17,8 @@ RLToolkit namespace structure:
     -OBJLoader (not in yet)
   * Asserts
     -BitmapAssert
+  * Extensions
+    -ColorExtension
   * Wrappers
     -P4Wrapper (not in yet)
     -SVNWrapper (not in yet)

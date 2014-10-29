@@ -2,6 +2,8 @@
 using System.Drawing;
 using NUnit.Framework;
 
+using RLToolkit.Extensions;
+
 namespace RLToolkit.Asserts
 {
     public static class BitmapAssert
@@ -120,7 +122,8 @@ namespace RLToolkit.Asserts
                     //LogManager.Instance.Log().Verbose(string.Format("column {0} out of {1}", col, source.Height));
                     Color sPixel = source.GetPixel(row, col);
                     Color aPixel = actual.GetPixel(row, col);
-                    if (!ComparePixelColor(sPixel, aPixel, tolerence, alphaSupport))
+
+                    if (!sPixel.CompareColor(aPixel, tolerence, alphaSupport))
                     {
                         notSame = true;
                         if (expectEquals)
@@ -140,39 +143,6 @@ namespace RLToolkit.Asserts
                     throw new AssertionException(string.Format("Image shows no sign of difference and we expected it to be."));
                 }
             }
-        }
-        #endregion
-
-        #region helper
-        private static bool ComparePixelColor(Color source, Color actual, int tolerance, bool alphaSupport)
-        {
-            //LogManager.Instance.Log().Debug(String.Format("Comparing pixel {0} to {1} with tolerence {2}, alpha support: {3}",source.ToArgb().ToString(), actual.ToArgb().ToString(), tolerance, alphaSupport));
-            if (!ComparePixelChannel(source.R, actual.R, tolerance))
-            {
-                return false;
-            }
-            if (!ComparePixelChannel(source.G, actual.G, tolerance))
-            {
-                return false;
-            }
-            if (!ComparePixelChannel(source.B, actual.B, tolerance))
-            {
-                return false;
-            }
-            if (alphaSupport)
-            {
-                if (!ComparePixelChannel(source.A, actual.A, tolerance))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private static bool ComparePixelChannel(byte source, byte actual, int tolerance)
-        {
-            //LogManager.Instance.Log().Debug(String.Format("Comparing pixel channel {0} to {1} with tolerence {2}",source.ToString(), actual.ToString(), tolerance));
-            return (Math.Abs(source - actual) < tolerance);
         }
         #endregion
     }

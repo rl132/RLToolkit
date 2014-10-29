@@ -9,11 +9,6 @@ namespace RLToolkit.Tests
     [TestFixture]
     public class MD5HelperTest : TestHarness, ITestBase
     {
-        #region Local Variables
-        private string localFolder = ""; // to be initialized later
-
-        #endregion
-
         #region Interface Override
         public string ModuleName()
         {
@@ -24,16 +19,6 @@ namespace RLToolkit.Tests
         {
             localFolder = AppDomain.CurrentDomain.BaseDirectory;
             SetPaths (localFolder, ModuleName());
-        }
-
-        public override void DataPrepare()
-        {
-
-        }
-
-        public override void DataCleanup()
-        {
-        
         }
         #endregion
 

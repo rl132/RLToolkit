@@ -187,6 +187,70 @@ namespace RLToolkit.Basic
             height = newHeight;
         }
         #endregion
+
+        #region ExtractChannel
+
+        public enum eChannel
+        {
+            red = 1,
+            green = 2,
+            blue = 4,
+            alpha = 8
+        };
+
+        public void ExtractChannels(eChannel desiredChannels)
+        {
+            // lock the bits
+            Rectangle rect = new Rectangle(0, 0, width, height);
+            BitmapData bmpData = texture.LockBits(rect, ImageLockMode.ReadWrite, texture.PixelFormat);
+
+            // Get the address of the first line.
+            IntPtr ptr = bmpData.Scan0;
+
+            // Declare an array to hold the bytes of the bitmap. 
+            int bytes = Math.Abs(bmpData.Stride) * height;
+            byte[] rgbValues = new byte[bytes];
+
+            // Copy the RGB values into the array.
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+            // Set every third value to 255. A 24bpp bitmap will look red.   
+            for (int index = 0; index < rgbValues.Length; index += 3)
+            {
+                Console.WriteLine("current value: " + desiredChannels.HasFlag(eChannel.red).ToString() + " - " + desiredChannels.HasFlag(eChannel.green).ToString() + " - " + desiredChannels.HasFlag(eChannel.blue).ToString() + " - " + desiredChannels.HasFlag(eChannel.alpha).ToString());
+                if (!desiredChannels.HasFlag(eChannel.red))
+                {
+                    // get rid of the red channel
+                    rgbValues[index] = 0;
+                }
+                if (!desiredChannels.HasFlag(eChannel.green))
+                {
+                    // get rid of the red channel
+                    rgbValues[index+1] = 0;
+                }
+                if (!desiredChannels.HasFlag(eChannel.blue))
+                {
+                    // get rid of the red channel
+                    rgbValues[index+2] = 0;
+                }
+                if (!desiredChannels.HasFlag(eChannel.alpha))
+                {
+                    // get rid of the red channel
+                    rgbValues[index+3] = 0;
+                }
+            }
+
+            // Copy the RGB values back to the bitmap
+            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, bytes);
+
+            // Unlock the bits.
+            texture.UnlockBits(bmpData);
+
+            
+
+        }
+
+        #endregion
     }
 }
 

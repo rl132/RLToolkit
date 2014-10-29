@@ -15,8 +15,6 @@ namespace RLToolkit.Tests
     public class TextureHandlerTest : TestHarness, ITestBase
     {
         #region Local Variables
-        private string localFolder = ""; // to be initialized later
-
         // paths and filename
         private string image_bmp_1 = "file1.bmp";
         private string image_bmp_1_big = "file1_big.bmp";
@@ -30,6 +28,7 @@ namespace RLToolkit.Tests
         private string image_bmp_1_small_out = "file1_out_small.bmp";
         private string image_bmp_1_combine_out = "file1_out_combine.bmp";
         private string image_bmp_1_combineFail_out = "file1_out_combine_fail.bmp";
+        private string image_bmp_1_extract = "file1_out_extract.bmp";
         #endregion
 
         #region Interface Override
@@ -46,34 +45,25 @@ namespace RLToolkit.Tests
 
         public override void DataPrepare()
         {
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1), Path.Combine(localFolder, image_bmp_1), true, false);
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1_small), Path.Combine(localFolder, image_bmp_1_small), true, false);
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1_big), Path.Combine(localFolder, image_bmp_1_big), true, false);
+            // copy the data files over
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1_small), true, false);
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1_big), true, false);
 
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1_big_red), Path.Combine(localFolder, image_bmp_1_big_red), true, false);
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1_big_green), Path.Combine(localFolder, image_bmp_1_big_green), true, false);
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1_big_blue), Path.Combine(localFolder, image_bmp_1_big_blue), true, false);
-            CopyFile (Path.Combine(folder_testdata, image_bmp_1_big_black), Path.Combine(localFolder, image_bmp_1_big_black), true, false);
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1_big_red), true, false);
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1_big_green), true, false);
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1_big_blue), true, false);
+            AddInputFile(Path.Combine(folder_testdata, image_bmp_1_big_black), true, false);
         }
 
         public override void DataCleanup()
         {
             // move the test output to the result folder
-            MoveFile (Path.Combine(localFolder, image_bmp_1_out), Path.Combine(folder_testresult, image_bmp_1_out), false);
-            MoveFile (Path.Combine(localFolder, image_bmp_1_big_out), Path.Combine(folder_testresult, image_bmp_1_big_out), false);
-            MoveFile (Path.Combine(localFolder, image_bmp_1_small_out), Path.Combine(folder_testresult, image_bmp_1_small_out), false);
-            MoveFile (Path.Combine(localFolder, image_bmp_1_combine_out), Path.Combine(folder_testresult, image_bmp_1_combine_out), false);
-            MoveFile (Path.Combine(localFolder, image_bmp_1_combineFail_out), Path.Combine(folder_testresult, image_bmp_1_combineFail_out), false);
-
-            // delete the test files from the data folder
-            CleanFile (Path.Combine (localFolder, image_bmp_1), false);
-            CleanFile (Path.Combine (localFolder, image_bmp_1_small), false);
-            CleanFile (Path.Combine (localFolder, image_bmp_1_big), false);
-
-            CleanFile (Path.Combine (localFolder, image_bmp_1_big_red), false);
-            CleanFile (Path.Combine (localFolder, image_bmp_1_big_green), false);
-            CleanFile (Path.Combine (localFolder, image_bmp_1_big_blue), false);
-            CleanFile (Path.Combine (localFolder, image_bmp_1_big_black), false);
+            AddOutputFile(Path.Combine(localFolder, image_bmp_1_out), false);
+            AddOutputFile(Path.Combine(localFolder, image_bmp_1_big_out), false);
+            AddOutputFile(Path.Combine(localFolder, image_bmp_1_small_out), false);
+            AddOutputFile(Path.Combine(localFolder, image_bmp_1_combine_out), false);
+            AddOutputFile(Path.Combine(localFolder, image_bmp_1_combineFail_out), false);
         }
         #endregion
 
@@ -163,6 +153,21 @@ namespace RLToolkit.Tests
             target.Dispose();
 
             Bitmap original = new Bitmap(Path.Combine(localFolder, image_bmp_1_big));
+            Bitmap output = new Bitmap(Path.Combine(localFolder, image_bmp_1_combineFail_out));
+
+            BitmapAssert.AreNotEqual(original, output, 10, "Written image should not be like the reference.");
+        }
+
+        [Test]
+        public void TextureHandler_Bmp_ExtractR()
+        {
+            TextureHandler t1 = new TextureHandler(Path.Combine(localFolder, image_bmp_1));
+ 
+            t1.ExtractChannels(TextureHandler.eChannel.red | TextureHandler.eChannel.green);
+            t1.Save(Path.Combine(localFolder, image_bmp_1_extract), ImageFormat.Bmp);
+            t1.Dispose();
+
+            Bitmap original = new Bitmap(Path.Combine(localFolder, image_bmp_1));
             Bitmap output = new Bitmap(Path.Combine(localFolder, image_bmp_1_combineFail_out));
 
             BitmapAssert.AreNotEqual(original, output, 10, "Written image should not be like the reference.");

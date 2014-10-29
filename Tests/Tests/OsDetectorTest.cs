@@ -12,7 +12,6 @@ namespace RLToolkit.Tests
 	public class OsDetectorTest : TestHarness, ITestBase
 	{
 		#region Local Variables
-		private string localFolder = ""; // to be initialized later
 		private OperatingSystem testOsUnix = new OperatingSystem(PlatformID.Unix, new Version(0,0,0,0));
 		private OperatingSystem testOsWin32 = new OperatingSystem(PlatformID.Win32NT, new Version(0,0,0,0));
 		private OperatingSystem testOsMac = new OperatingSystem(PlatformID.MacOSX, new Version(0,0,0,0));

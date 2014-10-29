@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace RLToolkit.Tests
@@ -10,6 +11,9 @@ namespace RLToolkit.Tests
 		public string folder_base;
 		public string folder_testdata;
 		public string folder_testresult;
+        public List<Tuple<string,bool,bool>> filesInput = new List<Tuple<string,bool,bool>>();
+        public List<Tuple<string,bool>> filesOutput = new List<Tuple<string, bool>>();
+        public string localFolder = ""; // to be initialized later
 		#endregion
 
 		#region fixture setup/cleanup
@@ -23,6 +27,7 @@ namespace RLToolkit.Tests
 			try
 			{
 				DataPrepare ();
+                ExecutePrepare ();
 			}
 			catch (Exception e) 
 			{
@@ -38,6 +43,7 @@ namespace RLToolkit.Tests
 			try
 			{
 				DataCleanup ();
+                ExecuteCleanup ();
 			}
 			catch (Exception e)
 			{
@@ -64,6 +70,41 @@ namespace RLToolkit.Tests
 		}
 		#endregion
 
+        #region Execute functions to move/prepare/transfer/report/etc
+        public void ExecutePrepare()
+        {
+            // copy the tests data
+            if (filesInput.Count > 0)
+            {
+                foreach (Tuple<string, bool, bool> t in filesInput)
+                {
+                    CopyFile(t.Item1, Path.Combine(localFolder, Path.GetFileName(t.Item1)), t.Item2, t.Item3);
+                }
+            }
+        }
+
+        public void ExecuteCleanup()
+        {
+            // move the test results
+            if (filesOutput.Count > 0)
+            {
+                foreach (Tuple<string, bool> t in filesOutput)
+                {
+                    MoveFile(t.Item1, Path.Combine(folder_testresult, Path.GetFileName(t.Item1)), t.Item2);
+                }
+            }
+
+            // clean the test data
+            if (filesInput.Count > 0)
+            {
+                foreach (Tuple<string, bool, bool> t in filesInput)
+                {
+                    CleanFile(Path.Combine(localFolder, Path.GetFileName(t.Item1)), t.Item3);
+                }
+            }
+        }
+        #endregion
+
 		#region Helper functions
 		public void SetPaths(string baseFolder, string module)
 		{
@@ -71,6 +112,18 @@ namespace RLToolkit.Tests
 			folder_testdata = Path.Combine(folder_base, "TestData", module);
 			folder_testresult = Path.Combine(folder_base, "TestResults", module);
 		}
+
+        public void AddInputFile(string file, bool isDelete, bool exceptionNotFound)
+        {
+            Tuple<string, bool, bool> t = new Tuple<string, bool, bool>(file, isDelete, exceptionNotFound);     
+            filesInput.Add(t);
+        }
+
+        public void AddOutputFile(string file, bool exceptionNotFound)
+        {
+            Tuple<string, bool> t = new Tuple<string, bool>(file, exceptionNotFound);
+            filesOutput.Add(t);
+        }
 
 		public void CleanFile(string file, bool errorIfNotFound)
 		{

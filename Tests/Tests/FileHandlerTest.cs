@@ -32,7 +32,6 @@ namespace RLToolkit.Tests
 		private string file_notExist_3 = "somefile3.txt";
 		private string file_notExist_4 = "somefile4.txt";
 		private string file_notExist_5 = "somefile5.txt";
-		private string localFolder = ""; // to be initialized later
 		#endregion
 
 		#region Interface Override
@@ -49,11 +48,12 @@ namespace RLToolkit.Tests
 
 		public override void DataPrepare()
 		{
-			// copy the test files frpm the data folder
-			CopyFile (Path.Combine(folder_testdata, file_1), Path.Combine(localFolder, file_1), true, false);
-			CopyFile (Path.Combine(folder_testdata, file_2), Path.Combine(localFolder, file_2), true, false);
-			CopyFile (Path.Combine(folder_testdata, file_3), Path.Combine(localFolder, file_3), true, false);
-			CopyFile (Path.Combine(folder_testdata, file_empty), Path.Combine(localFolder, file_empty), true, false);
+            // mark the files to copy from the test data folder, to the local folder
+            AddInputFile(Path.Combine(folder_testdata, file_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_2), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_3), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_empty), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_1), true, false);
 			CopyFile (Path.Combine(folder_testdata, file_1), Path.Combine(localFolder, file_1_copy), true, false);
 
 			// prepare the content of File1
@@ -68,20 +68,16 @@ namespace RLToolkit.Tests
 
 		public override void DataCleanup()
 		{
-			// move the test output to the result folder
-			MoveFile (Path.Combine(localFolder, file_1_out), Path.Combine(folder_testresult, file_1_out), false);
-			MoveFile (Path.Combine(localFolder, file_2_out), Path.Combine(folder_testresult, file_2_out), false);
-			MoveFile (Path.Combine(localFolder, file_notExist_1), Path.Combine(folder_testresult, file_notExist_1), false);
-			MoveFile (Path.Combine(localFolder, file_notExist_2), Path.Combine(folder_testresult, file_notExist_2), false);
-			MoveFile (Path.Combine(localFolder, file_notExist_3), Path.Combine(folder_testresult, file_notExist_3), false);
-			MoveFile (Path.Combine(localFolder, file_notExist_4), Path.Combine(folder_testresult, file_notExist_4), false);
-			MoveFile (Path.Combine(localFolder, file_notExist_5), Path.Combine(folder_testresult, file_notExist_5), false);
+            // mark the files to move to the result folder
+            AddOutputFile(Path.Combine(localFolder, file_1_out), false);
+            AddOutputFile(Path.Combine(localFolder, file_2_out), false);
+            AddOutputFile(Path.Combine(localFolder, file_notExist_1), false);
+            AddOutputFile(Path.Combine(localFolder, file_notExist_2), false);
+            AddOutputFile(Path.Combine(localFolder, file_notExist_3), false);
+            AddOutputFile(Path.Combine(localFolder, file_notExist_4), false);
+            AddOutputFile(Path.Combine(localFolder, file_notExist_5), false);
 
-			// delete the test files from the data folder
-			CleanFile (Path.Combine (localFolder, file_1), false);
-			CleanFile (Path.Combine (localFolder, file_2), false);
-			CleanFile (Path.Combine (localFolder, file_3), false);
-			CleanFile (Path.Combine (localFolder, file_empty), false);
+			// delete the extra test files from the data folder
 			CleanFile (Path.Combine(localFolder, file_1_copy), false);
 		}
 		#endregion

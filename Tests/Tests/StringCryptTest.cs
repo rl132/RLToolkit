@@ -10,10 +10,6 @@ namespace RLToolkit.Tests
     [TestFixture]
     public class StringCryptTest : TestHarness, ITestBase
     {
-        #region Local Variables
-        private string localFolder = ""; // to be initialized later
-        #endregion
-
         #region Interface Override
         public string ModuleName()
         {
