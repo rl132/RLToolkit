@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--Comment!-->
+<root>
+  <node attribute1="test" attribute2="foo">
+    <subnode attribute1="foobar">text 1</subnode>
+    <subnode>text 2</subnode>
+  </node>
+  <node>
+    <subnode>text 3</subnode>
+    <submode />
+  </node>
+</root>

@@ -1,0 +1,5 @@
+foo=bar
+123=abc
+long=string with more data
+multiple=equal sign=is it working?
+bar=
