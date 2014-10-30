@@ -20,6 +20,8 @@ namespace RLToolkit.UnitTests
         private string file_txt_1_out = "file1_out.txt";
         private string file_ini_1 = "file1.ini";
         private string file_ini_1_out = "file1_out.ini";
+        private string file_xml_1 = "file1.xml";
+        private string file_xml_1_out = "file1_out.xml";
 
         // dictionaries
         private Dictionary<string, string> dicoTxt = new Dictionary<string, string>();
@@ -30,7 +32,6 @@ namespace RLToolkit.UnitTests
         #region Interface Override
         public string ModuleName()
         {
-
             return "CfgManager";
         }
 
@@ -45,6 +46,7 @@ namespace RLToolkit.UnitTests
             // copy the data locally
             AddInputFile(Path.Combine(folder_testdata, file_txt_1), true, false);
             AddInputFile(Path.Combine(folder_testdata, file_ini_1), true, false);
+            AddInputFile(Path.Combine(folder_testdata, file_xml_1), true, false);
 
             // fill in the dictionary
             dicoTxt.Add("foo", "bar");
@@ -58,6 +60,12 @@ namespace RLToolkit.UnitTests
             dicoIni.Add("general_long", "string with more data");
             dicoIni.Add("general_bar", "");
             dicoIni.Add("specific_foo", "blerp");
+
+            dicoXml.Add("test", "value");
+            dicoXml.Add("long", "string with spaces");
+            dicoXml.Add("multiple", "equals signs = working?");
+            dicoXml.Add("bar", "");
+            dicoXml.Add("useless", "value");
         }
 
         public override void DataCleanup()
@@ -65,6 +73,7 @@ namespace RLToolkit.UnitTests
             // move the result files if there's any
             AddOutputFile(Path.Combine(localFolder, file_txt_1_out), false);
             AddOutputFile(Path.Combine(localFolder, file_ini_1_out), false);
+            AddOutputFile(Path.Combine(localFolder, file_xml_1_out), false);
         }
         #endregion
 
@@ -192,7 +201,51 @@ namespace RLToolkit.UnitTests
         }
         #endregion
 
-    
+        #region xml handler
+        [Test]
+        public void CfgMgr_Xml_Read_CfgSysType()
+        {
+            string path = Path.Combine(localFolder, file_xml_1);
+            configManager = new CfgManager(path, typeof(XmlConfigSystem));
+            configManager.ReadConfig();
+
+            Assert.AreEqual(5, configManager.GetDictionary().Count, "Dictionary Size should be 5");
+            string value1 = configManager.GetValue("long");
+            Assert.AreEqual("string with spaces", value1, "Content of \"long\" should be \"string with spaces\"");
+            string value2 = configManager.GetValue("test");
+            Assert.AreEqual("value", value2, "Content for \"test\" should be \"value\"");
+            string value3 = configManager.GetValue("bar");
+            Assert.AreEqual("", value3, "Content for \"bar\" should be empty");
+        }
+
+        [Test]
+        public void CfgMgr_Xml_Read_CfgSysInstance()
+        {
+            string path = Path.Combine(localFolder, file_xml_1);
+            XmlConfigSystem cfgsys = new XmlConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(5, configManager.GetDictionary().Count, "Dictionary Size should be 5");
+            string value1 = configManager.GetValue("long");
+            Assert.AreEqual("string with spaces", value1, "Content of \"long\" should be \"string with spaces\"");
+            string value2 = configManager.GetValue("test");
+            Assert.AreEqual("value", value2, "Content for \"test\" should be \"value\"");
+            string value3 = configManager.GetValue("bar");
+            Assert.AreEqual("", value3, "Content for \"bar\" should be empty");
+        }
+
+        [Test]
+        public void CfgMgr_Xml_Write()
+        {
+            string path = Path.Combine(localFolder, file_xml_1_out);
+            XmlConfigSystem cfgsys = new XmlConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.SetDictionary(dicoXml);
+            configManager.WriteConfig();
+
+            Assert.IsTrue(FileCompare(Path.Combine(localFolder, file_xml_1_out), Path.Combine(localFolder, file_xml_1)), "Files are not the same");
+        }
+        #endregion
     }
 }
-
