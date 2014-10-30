@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug-Linux</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EF1A5D54-D72D-44F7-A324-817E50D73CF4}</ProjectGuid>
@@ -10,25 +10,39 @@
     <RootNamespace>RLToolkit.Tests</RootNamespace>
     <AssemblyName>RLToolkit.UnitTests</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug-Linux</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
     <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>none</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Linux|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
+    <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug-Windows</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Windows|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release-Windows</OutputPath>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,5 +75,37 @@
     <Folder Include="BaseSystem\" />
     <Folder Include="Tests\" />
     <Folder Include="Mocks\" />
+    <Folder Include="TestData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicModules\BasicModules.csproj">
+      <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
+      <Name>BasicModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestData\CfgManager\file1.ini" />
+    <None Include="TestData\CfgManager\file1.txt" />
+    <None Include="TestData\FileHandler\empty.txt" />
+    <None Include="TestData\FileHandler\file1.txt" />
+    <None Include="TestData\FileHandler\file2.txt" />
+    <None Include="TestData\FileHandler\file3.txt" />
+    <None Include="TestData\IniParser\file1.ini" />
+    <None Include="TestData\TextureHandler\file1.bmp" />
+    <None Include="TestData\TextureHandler\file1_big.bmp" />
+    <None Include="TestData\TextureHandler\file1_big_black.bmp" />
+    <None Include="TestData\TextureHandler\file1_big_blue.bmp" />
+    <None Include="TestData\TextureHandler\file1_big_green.bmp" />
+    <None Include="TestData\TextureHandler\file1_big_red.bmp" />
+    <None Include="TestData\TextureHandler\file1_small.bmp" />
+    <None Include="TestData\XmlHelper\fileXml1.xml" />
   </ItemGroup>
 </Project>

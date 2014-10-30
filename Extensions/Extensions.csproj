@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug-Linux</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -10,30 +10,35 @@
     <RootNamespace>RLToolkit.Extensions</RootNamespace>
     <AssemblyName>RLToolkit.Extensions</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug-Linux</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Linux|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
+    <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug-Windows</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Windows|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release-Windows</OutputPath>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
-      <Package>nunit</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
