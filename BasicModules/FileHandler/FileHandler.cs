@@ -86,13 +86,13 @@ namespace RLToolkit.Basic
 			catch (FileHandlerException e) 
 			{
 				//throw up
-				throw e;
+				throw;
 			}
 			catch (Exception e)
 			{
 				// something went wrong, throw it back up
                 this.Log().Fatal("Something went terribly wrong, unknown exception caught.\n" + e.Message);
-				throw new Exception(e.Message);
+				throw;
 			}
 
 			// we're ready to be used
@@ -146,7 +146,7 @@ namespace RLToolkit.Basic
 			{
 				// something went wrong, throw it back up
                 this.Log().Fatal("Something went terribly wrong, unknown exception caught.\n" + e.Message);
-				throw new Exception(e.Message);
+                throw;
 			}
 
 			// return the content of the file
@@ -178,7 +178,7 @@ namespace RLToolkit.Basic
 			{
 			    this.Log().Fatal("Something went terribly wrong, unknown exception caught.\n" + e.Message);
             	// something went terribly wrong, throw it back up
-				throw new Exception(e.Message);
+                throw;
 			}
 
 			return true;
@@ -208,7 +208,7 @@ namespace RLToolkit.Basic
 			{
 				// something went wrong, throw it back up
                 this.Log().Fatal("Something went terribly wrong, unknown exception caught.\n" + e.Message);
-				throw new Exception(e.Message);
+                throw;
 			}
 
 			isReady = false;
