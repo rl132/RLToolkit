@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace RLToolkit.Basic
 {
     /// <summary>
-    /// Interface IOoutputManager for the CmdRunner
+    /// Interface IOutputManager for the CmdRunner
     /// </summary>
 	public interface IOutputManager
 	{

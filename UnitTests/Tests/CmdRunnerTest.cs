@@ -45,7 +45,7 @@ namespace RLToolkit.UnitTests
 			List<string> testAgainst = new List<string>();
 			testAgainst.Add("test");
 			List<string> res = (List<string>)runner.outputHandler.GetOutput();
-			Assert.AreEqual(testAgainst, handler.outputData, "Local output is not as expected");
+			Assert.AreEqual(testAgainst, (List<string>)handler.GetOutput(), "Local output is not as expected");
 			Assert.AreEqual(testAgainst, res, "The output from the command is not as expected.");
 		}
 

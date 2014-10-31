@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// IniConfigSystem to use with the IConfigSystem interface
+    /// </summary>
     public class IniConfigSystem : IConfigSystem
     {
         /// <summary>

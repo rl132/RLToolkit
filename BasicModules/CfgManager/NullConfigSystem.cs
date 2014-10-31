@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// NullConfigSystem to use with the IConfigSystem interface. Note, this ConfigSystem will not do anytthing.
+    /// </summary>
     public class NullConfigSystem : IConfigSystem
     {
         /// <summary>

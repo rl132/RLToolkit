@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Interface IConfigSystem for the CfgManager
+    /// </summary>
     public interface IConfigSystem
     {
         // In order to implement an IConfigSystem, the class only needs to

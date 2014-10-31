@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// TextConfigSystem to use with the IConfigSystem interface
+    /// </summary>
     public class TextConfigSystem : IConfigSystem
     {
         /// <summary>

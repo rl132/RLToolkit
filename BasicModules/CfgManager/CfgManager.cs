@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Configration Manager
+    /// </summary>
     public class CfgManager
     {
         private IConfigSystem configSystem;

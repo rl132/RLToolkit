@@ -4,9 +4,13 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// XmlConfigSystem to use with the IConfigSystem interface
+    /// </summary>
     public class XmlConfigSystem : IConfigSystem
     {
         // update this when we change the master version
+        /// <summary>The latest version of the model to use</summary>
         public const int LATEST_MODEL_VERSION = 1;
 
         /// <summary>

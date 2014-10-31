@@ -9,8 +9,8 @@ namespace RLToolkit.Basic
     /// </summary>
     public class ListStringOutputHandler : IOutputManager
 	{
-		public List<string> outputData = new List<string>();
-		public List<string> errorData = new List<string>();
+		private List<string> outputData = new List<string>();
+		private List<string> errorData = new List<string>();
 
         /// <summary>
         /// Method to define that will be called when an output line will be received
