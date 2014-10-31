@@ -66,7 +66,7 @@ namespace RLToolkit.Basic
         /// Internal method to convert a List of string to a set of DicConfiguration.
         /// </summary>
         /// <param name="rawData">Raw list of string input</param>
-		public void ConvertToDictionary (List<string> rawData)
+		private void ConvertToDictionary (List<string> rawData)
 		{
             this.Log().Debug("Filling the Dictionary");
 			DicConfiguration current = new DicConfiguration();
@@ -133,7 +133,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns>If the line is a header</returns>
         /// <param name="line">a string line</param>
-		public bool IsHeader (string line)
+		private bool IsHeader (string line)
 		{
         	if ((line.Substring (0, 1) == "[") &&
 				(line.Substring (line.Length-1, 1) == "]")) 
@@ -150,7 +150,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns>If the line is a comment</returns>
         /// <param name="line">a string line</param>
-		public bool IsLineComment (string line)
+		private bool IsLineComment (string line)
 		{
 			if (line.Substring (0, 1) == "#")
 			{
@@ -292,7 +292,7 @@ namespace RLToolkit.Basic
         /// Method for writing the content of the IniParser
         /// </summary>
         /// <returns><c>true</c>, if content was writed, <c>false</c> otherwise.</returns>
-        /// <param name="fullPath">Full path or partial where to write the content</param>
+        /// <param name="filename">Full path or partial where to write the content</param>
         /// <param name="folder">Folder, ignored if the file is a full path</param>
 		public bool WriteContent (string filename, string folder)
 		{
@@ -303,7 +303,8 @@ namespace RLToolkit.Basic
 			}
 
 			List<string> output = new List<string> ();
-			foreach (DicConfiguration d in content) {
+			foreach (DicConfiguration d in content) 
+            {
                 this.Log().Debug(string.Format("Adding header: {0}", d.header));
 				output.Add ("[" + d.header + "]");
 				foreach(KeyValuePair<string, string> entry in d.dicto)
