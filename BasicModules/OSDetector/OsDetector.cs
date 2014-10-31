@@ -2,27 +2,53 @@ using System;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Os detector.
+    /// </summary>
 	public static class OsDetector
 	{
+        /// <summary>The operating system. Mainly for internal use only.</summary>
 		public static OperatingSystem os;
+
+        ///<summary>the OS types available</summary>
 		public enum OsSelection
 		{
+            /// <summary>windows-type of OS</summary>
 			Windows,
-			Unix,
+
+            /// <summary>unix-type of OS</summary>
+            Unix,
+
+            /// <summary>Max-type of OS</summary>
 			Mac,
+
+            /// <summary>Xbox-type of OS</summary>
 			Xbox,
-			Unknown
+
+            /// <summary>unknown type</summary>
+            Unknown
 		};
+
+        /// <summary>The current os from the enum</summary>
 		public static OsSelection currentOs;
+
 		// todo: add a EOL character def
 		// todo: add a folder separator character
 
+        /// <summary>
+        /// Manually override the operating system. Internal use only
+        /// </summary>
+        /// <param name="osInput">the new OS to use</param>
 		public static void SetOS (OperatingSystem osInput)
 		{
             LogManager.Instance.Log().Debug(string.Format("Setting OS to: {0}", osInput.ToString()));
 			os = osInput;
 		}
 
+        /// <summary>
+        /// Method that will detect which Operating system is used
+        /// </summary>
+        /// <returns>The os from the enum</returns>
 		public static OsSelection DetectOs ()
 		{
             LogManager.Instance.Log().Debug("Trying to detect OS");

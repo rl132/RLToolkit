@@ -6,13 +6,26 @@ using System.Collections;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// String crypt.
+    /// </summary>
     public static class StringCrypt
     {
+        /// <summary>Static TripleDES info to use if none are supplied</summary>
         public static TripleDES TripleDESAlg;
+
+        /// <summary>Static RSA crypt info info to use if none are supplied</summary>
         public static RSACryptInfo RSA_cryptInfo;
+
+        /// <summary>Static RFC2898 info to use if none are supplied</summary>
         public static RFC2898CryptInfo RFC2898_cryptInfo;
 
         #region implicit encrypt/decrypt
+        /// <summary>
+        /// Method to encrypt with the default technique
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] Encrypt(string input)
         {
             // implicit crypt
@@ -20,6 +33,11 @@ namespace RLToolkit.Basic
             return EncryptRfc2898(input);
         }
 
+        /// <summary>
+        /// Method to decryt with the default technique
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <returns>decrypted string data</returns>
         public static string Decrypt(byte[] input)
         {
             // implicit Decrypt
@@ -29,6 +47,11 @@ namespace RLToolkit.Basic
         #endregion
 
         #region RFC2989
+        /// <summary>
+        /// Method to encrypt with the RFC2898 technique, with the static RFC2898 info
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] EncryptRfc2898(string input)
         {
             LogManager.Instance.Log().Debug("Calling Encrypt RFC2989 with default crypt info");
@@ -41,6 +64,12 @@ namespace RLToolkit.Basic
             return EncryptRfc2898(input, RFC2898_cryptInfo);
         }
 
+        /// <summary>
+        /// Method to encrypt with the RFC2898 technique, with a supplied RFC2898 info
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <param name="cryptInfo">the RFC2898 crypt info</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] EncryptRfc2898(string input, RFC2898CryptInfo cryptInfo)
         {
             LogManager.Instance.Log().Debug("Calling Encrypt RFC2989");
@@ -68,6 +97,11 @@ namespace RLToolkit.Basic
             return encodedBytes;
         }
 
+        /// <summary>
+        /// Method to decrypt with the RFC2898 technique, with the static RFC2898 info
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <returns>decrypted string data</returns>
         public static string DecryptRfc2898(byte[] input)
         {
             LogManager.Instance.Log().Debug("Calling Decrypt RFC2989 with default crypt info");
@@ -80,6 +114,12 @@ namespace RLToolkit.Basic
             return DecryptRfc2898(input, RFC2898_cryptInfo);
         }
 
+        /// <summary>
+        /// Method to decrypt with the RFC2898 technique, with a supplied RFC2898 info
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <param name="cryptInfo">the RFC2898 crypt info</param>
+        /// <returns>decrypted string data</returns>
         public static string DecryptRfc2898(byte[] input, RFC2898CryptInfo cryptInfo)
         {
             LogManager.Instance.Log().Debug("Calling Decrypt RFC2989");
@@ -105,6 +145,11 @@ namespace RLToolkit.Basic
         #endregion
 
         #region RSA
+        /// <summary>
+        /// Method to encrypt with the RSA technique, with the static RSA info
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] EncryptRSA(string input)
         {
             LogManager.Instance.Log().Debug("Calling Decrypt RSA with default crypt info");
@@ -117,6 +162,12 @@ namespace RLToolkit.Basic
             return EncryptRSA(input, RSA_cryptInfo);
         }
 
+        /// <summary>
+        /// Method to encrypt with the RSA technique, with a supplied RSA info
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <param name="cryptInfo">the RSA crypt info</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] EncryptRSA(string input, RSACryptInfo cryptInfo)
         {
             LogManager.Instance.Log().Debug("Calling Encrypt RSA");
@@ -134,6 +185,11 @@ namespace RLToolkit.Basic
             }
         }
 
+        /// <summary>
+        /// Method to decrypt with the RSA technique, with the static RSA info
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <returns>decrypted string data</returns>
         public static string DecryptRSA(byte[] input)
         {
             LogManager.Instance.Log().Debug("Calling Encrypt RSA with default crypt info");
@@ -146,6 +202,12 @@ namespace RLToolkit.Basic
             return DecryptRSA(input, RSA_cryptInfo);
         }
 
+        /// <summary>
+        /// Method to decrypt with the RSA technique, with a supplied RSA info
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <param name="cryptInfo">the RSA crypt info</param>
+        /// <returns>decrypted string data</returns>
         public static string DecryptRSA( byte[] input, RSACryptInfo cryptInfo)
         {
             LogManager.Instance.Log().Debug("Calling Decrypt RSA");
@@ -165,6 +227,11 @@ namespace RLToolkit.Basic
         #endregion
 
         #region TripleDES
+        /// <summary>
+        /// Method to encrypt with the TripleDES technique, with the static TripleDES instance
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] EncryptTripleDES(string input)
         {
             LogManager.Instance.Log().Debug("Calling Encrypt TripleDES with default crypt info");
@@ -177,6 +244,12 @@ namespace RLToolkit.Basic
             return EncryptTripleDES(input, TripleDESAlg);
         }
 
+        /// <summary>
+        /// Method to encrypt with the TripleDES technique, with a supplied TripleDES instance
+        /// </summary>
+        /// <param name="input">the string to encrypt</param>
+        /// <param name="alg">the TripleDES instance</param>
+        /// <returns>a byte array of the encrypted data</returns>
         public static byte[] EncryptTripleDES(string input, TripleDES alg)
         {
             LogManager.Instance.Log().Debug("Calling Encrypt TripleDES");
@@ -203,6 +276,11 @@ namespace RLToolkit.Basic
             }
         }
 
+        /// <summary>
+        /// Method to decrypt with the TripleDES technique, with a supplied TripleDES instance
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <returns>decrypted string data</returns>
         public static string DecryptTripleDES(byte[] input)
         {
             LogManager.Instance.Log().Debug("Calling Decrypt TripleDES with default crypt info");
@@ -215,6 +293,12 @@ namespace RLToolkit.Basic
             return DecryptTripleDES(input, TripleDESAlg);
         }
 
+        /// <summary>
+        /// Method to decrypt with the TripleDES technique, with a supplied TripleDES instance
+        /// </summary>
+        /// <param name="input">the byte array to decrypt</param>
+        /// <param name="alg">the TripleDES instance</param>
+        /// <returns>decrypted string data</returns>
         public static string DecryptTripleDES(byte[] input, TripleDES alg)
         {
             LogManager.Instance.Log().Debug("Calling Decrypt TripleDES");
@@ -237,11 +321,21 @@ namespace RLToolkit.Basic
         #endregion
 
         #region helper
+        /// <summary>
+        /// Converts the byte array to base64 string.
+        /// </summary>
+        /// <returns>The string representation of the array in base64</returns>
+        /// <param name="input">the byte array</param>
         public static string ConvertByteArrayToBase64(byte[] input)
         {
             return Convert.ToBase64String(input);
         }
 
+        /// <summary>
+        /// Converts the base64 string to byte array.
+        /// </summary>
+        /// <returns>The byte array</returns>
+        /// <param name="input">The string representation of the array in base64.</param>
         public static byte[] ConvertBase64ToByteArray(string input)
         {
             return Convert.FromBase64String(input);
