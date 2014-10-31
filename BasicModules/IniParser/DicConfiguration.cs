@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Dictionary configuration used for the IniParser.
+    /// </summary>
 	public class DicConfiguration
 	{
 		public string header;

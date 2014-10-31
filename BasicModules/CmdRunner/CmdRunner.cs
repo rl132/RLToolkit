@@ -3,16 +3,27 @@ using System.Diagnostics;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Command Runner.
+    /// </summary>
 	public class CmdRunner
 	{
 		#region parameters
+        /// <summary>The process.</summary>
 		public Process process;
-		public ProcessStartInfo startInfo;
-		public IOutputManager outputHandler;
+		
+        /// <summary>The start info.</summary>
+        public ProcessStartInfo startInfo;
+		
+        /// <summary>The output handler.</summary>
+        public IOutputManager outputHandler;
+
+        /// <summary>Event that will occurs when the process finished.</summary>
         public event EventHandler processFinished;
 		#endregion
 
 		#region constants
+        /// <summary>The UNDEFINED_EXITCODE constant.</summary>
 		public const int UNDEFINED_EXITCODE = -39827;
 		#endregion
 	 

@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// NullOutputHandler that implements the IOutputManager interface
+    /// </summary>
 	public class NullOutputHandler : IOutputManager
 	{
         /// <summary>

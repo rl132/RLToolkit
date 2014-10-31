@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Interface IOoutputManager for the CmdRunner
+    /// </summary>
 	public interface IOutputManager
 	{
         // In order to implement an IOutputHandler, the class will have to implement

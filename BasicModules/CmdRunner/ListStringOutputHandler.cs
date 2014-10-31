@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
-	public class ListStringOutputHandler : IOutputManager
+    /// <summary>
+    /// ListStringOutputHandler that implements the IOutputManager interface
+    /// </summary>
+    public class ListStringOutputHandler : IOutputManager
 	{
 		public List<string> outputData = new List<string>();
 		public List<string> errorData = new List<string>();
