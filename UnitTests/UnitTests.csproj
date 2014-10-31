@@ -31,7 +31,6 @@
         <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
-    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -44,7 +43,6 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
