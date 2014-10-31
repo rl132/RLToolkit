@@ -21,6 +21,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
