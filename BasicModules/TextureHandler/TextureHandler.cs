@@ -6,13 +6,26 @@ using System.Drawing.Imaging;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Texture handler.
+    /// </summary>
     public class TextureHandler
     {
+        /// <summary>Gets or sets the texture (bitmap)</summary>
         public Bitmap texture { get; set; }
+
+        /// <summary>Gets or sets the texture width</summary>
         public int width { get; set; }
+
+        /// <summary>Gets or sets the texture height</summary>
         public int height { get; set; }
 
         #region Constructors/Dispose
+        /// <summary>
+        /// Constructor that makes an empty texture with specified dimentions
+        /// </summary>
+        /// <param name="width">Width of the texture</param>
+        /// <param name="height">Height of the texture</param>
         public TextureHandler(int width, int height)
         {
             this.Log().Debug(string.Format("Creating a new texture with size {0}x{1}", width.ToString(), height.ToString()));
@@ -21,6 +34,10 @@ namespace RLToolkit.Basic
             this.height = height;
         }
 
+        /// <summary>
+        /// Constructor that makes a texture from a file
+        /// </summary>
+        /// <param name="fullpath">Fullpath of the file</param>
         public TextureHandler(string fullpath)
         {
             this.Log ().Debug (string.Format("Creating a new texture from file: {0}", fullpath));
@@ -29,6 +46,10 @@ namespace RLToolkit.Basic
             this.height = texture.Height;
         }
 
+        /// <summary>
+        /// Constructor that makes a texture from a bitmap
+        /// </summary>
+        /// <param name="image">The source bitmap</param>
         public TextureHandler(Bitmap image)
         {
             this.Log ().Debug (string.Format("Creating a new texture from another texture"));
@@ -37,6 +58,14 @@ namespace RLToolkit.Basic
             this.height = texture.Height;
         }
 
+        /// <summary>
+        /// Releases all resource used by the <see cref="RLToolkit.Basic.TextureHandler"/> object.
+        /// </summary>
+        /// <remarks>Call <see cref="Dispose"/> when you are finished using the <see cref="RLToolkit.Basic.TextureHandler"/>. The
+        /// <see cref="Dispose"/> method leaves the <see cref="RLToolkit.Basic.TextureHandler"/> in an unusable state.
+        /// After calling <see cref="Dispose"/>, you must release all references to the
+        /// <see cref="RLToolkit.Basic.TextureHandler"/> so the garbage collector can reclaim the memory that the
+        /// <see cref="RLToolkit.Basic.TextureHandler"/> was occupying.</remarks>
         public void Dispose()
         {
             // clean everything
@@ -48,12 +77,21 @@ namespace RLToolkit.Basic
         #endregion
 
         #region Save
+        /// <summary>
+        /// Method to save the current Texture into a specified file, using default format
+        /// </summary>
+        /// <param name="fullpath">Fullpath.</param>
         public void Save(string fullpath)
         {
             this.Log ().Debug (string.Format("Implicit Save Called to: {0}", fullpath));
             Save(fullpath, ImageFormat.Png);
         }
 
+        /// <summary>
+        /// Method to save the current Texture into a specific file, using a specific format.
+        /// </summary>
+        /// <param name="fullpath">Fullpath.</param>
+        /// <param name="format">Format.</param>
         public void Save(string fullpath, ImageFormat format)
         {
             // TODO: add some arguments Exceptions for the path
@@ -63,11 +101,22 @@ namespace RLToolkit.Basic
         #endregion
 
         #region Resize
+        /// <summary>
+        /// Method to resize the current texture
+        /// </summary>
+        /// <param name="newWidth">New width.</param>
+        /// <param name="newHeight">New height.</param>
         public void Resize(int newWidth, int newHeight)
         {
             Resize(newWidth, newHeight, true);
         }
 
+        /// <summary>
+        /// Method to resize the current texture, with the possiblity to define if the proportion are kept
+        /// </summary>
+        /// <param name="newWidth">New width.</param>
+        /// <param name="newHeight">New height.</param>
+        /// <param name="keepRatio">If set to <c>true</c> keep ratio.</param>
         public void Resize(int newWidth, int newHeight, bool keepRatio)
         {
             this.Log().Debug(string.Format("Resizing an image to {0}x{1}, keepRatio= {2}", newWidth.ToString(), newHeight.ToString(), keepRatio.ToString()));
@@ -106,21 +155,43 @@ namespace RLToolkit.Basic
         #endregion
 
         #region combine
+        /// <summary>
+        /// Method to combine a Bitmap Jagged Array to the current texture
+        /// </summary>
+        /// <param name="input">Bitmap jagged array</param>
         public void Combine(Bitmap[][] input)
         {
             Combine(input, width, height, true);
         }
 
+        /// <summary>
+        /// Method to combine a Bitmap Jagged Array into the current texture, with specific height and width
+        /// </summary>
+        /// <param name="input">Bitmap jagged array</param>
+        /// <param name="newWidth">New width.</param>
+        /// <param name="newHeight">New height.</param>
         public void Combine(Bitmap[][] input, int newWidth, int newHeight)
         {
             Combine(input, newWidth, newHeight, true);
         }
 
+        /// <summary>
+        /// Method to combine a Bitmap Jagged Array into the current texture, specifying if the ratio are kept
+        /// </summary>
+        /// <param name="input">Bitmap jagged array</param>
+        /// <param name="keepRatio">If set to <c>true</c> keep ratio.</param>
         public void Combine(Bitmap[][] input, bool keepRatio)
         {
             Combine(input, width, height, keepRatio);
         }
 
+        /// <summary>
+        /// Method to combine a Bitmap Jagged Array into the current texture, specifying if the ratio are kept and the new width/height
+        /// </summary>
+        /// <param name="input">Bitmap jagged array</param>
+        /// <param name="newWidth">New width.</param>
+        /// <param name="newHeight">New height.</param>
+        /// <param name="keepRatio">If set to <c>true</c> keep ratio.</param>
         public void Combine(Bitmap[][] input, int newWidth, int newHeight, bool keepRatio)
         {
             // TODO: add alpha support
