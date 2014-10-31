@@ -14,11 +14,32 @@ namespace RLToolkit.Basic
 		public string fullPath;
 		public bool isWrite = false;
 
-		// constructors overloads
-		public FileHandler (string filename) : this(filename, AppDomain.CurrentDomain.BaseDirectory, false) {}
-		public FileHandler (string filename, string folder) : this(filename, folder, false) {}
-		public FileHandler (string filename, bool forWrite) : this(filename, AppDomain.CurrentDomain.BaseDirectory, forWrite) {}
+        /// <summary>
+        /// Partial constructor
+        /// </summary>
+        /// <param name="filename">full or partial filename to use</param>
+        public FileHandler (string filename) : this(filename, AppDomain.CurrentDomain.BaseDirectory, false) {}
+
+        /// <summary>
+        /// Partial constructor
+        /// </summary>
+        /// <param name="filename">full or partial filename to use</param>
+        /// <param name="folder">folder to use</param>
+        public FileHandler (string filename, string folder) : this(filename, folder, false) {}
+
+        /// <summary>
+        /// Partial constructor
+        /// </summary>
+        /// <param name="filename">full or partial filename to use</param>
+        /// <param name="forWrite">If set to <c>true</c>, the FileHandle will be in write mode.</param>
+        public FileHandler (string filename, bool forWrite) : this(filename, AppDomain.CurrentDomain.BaseDirectory, forWrite) {}
 		
+        /// <summary>
+        /// Exhaustive constructor for the FileHandler.
+        /// </summary>
+        /// <param name="filename">full or partial filename to use</param>
+        /// <param name="folder">folder to use</param>
+        /// <param name="forWrite">If set to <c>true</c>, the FileHandle will be in write mode.</param>
 		public FileHandler (string filename, string folder, bool forWrite)
 		{ // exhaustive constructor
             this.Log().Debug(string.Format("FileHandler created with params: Filename: \"{0}\", folder: \"{1}\", ForWrite: {2}", filename, folder, forWrite.ToString()));
@@ -99,6 +120,10 @@ namespace RLToolkit.Basic
 			isReady = true;
 		}
 
+        /// <summary>
+        /// Fetch the stream used for the current FileHandler
+        /// </summary>
+        /// <returns>The stream object</returns>
 		public object GetStream ()
 		{
 			// in case somebody wants to have the raw stream
@@ -117,6 +142,10 @@ namespace RLToolkit.Basic
 			}
 		}
 
+        /// <summary>
+        /// Method to read the lines of a FileHandler set in read mode.
+        /// </summary>
+        /// <returns>The List<string> output of the lines</returns>
 		public List<string> ReadLines()
 		{
 			if (!isReady) 
@@ -153,6 +182,11 @@ namespace RLToolkit.Basic
 			return readerContent;
 		}
 
+        /// <summary>
+        /// Method to write the lines to a FileHandler set in write mode.
+        /// </summary>
+        /// <returns><c>true</c>, if lines was writed, <c>false</c> otherwise.</returns>
+        /// <param name="lines">List<string> as input</param>
 		public bool WriteLines (List<string> lines)
 		{
 			if (!isReady) {
@@ -184,6 +218,10 @@ namespace RLToolkit.Basic
 			return true;
 		}
 
+        /// <summary>
+        /// Method to closes the stream used
+        /// </summary>
+        /// <returns><c>true</c>, if stream was closed, <c>false</c> otherwise.</returns>
 		public bool CloseStream()
 		{
             this.Log().Debug("Trying to close stream");

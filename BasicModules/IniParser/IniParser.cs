@@ -10,8 +10,17 @@ namespace RLToolkit.Basic
 		public bool isEmpty = true;
 
 		// constructors overloads
+        /// <summary>
+        /// Partial Constructor
+        /// </summary>
+        /// <param name="filename">full or partial filename to use</param>
 		public IniParser (string filename) : this(filename, AppDomain.CurrentDomain.BaseDirectory) {}
 
+        /// <summary>
+        /// Exhaustive constructor for the IniParser.
+        /// </summary>
+        /// <param name="iniFilename">full or partial filename to use</param>
+        /// <param name="iniFolder">folder to use</param>
 		public IniParser (string iniFilename, string iniFolder)
 		{
             this.Log().Debug(string.Format("Creating a new IniParser with params: filename: \"{0}\", folder \"{1}\"", iniFilename, iniFolder));
@@ -23,12 +32,19 @@ namespace RLToolkit.Basic
 			ConvertToDictionary(raw);
 		}
 
+        /// <summary>
+        /// Constructor that uses a List of string as input
+        /// </summary>
+        /// <param name="list">the list of string for input</param>
 		public IniParser (List<string> list)
 		{
             this.Log().Debug(string.Format("Creating a new IniParser with params: list (numItem): {0}", list.Count.ToString()));
 			ConvertToDictionary(list);
 		}
 
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
 		public IniParser ()
 		{
             this.Log().Debug("Creating a new IniParser with no params.");
@@ -36,6 +52,10 @@ namespace RLToolkit.Basic
 			isEmpty = true;
 		}
 
+        /// <summary>
+        /// Internal method to convert a List of string to a set of DicConfiguration.
+        /// </summary>
+        /// <param name="rawData">Raw list of string input</param>
 		public void ConvertToDictionary (List<string> rawData)
 		{
             this.Log().Debug("Filling the Dictionary");
@@ -98,6 +118,11 @@ namespace RLToolkit.Basic
 			isEmpty = (content.Count == 0);
 		}
 
+        /// <summary>
+        /// Internal Method that query if a line is a Header line
+        /// </summary>
+        /// <returns>If the line is a header</returns>
+        /// <param name="line">a string line</param>
 		public bool IsHeader (string line)
 		{
         	if ((line.Substring (0, 1) == "[") &&
@@ -110,6 +135,11 @@ namespace RLToolkit.Basic
 			return false;
 		}
 
+        /// <summary>
+        /// Internal Method that query if a line is a comment line
+        /// </summary>
+        /// <returns>If the line is a comment</returns>
+        /// <param name="line">a string line</param>
 		public bool IsLineComment (string line)
 		{
 			if (line.Substring (0, 1) == "#")
@@ -124,6 +154,12 @@ namespace RLToolkit.Basic
 			return false;
 		}
 
+        /// <summary>
+        /// Method to fetch a value based on a header and a variable
+        /// </summary>
+        /// <returns>The value</returns>
+        /// <param name="header">the header</param>
+        /// <param name="variable">the variable</param>
 		public string GetValue (string header, string variable)
 		{
             this.Log().Debug(string.Format("Trying to fetch value for \"{0}|{1}\"", header, variable));
@@ -146,6 +182,11 @@ namespace RLToolkit.Basic
 			return "";
 		}
 
+        /// <summary>
+        /// Internal method to add a new DictionaryConfiguration
+        /// </summary>
+        /// <returns><c>true</c>, if dictionary config was added, <c>false</c> otherwise.</returns>
+        /// <param name="toAdd">the DicConfiguration to add</param>
 		public bool AddDicConf (DicConfiguration toAdd)
 		{
             this.Log().Debug(string.Format("trying to add Dictionary configuration: {0}", toAdd.header));
@@ -178,6 +219,13 @@ namespace RLToolkit.Basic
 			return (!found);
 		}
 
+        /// <summary>
+        /// Method to add an input in the DicConfiguration
+        /// </summary>
+        /// <returns><c>true</c>, if the entry was added, <c>false</c> otherwise.</returns>
+        /// <param name="header">Header.</param>
+        /// <param name="variable">Variable.</param>
+        /// <param name="value">Value.</param>
 		public bool AddDicEntry (string header, string variable, string value)
 		{
             this.Log().Debug(string.Format("Trying to add a dictionary entry with params: header: {0}, variable: {1}, value: {2}", header, variable, value));
@@ -220,11 +268,22 @@ namespace RLToolkit.Basic
 			return found;
 		}
 
+        /// <summary>
+        /// implicit method for writing the content of the IniParser
+        /// </summary>
+        /// <returns><c>true</c>, if content was writed, <c>false</c> otherwise.</returns>
+        /// <param name="fullPath">Full path where to write the content</param>
         public bool WriteContent(string fullPath)
         {
             return WriteContent(fullPath, "");
         }
 
+        /// <summary>
+        /// Method for writing the content of the IniParser
+        /// </summary>
+        /// <returns><c>true</c>, if content was writed, <c>false</c> otherwise.</returns>
+        /// <param name="fullPath">Full path or partial where to write the content</param>
+        /// <param name="folder">Folder, ignored if the file is a full path</param>
 		public bool WriteContent (string filename, string folder)
 		{
             this.Log().Debug(string.Format("Trying to write the content of the Ini file with paramsL: filename: \"{0}\", folder: \"{1}\"", filename, folder));
