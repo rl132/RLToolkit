@@ -4,10 +4,20 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Ini parser.
+    /// </summary>
 	public class IniParser
 	{
+        /// <summary>
+        /// The content of the IniParser. 
+        /// </summary>
 		public List<DicConfiguration> content = new List<DicConfiguration>();
-		public bool isEmpty = true;
+		
+        /// <summary>
+        /// status of the IniParser, if the content is empty or not.
+        /// </summary>
+        public bool isEmpty = true;
 
 		// constructors overloads
         /// <summary>

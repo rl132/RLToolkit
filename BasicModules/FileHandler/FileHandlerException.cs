@@ -2,6 +2,9 @@ using System;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Custom FileHandler exception.
+    /// </summary>
 	public class FileHandlerException : Exception
 	{
         /// <summary>

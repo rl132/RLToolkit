@@ -4,14 +4,29 @@ using System.Collections.Generic;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// FileHandler
+    /// </summary>
 	public class FileHandler
 	{
 		// variables
 		private StreamReader sReader;
 		private List<String> readerContent = new List<String>();
 		private StreamWriter sWriter;
+
+        /// <summary>
+        /// If the FileHandler is ready to be used
+        /// </summary>
 		public bool isReady = false;
+
+        /// <summary>
+        /// The full path of the file in use
+        /// </summary>
 		public string fullPath;
+
+        /// <summary>
+        /// If the FileHandler is in Write Mode
+        /// </summary>
 		public bool isWrite = false;
 
         /// <summary>

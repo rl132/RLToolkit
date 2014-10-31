@@ -4,6 +4,9 @@ using System.Text;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// MD5 helper.
+    /// </summary>
     public static class MD5Helper
     {
         /// <summary>
