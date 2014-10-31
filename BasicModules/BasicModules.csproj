@@ -50,15 +50,9 @@
     <Compile Include="CfgManager\NullConfigSystem.cs" />
     <Compile Include="CfgManager\TextConfigSystem.cs" />
     <Compile Include="CmdRunner\NullOutputHandler.cs" />
-    <Compile Include="CmdRunner\ListStringOutputHandler.cs">
-      <DependentUpon>NullOutputHandler.cs</DependentUpon>
-    </Compile>
     <Compile Include="CmdRunner\IOutputManager.cs" />
     <Compile Include="CmdRunner\CmdRunner.cs" />
     <Compile Include="FileHandler\FileHandlerException.cs" />
-    <Compile Include="FileHandler\FileHandler.cs">
-      <DependentUpon>FileHandlerException.cs</DependentUpon>
-    </Compile>
     <Compile Include="IniParser\IniParser.cs" />
     <Compile Include="IniParser\DicConfiguration.cs" />
     <Compile Include="MD5Helper\MD5Helper.cs" />
@@ -73,6 +67,8 @@
     <Compile Include="StringCrypt\RSACryptInfo.cs" />
     <Compile Include="StringCrypt\StringCrypt.cs" />
     <Compile Include="CfgManager\XmlConfigSystem.cs" />
+    <Compile Include="CmdRunner\ListStringOutputHandler.cs" />
+    <Compile Include="FileHandler\FileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CfgManager\" />
