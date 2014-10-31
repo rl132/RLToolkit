@@ -28,7 +28,6 @@ namespace RLToolkit.UnitTests
         private string image_bmp_1_small_out = "file1_out_small.bmp";
         private string image_bmp_1_combine_out = "file1_out_combine.bmp";
         private string image_bmp_1_combineFail_out = "file1_out_combine_fail.bmp";
-        private string image_bmp_1_extract = "file1_out_extract.bmp";
         #endregion
 
         #region Interface Override

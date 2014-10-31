@@ -42,14 +42,14 @@ namespace RLToolkit.Basic
         /// Constructor that uses the default OutputHandler (NullOutputHandler)
         /// </summary>
         /// <param name="filePath">the complete file path of the target executable</param>
-        /// <param name="args">The arguments to supply to the process
+        /// <param name="args">The arguments to supply to the process</param>
 		public CmdRunner (string filePath, string args) : this(filePath, args, new NullOutputHandler()){}
 
         /// <summary>
         /// Constructor that uses a specified OutputHandler
         /// </summary>
         /// <param name="filePath">the complete file path of the target executable</param>
-        /// <param name="args">The arguments to supply to the process
+        /// <param name="args">The arguments to supply to the process</param>
         /// <param name="handler">an instance of the OutputHandler</param>
         public CmdRunner (string filePath, string args, IOutputManager handler)
 		{

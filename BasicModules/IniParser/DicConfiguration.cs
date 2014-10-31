@@ -8,7 +8,10 @@ namespace RLToolkit.Basic
     /// </summary>
 	public class DicConfiguration
 	{
+        /// <summary>The header identifier</summary>
 		public string header;
+
+        /// <summary>The dictionary that holds the data for this header</summary>
 		public Dictionary<string, string> dicto;
 
         /// <summary>

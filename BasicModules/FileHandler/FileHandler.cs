@@ -119,7 +119,7 @@ namespace RLToolkit.Basic
 					sWriter = new StreamWriter(fullPath);
 				}
 			}
-			catch (FileHandlerException e) 
+			catch (FileHandlerException) 
 			{
 				//throw up
 				throw;
@@ -160,7 +160,7 @@ namespace RLToolkit.Basic
         /// <summary>
         /// Method to read the lines of a FileHandler set in read mode.
         /// </summary>
-        /// <returns>The List<string> output of the lines</returns>
+        /// <returns>The List of string output of the lines</returns>
 		public List<string> ReadLines()
 		{
 			if (!isReady) 
@@ -201,7 +201,7 @@ namespace RLToolkit.Basic
         /// Method to write the lines to a FileHandler set in write mode.
         /// </summary>
         /// <returns><c>true</c>, if lines was writed, <c>false</c> otherwise.</returns>
-        /// <param name="lines">List<string> as input</param>
+        /// <param name="lines">List of string as input</param>
 		public bool WriteLines (List<string> lines)
 		{
 			if (!isReady) {
