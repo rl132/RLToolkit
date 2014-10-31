@@ -80,7 +80,7 @@ namespace RLToolkit.Extensions
         /// </summary>
         /// <returns><c>true</c>, if pixel byte is within the tolerance range, <c>false</c> otherwise.</returns>
         /// <param name="source">Source pixel channel byte</param>
-        /// <param name="source"pixel channel byte to compare against</param>
+        /// <param name="actual">pixel channel byte to compare against</param>
         /// <param name="tolerance">Tolerance.</param>
         private static bool ComparePixelChannel(byte source, byte actual, int tolerance)
         {
