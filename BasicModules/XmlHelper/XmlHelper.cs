@@ -4,8 +4,17 @@ using System.IO;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Xml helper.
+    /// </summary>
 	public static class XmlHelper
 	{
+        /// <summary>
+        /// Method that will write the content of a XmlDocument to a file
+        /// </summary>
+        /// <param name="doc">The XmlDocument input</param>
+        /// <param name="filename">Filename.</param>
+        /// <param name="folder">Folder.</param>
         public static void Write(XmlDocument doc, string filename, string folder)
         {
             LogManager.Instance.Log().Debug(string.Format("About to write XML file {0} in folder {1}", filename, folder));
@@ -32,6 +41,12 @@ namespace RLToolkit.Basic
             }
         }
 
+        /// <summary>
+        /// Method to read an Xml file 
+        /// </summary>
+        /// <param name="filename">Filename.</param>
+        /// <param name="folder">Folder.</param>
+        /// <returns>the XmlDocument form the file</returns>
         public static XmlDocument Read(string filename, string folder)
         {
             LogManager.Instance.Log().Debug(string.Format("About to read XML file {0} in folder {1}", filename, folder));
@@ -54,6 +69,11 @@ namespace RLToolkit.Basic
             return doc;
         }
 
+        /// <summary>
+        /// Method to fetch the Child nodes from an XmlElement
+        /// </summary>
+        /// <returns>The child node(s)</returns>
+        /// <param name="parent">node to fetch from</param>
         public static XmlNodeList GetChildNodes(XmlElement parent)
         {
             LogManager.Instance.Log().Debug(string.Format("Fetching child nodes"));
