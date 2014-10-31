@@ -5,6 +5,11 @@ namespace RLToolkit.Basic
 {
     public class IniConfigSystem : IConfigSystem
     {
+        /// <summary>
+        /// Method to define that will handle the reading of the config system
+        /// </summary>
+        /// <returns>The config dictionary</returns>
+        /// <param name="path">The full path of the input file</param>
         public Dictionary<string, string> readConfig(string path)
         {
             this.Log().Debug("Reading configuration from: " + path);
@@ -25,6 +30,11 @@ namespace RLToolkit.Basic
             return dic;
         }
 
+        /// <summary>
+        /// Method to define that will handle the writing of the config system
+        /// </summary>
+        /// <param name="content">The config dictionary</param>
+        /// <param name="path">The full path of the output file</param>
         public void writeConfig(Dictionary<string, string> content, string path)
         {
             this.Log().Debug("Writing configuration to: " + path + Environment.NewLine + "with " + content.Count.ToString() + " lines of data");
