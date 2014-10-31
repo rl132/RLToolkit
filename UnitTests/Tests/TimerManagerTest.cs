@@ -40,7 +40,7 @@ namespace RLToolkit.UnitTests
 		[TearDown]
 		public void TearDown ()
 		{
-			TimerManager.ClearAllActions();
+            TimerManager.ClearAllEventSets();
 		}
 		#endregion
 
@@ -55,34 +55,34 @@ namespace RLToolkit.UnitTests
 		[Test]
 		public void Timer_Action_AddEvent()
 		{
-			bool add = TimerManager.AddAction("test1", 3000, IncreaseCount, false);
-			Assert.AreEqual(1, TimerManager.GetActionCount(), "Timer event count should be 1");
+            bool add = TimerManager.AddEventSet("test1", 3000, IncreaseCount, false);
+			Assert.AreEqual(1, TimerManager.GetEventSetsCount(), "Timer event count should be 1");
 			Assert.AreEqual(true, add, "Adding should have been successful");
 		}
 
 		[Test]
 		public void Timer_Action_RemoveEvent()
 		{
-			Assert.AreEqual(0, TimerManager.GetActionCount(), "Timer event count should be 0 at the start");
+			Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 at the start");
 
-			TimerManager.AddAction("test2", 3000, IncreaseCount, false);
+			TimerManager.AddEventSet("test2", 3000, IncreaseCount, false);
 			Assert.AreEqual(true, TimerManager.IsIdentExist("test2"), "The manager should find the 'Test2' ID");
 
-			bool rem = TimerManager.RemoveAction("test2");
+			bool rem = TimerManager.RemoveEventSet("test2");
 			Assert.AreEqual(true, rem, "Removing should have been successful");
-			Assert.AreEqual(0, TimerManager.GetActionCount(), "Timer event count should be 0 after removing");
+			Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 after removing");
 		}
 
 		[Test]
 		public void Timer_Action_ClearEvent()
 		{
-			TimerManager.AddAction("test3a", 3000, IncreaseCount, false);
-			TimerManager.AddAction("test3b", 3000, IncreaseCount, false);
-			TimerManager.AddAction("test3c", 3000, IncreaseCount, false);
-			Assert.AreEqual(3, TimerManager.GetActionCount(), "Timer event count should be 3");
+			TimerManager.AddEventSet("test3a", 3000, IncreaseCount, false);
+			TimerManager.AddEventSet("test3b", 3000, IncreaseCount, false);
+			TimerManager.AddEventSet("test3c", 3000, IncreaseCount, false);
+			Assert.AreEqual(3, TimerManager.GetEventSetsCount(), "Timer event count should be 3");
 
-			TimerManager.ClearAllActions();
-			Assert.AreEqual(0, TimerManager.GetActionCount(), "Timer event count should be 0 after clearing");
+			TimerManager.ClearAllEventSets();
+			Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 after clearing");
 		}
 		#endregion
 
@@ -91,7 +91,7 @@ namespace RLToolkit.UnitTests
 		public void Timer_Ticking_SmallTimeNoSleepNotInstant()
 		{
 			// no sleep, unlikely to trigger
-			TimerManager.AddAction("test4", 250, IncreaseCount, false);
+			TimerManager.AddEventSet("test4", 250, IncreaseCount, false);
 			TimerManager.StartTicking();
 
 			Assert.AreEqual(0, countFired, "Count should not have been fired here.");
@@ -101,7 +101,7 @@ namespace RLToolkit.UnitTests
 		public void Timer_Ticking_SmallTimeNoSleepInstant()
 		{
 			// since no sleep, not likely to trigger here.
-			TimerManager.AddAction("test5", 250, IncreaseCount, true);
+			TimerManager.AddEventSet("test5", 250, IncreaseCount, true);
 			TimerManager.StartTicking();
 
 			Assert.AreEqual(0, countFired, "Count should not have been fired here.");
@@ -114,7 +114,7 @@ namespace RLToolkit.UnitTests
             int count = 0;
             ManualResetEvent mre = new ManualResetEvent(false);
 
-            TimerManager.AddAction("test6", 250, delegate(object sender, TimerManagerEventArg e)
+            TimerManager.AddEventSet("test6", 250, delegate(object sender, TimerManagerEventArg e)
                                    {
                 count++;
                 if (count >= 3)
@@ -136,7 +136,7 @@ namespace RLToolkit.UnitTests
             int count = 0;
             ManualResetEvent mre = new ManualResetEvent(false);
 
-            TimerManager.AddAction("test7", 250, delegate(object sender, TimerManagerEventArg e)
+            TimerManager.AddEventSet("test7", 250, delegate(object sender, TimerManagerEventArg e)
                                    {
                 count++;
                 if (count >= 3)
@@ -158,7 +158,7 @@ namespace RLToolkit.UnitTests
             int count = 0;
             ManualResetEvent mre = new ManualResetEvent(false);
 
-            TimerManager.AddAction("test8", 2000, delegate(object sender, TimerManagerEventArg e)
+            TimerManager.AddEventSet("test8", 2000, delegate(object sender, TimerManagerEventArg e)
                                    {
                 count++;
                 if (count >= 1)
@@ -180,7 +180,7 @@ namespace RLToolkit.UnitTests
             int count = 0;
             ManualResetEvent mre = new ManualResetEvent(false);
 
-            TimerManager.AddAction("test9", 1600, delegate(object sender, TimerManagerEventArg e)
+            TimerManager.AddEventSet("test9", 1600, delegate(object sender, TimerManagerEventArg e)
                                    {
                 count++;
                 if (count >= 2)
@@ -202,7 +202,7 @@ namespace RLToolkit.UnitTests
             int count = 0;
             ManualResetEvent mre = new ManualResetEvent(false);
 
-            TimerManager.AddAction("test10", 250, delegate(object sender, TimerManagerEventArg e)
+            TimerManager.AddEventSet("test10", 250, delegate(object sender, TimerManagerEventArg e)
                                    {
                 count++;
                 mre.Set();
@@ -222,7 +222,7 @@ namespace RLToolkit.UnitTests
             int count = 0;
             ManualResetEvent mre = new ManualResetEvent(false);
 
-            TimerManager.AddAction("test11", 250, delegate(object sender, TimerManagerEventArg e)
+            TimerManager.AddEventSet("test11", 250, delegate(object sender, TimerManagerEventArg e)
                                    {
                 count++;
                 mre.Set();

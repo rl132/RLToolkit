@@ -5,18 +5,29 @@ using System.Threading;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// Timer manager.
+    /// </summary>
 	public static class TimerManager
 	{
 		#region Local Variables
 		private static bool isRunning = false;
-		private static List<TimerManagerEventset> timerEvents = new List<TimerManagerEventset>();
+        private static List<TimerManagerEventset> timerEvents = new List<TimerManagerEventset>();
 		private static Thread tickThread;
 		#endregion
 
-		#region ActionManagement
-		public static bool AddAction (string ID, int ms, TimerManagerEventHandler handler, bool tickNow)
+		#region EventSetManagement
+		/// <summary>
+        /// Method to Add EventSets
+        /// </summary>
+        /// <returns><c>true</c>, if EventSet was added, <c>false</c> otherwise.</returns>
+        /// <param name="ID">the Identifier to associate this EventSet to</param>
+        /// <param name="ms">the number of milliseconds inbetween ticks</param>
+        /// <param name="handler">The event handler to call when ticking</param>
+        /// <param name="tickNow">If set to <c>true</c> tick as soon as possible</param>
+        public static bool AddEventSet (string ID, int ms, TimerManagerEventHandler handler, bool tickNow)
 		{
-            LogManager.Instance.Log().Debug(string.Format("Adding Action with parameters: ID: {0}, ms: {1}, handler: {2}, tickNow: {3}", ID, ms.ToString(), handler.Method, tickNow.ToString()));
+            LogManager.Instance.Log().Debug(string.Format("Adding EventSet with parameters: ID: {0}, ms: {1}, handler: {2}, tickNow: {3}", ID, ms.ToString(), handler.Method, tickNow.ToString()));
 
 			if (IsIdentExist (ID)) {
                 LogManager.Instance.Log().Debug("ID already existed. abort.");
@@ -43,9 +54,14 @@ namespace RLToolkit.Basic
 			return true;
 		}
 
-		public static bool RemoveAction (string ID)
+        /// <summary>
+        /// Method to remove a known EventSet
+        /// </summary>
+        /// <returns><c>true</c>, if the eventset was removed, <c>false</c> otherwise.</returns>
+        /// <param name="ID">The Identifier of the EventSet to remove</param>
+        public static bool RemoveEventSet (string ID)
 		{
-            LogManager.Instance.Log().Debug(string.Format("Removing Action with parameters: ID: {0}", ID));
+            LogManager.Instance.Log().Debug(string.Format("Removing EventSet with parameters: ID: {0}", ID));
 			Stack<TimerManagerEventset> st = new Stack<TimerManagerEventset> ();
 			bool found = false;
 
@@ -53,14 +69,14 @@ namespace RLToolkit.Basic
 				if (ID.ToLower () != t.Id.ToLower ()) {
 					st.Push (t);
 				} else {
-                    LogManager.Instance.Log().Debug("Found the Action to remove.");
+                    LogManager.Instance.Log().Debug("Found the EventSet to remove.");
 					found = true;
 				}
 			}
 
 			// if we haven't found it, gtfo
             if (!found) {
-                LogManager.Instance.Log().Debug("Action to remove not found. Aborting.");
+                LogManager.Instance.Log().Debug("EventSet to remove not found. Aborting.");
 				return false;
 			}
 
@@ -73,13 +89,20 @@ namespace RLToolkit.Basic
 			return true;
 		}
 
-		public static int GetActionCount()
+        /// <summary>
+        /// Method to fetch the number of EventSet registered. Mostly for internal use only.
+        /// </summary>
+        /// <returns>The EventSet count.</returns>
+        public static int GetEventSetsCount()
 		{
-            LogManager.Instance.Log().Debug(string.Format("Getting the action count: {0}", timerEvents.Count));
+            LogManager.Instance.Log().Debug(string.Format("Getting the EventSet count: {0}", timerEvents.Count));
             return timerEvents.Count;
 		}
 
-		public static void ClearAllActions ()
+        /// <summary>
+        /// Method that Clears all the EventSet in the timer manager
+        /// </summary>
+        public static void ClearAllEventSets ()
 		{
 			// wipe it
             LogManager.Instance.Log().Debug("Clearing the event list.");
@@ -88,6 +111,10 @@ namespace RLToolkit.Basic
 		#endregion
 
 		#region Ticking
+        /// <summary>
+        /// Method to start the timer
+        /// </summary>
+        /// <returns>always true</returns>
 		public static bool StartTicking ()
 		{
             LogManager.Instance.Log().Debug(string.Format("Trying to start the ticking. Current state: {0}", isRunning.ToString()));
@@ -100,6 +127,10 @@ namespace RLToolkit.Basic
 			return true;
 		}
 
+        /// <summary>
+        /// Method to stop the timer
+        /// </summary>
+        /// <returns>always false</returns>
 		public static bool StopTicking ()
 		{
             LogManager.Instance.Log().Debug(string.Format("Trying to stop the ticking. Current state: {0}", isRunning.ToString()));
@@ -111,7 +142,10 @@ namespace RLToolkit.Basic
 			return false;
 		}
 
-		public static void tick ()
+        /// <summary>
+        /// Method that does the ticking
+        /// </summary>
+		private static void tick ()
 		{// tick!
 			while (true) {
                 LogManager.Instance.Log().Debug("Ticking!");
@@ -127,13 +161,13 @@ namespace RLToolkit.Basic
 
 				foreach (TimerManagerEventset t in timerEvents) {
 					if (DateTime.UtcNow >= t.nextTick) {// we're ready to tick
-                        LogManager.Instance.Log().Debug(string.Format("Action ID \"{0}\" is ready to tick", t.Id));
+                        LogManager.Instance.Log().Debug(string.Format("EventSet ID \"{0}\" is ready to tick", t.Id));
 
 						// cache the old data and add it to the new list after
 						TimerManagerEventset t2 = t;
 						t2.nextTick = DateTime.UtcNow.AddMilliseconds (t.timeInbetweenTick);
 						newList.Add (t2);
-                        LogManager.Instance.Log().Debug(string.Format("Setting new tick time for action ID \"{0}\" to {1}", t2.Id, t2.nextTick.ToLongTimeString()));
+                        LogManager.Instance.Log().Debug(string.Format("Setting new tick time for EventSet ID \"{0}\" to {1}", t2.Id, t2.nextTick.ToLongTimeString()));
 
 						// fire
 						TimerManagerEventArg param = new TimerManagerEventArg();
@@ -157,6 +191,11 @@ namespace RLToolkit.Basic
 		#endregion
 
 		#region Helper functions
+        /// <summary>
+        /// Method that querry if an Identifier already exists with a provided name
+        /// </summary>
+        /// <returns><c>true</c> if the ident exist; otherwise, <c>false</c>.</returns>
+        /// <param name="Ident">The identifier to look for</param>
 		public static bool IsIdentExist (string Ident)
 		{
             LogManager.Instance.Log().Debug(string.Format("Trying to find if Id \"{0}\" exists", Ident));
