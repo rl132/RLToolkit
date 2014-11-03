@@ -6,11 +6,17 @@ using log4net.Config;
 
 namespace RLToolkit
 {
+    /// <summary>
+    /// Helper class that handles the logger
+    /// </summary>
 	public class LogManager
 	{
+        /// <summary>The default config file.</summary>
 		public const string defaultConfigFile = @"logger.config";
 		private static readonly Lazy<LogManager> _managerInstance = new Lazy<LogManager>(() => new LogManager(), LazyThreadSafetyMode.ExecutionAndPublication);       
 
+        /// <summary>Gets the instance of the logger</summary>
+        /// <value>The instance.</value>
 		public static LogManager Instance 
         {
 			get { return _managerInstance.Value; }
