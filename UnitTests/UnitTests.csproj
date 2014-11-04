@@ -41,7 +41,7 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="xcopy ${ProjectDir}\TestData ${TargetDir} /E /Y" workingdir="${SolutionDir}" />
+        <Command type="AfterBuild" command="xcopy ${ProjectDir}\TestData ${TargetDir}\TestData\ /E /Y" workingdir="${SolutionDir}" externalConsole="True" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="xcopy ${ProjectDir}\TestData ${TargetDir} /E /Y" workingdir="${SolutionDir}" />
+        <Command type="AfterBuild" command="xcopy ${ProjectDir}\TestData ${TargetDir}\TestData\ /E /Y" workingdir="${SolutionDir}" externalConsole="True" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
