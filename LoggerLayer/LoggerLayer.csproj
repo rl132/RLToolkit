@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit</RootNamespace>
     <AssemblyName>RLToolkit.LoggerLayer</AssemblyName>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

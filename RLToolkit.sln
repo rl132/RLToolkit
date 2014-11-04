@@ -261,6 +261,8 @@ Global
 		$36.NamingStyle = PascalCase
 		$36.IncludeInstanceMembers = True
 		$36.IncludeStaticEntities = True
+		description = C# Toolkit project to ease life of doing some tasks
+		version = 1.0.0
 		outputpath = bin
 	EndGlobalSection
 EndGlobal

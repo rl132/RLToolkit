@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Extensions</RootNamespace>
     <AssemblyName>RLToolkit.Extensions</AssemblyName>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +42,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+      <Package>nunit</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
