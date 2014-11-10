@@ -18,10 +18,14 @@ namespace RLToolkit.UnitTests
         // paths and filename
         private string file_txt_1 = "file1.txt";
         private string file_txt_1_out = "file1_out.txt";
+        private string file_txt_1_notExist = "file1_bar.txt";
         private string file_ini_1 = "file1.ini";
         private string file_ini_1_out = "file1_out.ini";
+        private string file_ini_1_notExist = "file1_bar.ini";
         private string file_xml_1 = "file1.xml";
         private string file_xml_1_out = "file1_out.xml";
+        private string file_xml_1_notExist = "file1_bar.xml";
+        private string file_1_empty = "file1.abc";
 
         // dictionaries
         private Dictionary<string, string> dicoTxt = new Dictionary<string, string>();
@@ -152,6 +156,28 @@ namespace RLToolkit.UnitTests
 
             Assert.IsTrue(FileCompare(Path.Combine(localFolder, file_txt_1_out), Path.Combine(localFolder, file_txt_1)), "Files are not the same");
         }
+        
+        [Test]
+        public void CfgMgr_Text_Read_NotExist()
+        {
+            string path = Path.Combine(localFolder, file_txt_1_notExist);
+            TextConfigSystem cfgsys = new TextConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(0, configManager.GetDictionary().Count, "Dictionary should be empty");
+        }
+        
+        [Test]
+        public void CfgMgr_Text_Read_Empty()
+        {
+            string path = Path.Combine(localFolder, file_1_empty);
+            TextConfigSystem cfgsys = new TextConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(0, configManager.GetDictionary().Count, "Dictionary should be empty");
+        }
         #endregion
 
         #region ini handler
@@ -199,6 +225,28 @@ namespace RLToolkit.UnitTests
 
             Assert.IsTrue(FileCompare(Path.Combine(localFolder, file_ini_1_out), Path.Combine(localFolder, file_ini_1)), "Files are not the same");
         }
+
+        [Test]
+        public void CfgMgr_Ini_Read_NotExist()
+        {
+            string path = Path.Combine(localFolder, file_ini_1_notExist);
+            IniConfigSystem cfgsys = new IniConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(0, configManager.GetDictionary().Count, "Dictionary should be empty");
+        }
+        
+        [Test]
+        public void CfgMgr_Ini_Read_Empty()
+        {
+            string path = Path.Combine(localFolder, file_1_empty);
+            IniConfigSystem cfgsys = new IniConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(0, configManager.GetDictionary().Count, "Dictionary should be empty");
+        }
         #endregion
 
         #region xml handler
@@ -245,6 +293,28 @@ namespace RLToolkit.UnitTests
             configManager.WriteConfig();
 
             Assert.IsTrue(FileCompare(Path.Combine(localFolder, file_xml_1_out), Path.Combine(localFolder, file_xml_1)), "Files are not the same");
+        }
+
+        [Test]
+        public void CfgMgr_Xml_Read_NotExist()
+        {
+            string path = Path.Combine(localFolder, file_xml_1_notExist);
+            XmlConfigSystem cfgsys = new XmlConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(0, configManager.GetDictionary().Count, "Dictionary should be empty");
+        }
+        
+        [Test]
+        public void CfgMgr_Xml_Read_Empty()
+        {
+            string path = Path.Combine(localFolder, file_1_empty);
+            XmlConfigSystem cfgsys = new XmlConfigSystem();
+            configManager = new CfgManager(path, cfgsys);
+            configManager.ReadConfig();
+
+            Assert.AreEqual(0, configManager.GetDictionary().Count, "Dictionary should be empty");
         }
         #endregion
     }

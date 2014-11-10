@@ -119,5 +119,6 @@
     <None Include="TestData\TextureHandler\file1_small.bmp" />
     <None Include="TestData\XmlHelper\fileXml1.xml" />
     <None Include="TestData\CfgManager\file1.xml" />
+    <None Include="TestData\CfgManager\file1.abc" />
   </ItemGroup>
 </Project>

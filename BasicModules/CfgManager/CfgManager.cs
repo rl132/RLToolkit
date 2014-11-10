@@ -45,6 +45,10 @@ namespace RLToolkit.Basic
         public void ReadConfig()
         {
             this.Log().Debug("Reading configuration");
+            if (!File.Exists(path))
+            {
+                return;
+            }
             content = configSystem.readConfig(path);
         }
 
