@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Basic</RootNamespace>
     <AssemblyName>RLToolkit.Basic</AssemblyName>
-    <ReleaseVersion>1.0.0</ReleaseVersion>
+    <ReleaseVersion>1.1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
