@@ -6,11 +6,10 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{72C4572E-2466-4BA4-9676-2C89F8E398C6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Widgets</RootNamespace>
     <AssemblyName>RLToolkit.Widgets</AssemblyName>
     <ReleaseVersion>1.1.0</ReleaseVersion>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -23,7 +22,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release-Windows\Widgets.xml</DocumentationFile>
+    <DocumentationFile>bin\Release-Windows\RLToolkit.Widgets.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -36,7 +35,32 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release-Linux\Widgets.xml</DocumentationFile>
+    <DocumentationFile>bin\Release-Linux\RLToolkit.Widgets.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="ButtonImage.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.ButtonImage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
