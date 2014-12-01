@@ -51,6 +51,8 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="ButtonImage.cs" />
     <Compile Include="gtk-gui\RLToolkit.Widgets.ButtonImage.cs" />
+    <Compile Include="DynamicColumn.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.DynamicColumn.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
