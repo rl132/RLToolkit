@@ -9,7 +9,7 @@ using RLToolkit.Extensions;
 using NUnit.Framework;
 using System.Linq;
 
-namespace RLToolkit.UnitTests
+namespace RLToolkit.UnitTests.Modules
 {
     [TestFixture]
     public class TextureHandlerTest : TestHarness, ITestBase
@@ -97,7 +97,7 @@ namespace RLToolkit.UnitTests
             Bitmap original = new Bitmap(Path.Combine(localFolder, image_bmp_1_big));
             Bitmap output = new Bitmap(Path.Combine(localFolder, image_bmp_1_big_out));
 
-            BitmapAssert.AreEqual(original, output, 128, "Written image should be like the reference.");
+            BitmapAssert.AreEqual(original, output, 156, "Written image should be like the reference.");
         }
 
         [Test]

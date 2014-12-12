@@ -5,7 +5,7 @@ using RLToolkit.Basic;
 using NUnit.Framework;
 using System.Security.Cryptography;
 
-namespace RLToolkit.UnitTests
+namespace RLToolkit.UnitTests.Modules
 {
     [TestFixture]
     public class StringCryptTest : TestHarness, ITestBase

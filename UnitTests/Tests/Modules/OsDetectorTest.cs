@@ -6,7 +6,7 @@ using RLToolkit;
 using RLToolkit.Basic;
 using NUnit.Framework;
 
-namespace RLToolkit.UnitTests
+namespace RLToolkit.UnitTests.Modules
 {
 	[TestFixture]
 	public class OsDetectorTest : TestHarness, ITestBase

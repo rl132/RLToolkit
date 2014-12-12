@@ -7,7 +7,7 @@ using RLToolkit.Basic;
 using NUnit.Framework;
 using System.Linq;
 
-namespace RLToolkit.UnitTests
+namespace RLToolkit.UnitTests.Modules
 {
     [TestFixture]
     public class CfgManagerTest : TestHarness, ITestBase
@@ -85,6 +85,36 @@ namespace RLToolkit.UnitTests
         private bool FileCompare(string path1, string path2)
         {
             return File.ReadLines(path1).SequenceEqual(File.ReadLines(path2));
+        }
+
+        private bool XmlFileCompare(string path1, string path2)
+        {
+            IEnumerable<string> f1All = File.ReadLines(path1);
+            IEnumerable<string> f2All = File.ReadLines(path2);
+
+            string f1 = "";
+            string f2 = "";
+
+            foreach (string lines in f1All)
+            {
+                string s;
+                s = lines.Trim();
+                s = s.Replace("\n", "");
+                f1 += s;
+            }
+
+            foreach (string lines in f2All)
+            {
+                string s;
+                s = lines.Trim();
+                s = s.Replace("\n", "");
+                f2 += s;
+            }
+
+            LogManager.Instance.Log().Debug(f1);
+            LogManager.Instance.Log().Debug(f2);
+
+            return f1 == f2;
         }
         #endregion
 
@@ -292,7 +322,7 @@ namespace RLToolkit.UnitTests
             configManager.SetDictionary(dicoXml);
             configManager.WriteConfig();
 
-            Assert.IsTrue(FileCompare(Path.Combine(localFolder, file_xml_1_out), Path.Combine(localFolder, file_xml_1)), "Files are not the same");
+            Assert.IsTrue(XmlFileCompare(Path.Combine(localFolder, file_xml_1_out), Path.Combine(localFolder, file_xml_1)), "Files are not the same");
         }
 
         [Test]

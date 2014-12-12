@@ -84,7 +84,7 @@ namespace RLToolkit.Extensions
         /// <param name="tolerance">Tolerance.</param>
         private static bool ComparePixelChannel(byte source, byte actual, int tolerance)
         {
-            return (Math.Abs(source - actual) < tolerance);
+            return tolerance >= (Math.Abs(source - actual));
         }
     }
 }

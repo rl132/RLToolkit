@@ -8,6 +8,9 @@ using RLToolkit;
 
 namespace RLToolkit.Widgets
 {
+    /// <summary>
+    /// Widget that allow the user to add multiple instances of controls as rows
+    /// </summary>
     [System.ComponentModel.ToolboxItem(true)]
     public partial class DynamicRow : Gtk.Bin
     {
@@ -18,6 +21,9 @@ namespace RLToolkit.Widgets
         private int maxControls = 8;
 
 		#region Constructors
+        /// <summary>
+        /// Constructor for a DynamicRow empty (will use empty Gtk.Label as empty controls).
+        /// </summary>
 		public DynamicRow ()
 		{
 			this.Log ().Debug ("Empty Constructor for the DynamicRow");
@@ -26,7 +32,11 @@ namespace RLToolkit.Widgets
 			SetControlType (typeof(Gtk.Label), null);
 		}
 
-		public DynamicRow (System.Type controlType)
+        /// <summary>
+        /// Constructor for a DynamicRow with a supplied control type
+        /// </summary>
+        /// <param name="controlType">The Control type to spawn.</param>
+        public DynamicRow (System.Type controlType)
 		{
 			this.Log ().Debug ("Constructor for the DynamicRow using " + controlType.Name);
 			this.Build ();
@@ -34,6 +44,11 @@ namespace RLToolkit.Widgets
 			SetControlType (controlType, null);
 		}
 
+        /// <summary>
+        /// Constructor for a DynamicRow with a supplied control type and parameters
+        /// </summary>
+        /// <param name="controlType">The Control type to spawn.</param>
+        /// <param name="param">Parameter (optional).</param>
 		public DynamicRow (System.Type controlType, object[] param)
 		{
 			this.Log ().Debug ("Constructor for the DynamicRow using " + controlType.Name + " with params");
@@ -44,6 +59,11 @@ namespace RLToolkit.Widgets
 		#endregion
 
         #region public methods
+        /// <summary>
+        /// Set the type of control to use as child control that will spawn
+        /// </summary>
+        /// <param name="controlType">The Control type to spawn.</param>
+        /// <param name="param">Parameter (optional).</param>
         public void SetControlType(System.Type controlType, object[] param)
         {
             this.Log().Debug("Setting type to: " + controlType.Name);
@@ -59,12 +79,20 @@ namespace RLToolkit.Widgets
             RefreshControl ();
         }
 
+        /// <summary>
+        /// Fetches the content of the control array.
+        /// </summary>
+        /// <returns>The control array.</returns>
         public Gtk.Widget[] GetControlArray()
         {
             this.Log().Debug("Fetching the control array");
             return arrayWidgets;
         }
 
+        /// <summary>
+        /// Sets the control array.
+        /// </summary>
+        /// <param name="newArray">New array that will replace the old one</param>
         public void SetControlArray(Gtk.Widget[] newArray)
         {
             this.Log().Debug("updating the control array");
@@ -73,6 +101,10 @@ namespace RLToolkit.Widgets
             RefreshControl();
         }
 
+        /// <summary>
+        /// Updates the max count on control the user can add. Note: will cut the current control list is the new maximum is too high.
+        /// </summary>
+        /// <param name="newCount">New count.</param>
         public void UpdateMaxCount(int newCount)
         {
             this.Log().Debug("updating the Max count to " + newCount.ToString());

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug-Linux</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -22,7 +22,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <DocumentationFile>..\bin\Release-Linux\RLToolkit.Extensions.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,7 +35,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <DocumentationFile>..\bin\Release-Windows\RLToolkit.Extensions.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,14 +43,9 @@
     <Reference Include="nunit.framework">
       <HintPath>..\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>False</Private>
-      <Package>gtk-sharp-2.0</Package>
-    </Reference>
-    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>False</Private>
-      <Package>gtk-sharp-2.0</Package>
-    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorExtension.cs" />

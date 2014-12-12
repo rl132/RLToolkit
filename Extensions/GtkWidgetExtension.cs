@@ -22,9 +22,14 @@ namespace RLToolkit.Extensions
                 // control invalid
                 return -1;
             }
-
+            
+            if (input.Model == null)
+            {
+                // invalid content
+                return -1;
+            }
             ListStore store = (ListStore)input.Model;
-
+            
             int i = 0;
             foreach (object[] row in store) {
                 if (row [0].ToString().ToLower() == textToFind.ToLower()) {
@@ -33,7 +38,7 @@ namespace RLToolkit.Extensions
                 }
                 i++;
             }
-
+            
             // not found
             return -1;
         }

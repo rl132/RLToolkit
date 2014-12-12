@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug-Linux</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -22,7 +22,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <DocumentationFile>..\bin\Release-Linux\RLToolkit.LoggerLayer.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,7 +35,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <DocumentationFile>..\bin\Release-Windows\RLToolkit.LoggerLayer.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
