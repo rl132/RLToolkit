@@ -20,6 +20,7 @@ namespace RLToolkit.Basic
 
             FileHandler reader = new FileHandler(path, false);
             List<string> input = reader.ReadLines();
+            reader.CloseStream();
 
             foreach (string s in input)
             {

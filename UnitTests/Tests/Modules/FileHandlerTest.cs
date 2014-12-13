@@ -77,7 +77,7 @@ namespace RLToolkit.UnitTests.Modules
             AddOutputFile(Path.Combine(localFolder, file_notExist_4), false);
             AddOutputFile(Path.Combine(localFolder, file_notExist_5), false);
 
-			// delete the extra test files from the data folder
+            // delete the extra test files from the data folder
 			CleanFile (Path.Combine(localFolder, file_1_copy), false);
 		}
 		#endregion
@@ -211,6 +211,10 @@ namespace RLToolkit.UnitTests.Modules
 				fh.ReadLines();
 			}
 			);
+
+            // cleanup - allow to close stream
+            fh.isReady = true;
+            fh.CloseStream();
 		}
 
 		[Test]
@@ -277,6 +281,11 @@ namespace RLToolkit.UnitTests.Modules
 				fh = new FileHandler (file_3, true);
 			}
 			);
+
+            // cleanup the RO flag
+            if (File.GetAttributes (file_3).HasFlag (FileAttributes.ReadOnly)) {
+                File.SetAttributes (file_3, File.GetAttributes (file_3) & ~FileAttributes.ReadOnly);
+            }
 		}
 
 		[Test]
@@ -317,6 +326,10 @@ namespace RLToolkit.UnitTests.Modules
 				fh.CloseStream();
 			}
 			);
+
+            // cleanup - allow to close stream
+            fh.isReady = true;
+            fh.CloseStream();
 		}
 		#endregion
 	}

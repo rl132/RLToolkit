@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Threading;
 
 namespace RLToolkit.UnitTests
 {
@@ -78,6 +79,7 @@ namespace RLToolkit.UnitTests
             {
                 foreach (Tuple<string, bool, bool> t in filesInput)
                 {
+                    LogManager.Instance.Log().Debug("copying file: " + t.Item1 + " to: " + Path.Combine(localFolder, Path.GetFileName(t.Item1)));
                     CopyFile(t.Item1, Path.Combine(localFolder, Path.GetFileName(t.Item1)), t.Item2, t.Item3);
                 }
             }
@@ -90,6 +92,7 @@ namespace RLToolkit.UnitTests
             {
                 foreach (Tuple<string, bool> t in filesOutput)
                 {
+                    LogManager.Instance.Log().Debug("moving file: " + t.Item1 + " to: " + Path.Combine(folder_testresult, Path.GetFileName(t.Item1)));
                     MoveFile(t.Item1, Path.Combine(folder_testresult, Path.GetFileName(t.Item1)), t.Item2);
                 }
             }
@@ -99,6 +102,7 @@ namespace RLToolkit.UnitTests
             {
                 foreach (Tuple<string, bool, bool> t in filesInput)
                 {
+                    LogManager.Instance.Log().Debug("cleaning file: " + Path.Combine(localFolder, Path.GetFileName(t.Item1)));
                     CleanFile(Path.Combine(localFolder, Path.GetFileName(t.Item1)), t.Item3);
                 }
             }
@@ -129,7 +133,7 @@ namespace RLToolkit.UnitTests
 		{
 			try 
 			{
-				File.Delete(file);
+                RetryAction(5, () => {File.Delete(file);});
 			}
 			catch (Exception e)
 			{
@@ -144,7 +148,7 @@ namespace RLToolkit.UnitTests
 		{
 			try 
 			{
-				File.Move(fileSource, fileOut);
+                RetryAction(5, () => {File.Move(fileSource, fileOut);});
 			}
 			catch (Exception e)
 			{
@@ -159,7 +163,7 @@ namespace RLToolkit.UnitTests
 		{
 			try
 			{
-				File.Copy(fileSource, fileOut, isDelete);
+                RetryAction(5, () => {File.Copy(fileSource, fileOut, isDelete);});
 			}
 			catch (Exception e)
 			{
@@ -187,6 +191,43 @@ namespace RLToolkit.UnitTests
 				Directory.CreateDirectory(folder_testresult);
 			}
 		}
+
+        public void RetryAction(int count, Action a)
+        {
+            bool error = false;
+            for (int i = 0; i<count;i++)
+            {
+                error = false;
+                try 
+                {
+                    // execute the action
+                    a();
+                }
+                catch (FileNotFoundException e)
+                {
+                    // no point trying many times, file doesn't exist
+                    LogManager.Instance.Log().Debug("Action failed FileNotFound - " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    LogManager.Instance.Log().Debug("Action failed - " + e.Message);
+                    error = true;
+                    Thread.Sleep(1000);
+                }
+
+                if (!error)
+                {
+                    // success!
+                    LogManager.Instance.Log().Debug("Action completed");
+                    return;
+                }
+            } 
+
+            // we've tried
+            LogManager.Instance.Log().Warn("Action couldn't be completed within " + count + " tries");
+            return;
+        }
 		#endregion
 	}
 }
