@@ -71,7 +71,7 @@
     <Compile Include="Tests\Modules\TimerManagerTest.cs" />
     <Compile Include="Tests\Modules\XmlHelperTest.cs" />
     <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
-    <Compile Include="Tests\Extensions\ColorExtension.cs" />
+    <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
