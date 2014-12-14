@@ -3,12 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicModules", "BasicModules\BasicModules.csproj", "{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{43D086BE-B87C-4302-AE3A-34AF52BB60E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation/Misc Files", "Documentation/Misc Files", "{43D086BE-B87C-4302-AE3A-34AF52BB60E6}"
 	ProjectSection(SolutionItems) = preProject
 		structure.txt = structure.txt
 		README.md = README.md
 		RLToolkit_doxygen_config = RLToolkit_doxygen_config
 		License.md = License.md
+		HowToMakeARelease.md = HowToMakeARelease.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLayer", "LoggerLayer\LoggerLayer.csproj", "{B488EE1B-7DBB-4D53-A48B-AED51707F12B}"
