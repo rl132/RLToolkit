@@ -162,6 +162,11 @@ namespace RLToolkit.Widgets
         #endregion
 
         #region events
+        /// <summary>
+        /// Raises the button minus clicked event.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
         protected void OnBtnMinusClicked (object sender, EventArgs e)
         {
 			this.Log ().Info ("Trying to remove a control");
@@ -180,6 +185,11 @@ namespace RLToolkit.Widgets
 			}
         }
 
+        /// <summary>
+        /// Raises the button plus clicked event.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
         protected void OnBtnPlusClicked (object sender, EventArgs e)
         {
 			this.Log ().Info ("Trying to add a control");

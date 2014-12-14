@@ -15,6 +15,9 @@ namespace RLToolkit.Widgets
 		private global::Gtk.Button btnPlus;
 		private global::Gtk.Label labelEmpty4;
 
+        /// <summary>
+        /// Build this instance.
+        /// </summary>
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

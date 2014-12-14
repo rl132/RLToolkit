@@ -133,6 +133,11 @@ namespace RLToolkit.Widgets
         #endregion
 
         #region Event handler
+        /// <summary>
+        /// Raises the button clicked event.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
         protected void OnBtnClicked (object sender, EventArgs e)
         {
             this.Log ().Info ("Button clicked");

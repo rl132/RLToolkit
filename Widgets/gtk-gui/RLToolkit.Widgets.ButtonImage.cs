@@ -10,6 +10,9 @@ namespace RLToolkit.Widgets
 		
 		private global::Gtk.Image img;
 
+        /// <summary>
+        /// Build this instance.
+        /// </summary>
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
