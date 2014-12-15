@@ -18,11 +18,21 @@ RLToolkit namespace structure:
   * Extensions
     -BitmapAssert
     -ColorExtension
+    -GtkWidgetExtension
+  * Widgets
+    -ButtonImage
+    -DynamicColumn
+    -DynamicRow
   * Wrappers
     -P4Wrapper (not in yet)
     -SVNWrapper (not in yet)
-  *UnitTests
-    -All unit tests for the modules
-
+  * UnitTests
+    * Modules
+      -All unit tests for the modules
+    * Extensions
+      -All unit tests for the extensions
+    * Widgets
+      -All unit tests for the widgets (see if it's possible to do)
+  
 * = namespace 
 - = module

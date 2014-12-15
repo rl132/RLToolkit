@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Tests</RootNamespace>
     <AssemblyName>RLToolkit.UnitTests</AssemblyName>
-    <ReleaseVersion>1.0.0</ReleaseVersion>
+    <ReleaseVersion>1.1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -60,16 +60,18 @@
     <Compile Include="BaseSystem\ExceptionCatcher.cs" />
     <Compile Include="BaseSystem\ITestBase.cs" />
     <Compile Include="BaseSystem\TestHarness.cs" />
-    <Compile Include="Tests\FileHandlerTest.cs" />
-    <Compile Include="Tests\IniParserTest.cs" />
-    <Compile Include="Tests\OsDetectorTest.cs" />
-    <Compile Include="Tests\TimerManagerTest.cs" />
-    <Compile Include="Tests\CmdRunnerTest.cs" />
-    <Compile Include="Tests\XmlHelperTest.cs" />
-    <Compile Include="Tests\CfgManagerTest.cs" />
-    <Compile Include="Tests\StringCryptTest.cs" />
-    <Compile Include="Tests\MD5HelperTest.cs" />
-    <Compile Include="Tests\TextureHandlerTest.cs" />
+    <Compile Include="Tests\Modules\CfgManagerTest.cs" />
+    <Compile Include="Tests\Modules\CmdRunnerTest.cs" />
+    <Compile Include="Tests\Modules\FileHandlerTest.cs" />
+    <Compile Include="Tests\Modules\IniParserTest.cs" />
+    <Compile Include="Tests\Modules\MD5HelperTest.cs" />
+    <Compile Include="Tests\Modules\OsDetectorTest.cs" />
+    <Compile Include="Tests\Modules\StringCryptTest.cs" />
+    <Compile Include="Tests\Modules\TextureHandlerTest.cs" />
+    <Compile Include="Tests\Modules\TimerManagerTest.cs" />
+    <Compile Include="Tests\Modules\XmlHelperTest.cs" />
+    <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
+    <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
@@ -81,12 +83,27 @@
     <Reference Include="System.Net" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
     <Folder Include="Tests\" />
     <Folder Include="Mocks\" />
     <Folder Include="TestData\" />
+    <Folder Include="Tests\Modules\" />
+    <Folder Include="Tests\Extensions\" />
+    <Folder Include="TestData\CmdRunner\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicModules\BasicModules.csproj">
@@ -119,5 +136,9 @@
     <None Include="TestData\TextureHandler\file1_small.bmp" />
     <None Include="TestData\XmlHelper\fileXml1.xml" />
     <None Include="TestData\CfgManager\file1.xml" />
+    <None Include="TestData\CfgManager\file1.abc" />
+    <None Include="TestData\TextureHandler\file1_Uneven.bmp" />
+    <None Include="TestData\CmdRunner\DummyRunner-Windows.exe" />
+    <None Include="TestData\CmdRunner\DummyRunner-Linux.exe" />
   </ItemGroup>
 </Project>

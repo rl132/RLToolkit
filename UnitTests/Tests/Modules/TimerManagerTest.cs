@@ -5,7 +5,7 @@ using RLToolkit.Basic;
 using NUnit.Framework;
 using System.Threading;
 
-namespace RLToolkit.UnitTests
+namespace RLToolkit.UnitTests.Modules
 {
 	[TestFixture]
 	public class TimerManagerTest : TestHarness, ITestBase
@@ -41,6 +41,7 @@ namespace RLToolkit.UnitTests
 		public void TearDown ()
 		{
             TimerManager.ClearAllEventSets();
+            TimerManager.StopTicking();
 		}
 		#endregion
 

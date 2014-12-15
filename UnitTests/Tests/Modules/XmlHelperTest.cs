@@ -9,7 +9,7 @@ using RLToolkit.Basic;
 using NUnit.Framework;
 using System.Linq;
 
-namespace RLToolkit.UnitTests
+namespace RLToolkit.UnitTests.Modules
 {
 	[TestFixture]
 	public class XmlHelperTest : TestHarness, ITestBase

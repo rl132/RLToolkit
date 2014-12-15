@@ -1,0 +1,9 @@
+How to use:
+-compile
+-rename to DummyRunner-%PLATFORM%.exe
+-move to the unit test folder or use diferctly.
+
+
+FAQ:
+Q: What does this software does:
+A: it simply runs in the console and exit. It also can output an error or sleep for X seconds
