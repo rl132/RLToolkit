@@ -3,9 +3,6 @@ using System.Drawing;
 using Gtk;
 
 // TODO: RL
-// - Add some broadcastable events when the button is clicked
-// -   * ... is refreshed
-// -   * ... size is updated
 // - Add a way to initialize with an image
 // - Add check on size if it's a value of 2^n
 
@@ -91,6 +88,8 @@ namespace RLToolkit.Widgets
         public void UpdateSize(int newSize)
         {
             imageSize = newSize;
+            this.HeightRequest = newSize;
+            this.WidthRequest = newSize;
             UpdateImage ();
         }
         #endregion

@@ -2,10 +2,6 @@ using System;
 
 using RLToolkit;
 
-// TODO: RL
-//  - add event for when a new control is added/removed
-//  - add event for when max/min are reached
-
 namespace RLToolkit.Widgets
 {
     /// <summary>
@@ -19,6 +15,24 @@ namespace RLToolkit.Widgets
 		private object[] baseParam;
         private Gtk.Widget[] arrayWidgets;
         private int maxControls = 8;
+
+        #region signals
+        /// <summary>
+        /// Occurs when we add a new control to the row
+        /// </summary>
+        public event EventHandler OnNewControl;
+
+        /// <summary>
+        /// Occurs when we remove a control from the row
+        /// </summary>
+        public event EventHandler OnRemControl;
+
+        /// <summary>
+        /// Occurs when the max or min control count has been achieved
+        /// </summary>
+        public event EventHandler CapControlReached;
+        #endregion
+
 
 		#region Constructors
         /// <summary>
@@ -178,10 +192,20 @@ namespace RLToolkit.Widgets
 				arrayWidgets = newArray;
 				numberControls--;
 
+                if (OnRemControl != null)
+                {
+                    OnRemControl(this, e);
+                }
+
 				RefreshControl ();
 			} else {
 				// i'm sorry dave but i cannot let you do this.
 				this.Log ().Warn ("Min number of control reached");
+
+                if (CapControlReached != null)
+                {
+                    CapControlReached(this, e);
+                }
 			}
         }
 
@@ -203,10 +227,20 @@ namespace RLToolkit.Widgets
 				Gtk.Widget newControl = CreateCtrl();
 				arrayWidgets [numberControls - 1] = newControl;
 
+                if (OnNewControl != null)
+                {
+                    OnNewControl(this, e);
+                }
+
 				RefreshControl ();
 			} else {
 				// i'm sorry dave but i cannot let you do this.
 				this.Log ().Warn ("Max number of controls reached");
+
+                if (CapControlReached != null)
+                {
+                    CapControlReached(this, e);
+                }
 			}
         }
         #endregion
