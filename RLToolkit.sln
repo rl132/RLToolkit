@@ -274,7 +274,7 @@ Global
 		$36.IncludeInstanceMembers = True
 		$36.IncludeStaticEntities = True
 		description = C# Toolkit project to ease life of doing some tasks
-		version = 1.1.0
+		version = 1.1.1
 		outputpath = bin
 	EndGlobalSection
 EndGlobal
