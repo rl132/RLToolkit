@@ -13,29 +13,31 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug-Linux</OutputPath>
+    <OutputPath>..\bin\Debug-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>DEBUG;</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Windows|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release-Windows</OutputPath>
+    <OutputPath>..\bin\Release-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release-Windows\RLToolkit.Widgets.xml</DocumentationFile>
+    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug-Windows</OutputPath>
+    <OutputPath>..\bin\Debug-Windows</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>DEBUG;</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Linux|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release-Linux</OutputPath>
+    <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release-Linux\RLToolkit.Widgets.xml</DocumentationFile>
+    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

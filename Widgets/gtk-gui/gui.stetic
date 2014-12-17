@@ -5,7 +5,7 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="../bin/Release-Windows/RLToolkit.Widgets.dll" internal="true" />
+    <widget-library name="../../bin/Release-Linux/RLToolkit.Widgets.dll" internal="true" />
   </import>
   <widget class="Gtk.Bin" id="RLToolkit.Widgets.ButtonImage" design-size="86 75">
     <property name="MemberName" />
