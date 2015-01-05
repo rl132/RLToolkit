@@ -1,42 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug-Linux</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Basic</RootNamespace>
-    <AssemblyName>RLToolkit.Basic</AssemblyName>
-    <ReleaseVersion>1.1.1</ReleaseVersion>
+    <AssemblyName>RLToolkit.Basic.Linux</AssemblyName>
+    <ReleaseVersion>1.2.0</ReleaseVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug-Linux</OutputPath>
+    <OutputPath>..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Linux|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release-Linux</OutputPath>
+    <OutputPath>..\bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release-Linux\RLToolkit.Basic.xml</DocumentationFile>
-    <GenerateDocumentation>true</GenerateDocumentation>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug-Windows</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Windows|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release-Windows</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release-Windows\RLToolkit.Basic.xml</DocumentationFile>
     <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <ItemGroup>
@@ -86,9 +71,9 @@
     <Folder Include="XmlHelper\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LoggerLayer\LoggerLayer.csproj">
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer-Linux.csproj">
       <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
-      <Name>LoggerLayer</Name>
+      <Name>LoggerLayer-Linux</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

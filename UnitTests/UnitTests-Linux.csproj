@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug-Linux</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EF1A5D54-D72D-44F7-A324-817E50D73CF4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RLToolkit.Tests</RootNamespace>
-    <AssemblyName>RLToolkit.UnitTests</AssemblyName>
-    <ReleaseVersion>1.1.1</ReleaseVersion>
+    <RootNamespace>RLToolkit.UnitTests</RootNamespace>
+    <AssemblyName>RLToolkit.UnitTests.Linux</AssemblyName>
+    <ReleaseVersion>1.2.0</ReleaseVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug-Linux</OutputPath>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
-      </CustomCommands>
-    </CustomCommands>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Linux|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release-Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
     <CustomCommands>
       <CustomCommands>
@@ -33,46 +23,17 @@
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug-Windows</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <DebugSymbols>true</DebugSymbols>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="xcopy ${ProjectDir}\TestData ${TargetDir}\TestData\ /E /Y" workingdir="${SolutionDir}" externalConsole="True" />
-      </CustomCommands>
-    </CustomCommands>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Windows|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release-Windows</OutputPath>
+    <OutputPath>..\bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <GenerateDocumentation>true</GenerateDocumentation>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="xcopy ${ProjectDir}\TestData ${TargetDir}\TestData\ /E /Y" workingdir="${SolutionDir}" externalConsole="True" />
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Compile Include="BaseSystem\ExceptionCatcher.cs" />
-    <Compile Include="BaseSystem\ITestBase.cs" />
-    <Compile Include="BaseSystem\TestHarness.cs" />
-    <Compile Include="Tests\Modules\CfgManagerTest.cs" />
-    <Compile Include="Tests\Modules\CmdRunnerTest.cs" />
-    <Compile Include="Tests\Modules\FileHandlerTest.cs" />
-    <Compile Include="Tests\Modules\IniParserTest.cs" />
-    <Compile Include="Tests\Modules\MD5HelperTest.cs" />
-    <Compile Include="Tests\Modules\OsDetectorTest.cs" />
-    <Compile Include="Tests\Modules\StringCryptTest.cs" />
-    <Compile Include="Tests\Modules\TextureHandlerTest.cs" />
-    <Compile Include="Tests\Modules\TimerManagerTest.cs" />
-    <Compile Include="Tests\Modules\XmlHelperTest.cs" />
-    <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
-    <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
       <HintPath>..\lib\nunit.framework.dll</HintPath>
@@ -96,6 +57,24 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="BaseSystem\ExceptionCatcher.cs" />
+    <Compile Include="BaseSystem\ITestBase.cs" />
+    <Compile Include="BaseSystem\TestHarness.cs" />
+    <Compile Include="Tests\Modules\CfgManagerTest.cs" />
+    <Compile Include="Tests\Modules\CmdRunnerTest.cs" />
+    <Compile Include="Tests\Modules\FileHandlerTest.cs" />
+    <Compile Include="Tests\Modules\IniParserTest.cs" />
+    <Compile Include="Tests\Modules\MD5HelperTest.cs" />
+    <Compile Include="Tests\Modules\OsDetectorTest.cs" />
+    <Compile Include="Tests\Modules\StringCryptTest.cs" />
+    <Compile Include="Tests\Modules\TextureHandlerTest.cs" />
+    <Compile Include="Tests\Modules\TimerManagerTest.cs" />
+    <Compile Include="Tests\Modules\XmlHelperTest.cs" />
+    <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
+    <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
     <Folder Include="Tests\" />
@@ -106,17 +85,17 @@
     <Folder Include="TestData\CmdRunner\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BasicModules\BasicModules.csproj">
+    <ProjectReference Include="..\BasicModules\BasicModules-Linux.csproj">
       <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
-      <Name>BasicModules</Name>
+      <Name>BasicModules-Linux</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Extensions\Extensions.csproj">
+    <ProjectReference Include="..\Extensions\Extensions-Linux.csproj">
       <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
-      <Name>Extensions</Name>
+      <Name>Extensions-Linux</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LoggerLayer\LoggerLayer.csproj">
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer-Linux.csproj">
       <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
-      <Name>LoggerLayer</Name>
+      <Name>LoggerLayer-Linux</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

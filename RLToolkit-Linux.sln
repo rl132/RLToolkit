@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicModules", "BasicModules\BasicModules.csproj", "{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation/Misc Files", "Documentation/Misc Files", "{43D086BE-B87C-4302-AE3A-34AF52BB60E6}"
 	ProjectSection(SolutionItems) = preProject
 		structure.txt = structure.txt
@@ -12,67 +10,47 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation/Misc Files", 
 		HowToMakeARelease.md = HowToMakeARelease.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLayer", "LoggerLayer\LoggerLayer.csproj", "{B488EE1B-7DBB-4D53-A48B-AED51707F12B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicModules-Linux", "BasicModules\BasicModules-Linux.csproj", "{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{EF1A5D54-D72D-44F7-A324-817E50D73CF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions-Linux", "Extensions\Extensions-Linux.csproj", "{87CC381E-DA10-4ECF-9584-AF6620F27B55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{87CC381E-DA10-4ECF-9584-AF6620F27B55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLayer-Linux", "LoggerLayer\LoggerLayer-Linux.csproj", "{B488EE1B-7DBB-4D53-A48B-AED51707F12B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Widgets", "Widgets\Widgets.csproj", "{72C4572E-2466-4BA4-9676-2C89F8E398C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Widgets-Linux", "Widgets\Widgets-Linux.csproj", "{72C4572E-2466-4BA4-9676-2C89F8E398C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests-Linux", "UnitTests\UnitTests-Linux.csproj", "{EF1A5D54-D72D-44F7-A324-817E50D73CF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug-Linux|Any CPU = Debug-Linux|Any CPU
-		Release-Linux|Any CPU = Release-Linux|Any CPU
-		Debug-Windows|Any CPU = Debug-Windows|Any CPU
-		Release-Windows|Any CPU = Release-Windows|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug-Linux|Any CPU.ActiveCfg = Debug-Linux|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug-Linux|Any CPU.Build.0 = Debug-Linux|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug-Windows|Any CPU.ActiveCfg = Debug-Windows|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug-Windows|Any CPU.Build.0 = Debug-Windows|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release-Linux|Any CPU.ActiveCfg = Release-Linux|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release-Linux|Any CPU.Build.0 = Release-Linux|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release-Windows|Any CPU.ActiveCfg = Release-Windows|Any CPU
-		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release-Windows|Any CPU.Build.0 = Release-Windows|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug-Linux|Any CPU.ActiveCfg = Debug-Linux|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug-Linux|Any CPU.Build.0 = Debug-Linux|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug-Windows|Any CPU.ActiveCfg = Debug-Windows|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug-Windows|Any CPU.Build.0 = Debug-Windows|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release-Linux|Any CPU.ActiveCfg = Release-Linux|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release-Linux|Any CPU.Build.0 = Release-Linux|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release-Windows|Any CPU.ActiveCfg = Release-Windows|Any CPU
-		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release-Windows|Any CPU.Build.0 = Release-Windows|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug-Linux|Any CPU.ActiveCfg = Debug-Linux|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug-Linux|Any CPU.Build.0 = Debug-Linux|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug-Windows|Any CPU.ActiveCfg = Debug-Windows|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug-Windows|Any CPU.Build.0 = Debug-Windows|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release-Linux|Any CPU.ActiveCfg = Release-Linux|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release-Linux|Any CPU.Build.0 = Release-Linux|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release-Windows|Any CPU.ActiveCfg = Release-Windows|Any CPU
-		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release-Windows|Any CPU.Build.0 = Release-Windows|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug-Linux|Any CPU.ActiveCfg = Debug-Linux|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug-Linux|Any CPU.Build.0 = Debug-Linux|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug-Windows|Any CPU.ActiveCfg = Debug-Windows|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug-Windows|Any CPU.Build.0 = Debug-Windows|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release-Linux|Any CPU.ActiveCfg = Release-Linux|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release-Linux|Any CPU.Build.0 = Release-Linux|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release-Windows|Any CPU.ActiveCfg = Release-Windows|Any CPU
-		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release-Windows|Any CPU.Build.0 = Release-Windows|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Debug-Linux|Any CPU.ActiveCfg = Debug-Linux|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Debug-Linux|Any CPU.Build.0 = Debug-Linux|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Debug-Windows|Any CPU.ActiveCfg = Debug-Windows|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Debug-Windows|Any CPU.Build.0 = Debug-Windows|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release-Linux|Any CPU.ActiveCfg = Release-Linux|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release-Linux|Any CPU.Build.0 = Release-Linux|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release-Windows|Any CPU.ActiveCfg = Release-Windows|Any CPU
-		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release-Windows|Any CPU.Build.0 = Release-Windows|Any CPU
+		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = UnitTests\UnitTests.csproj
+		StartupItem = UnitTests\UnitTests-Linux.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
@@ -274,7 +252,7 @@ Global
 		$36.IncludeInstanceMembers = True
 		$36.IncludeStaticEntities = True
 		description = C# Toolkit project to ease life of doing some tasks
-		version = 1.1.1
+		version = 1.2.0
 		outputpath = bin
 	EndGlobalSection
 EndGlobal
