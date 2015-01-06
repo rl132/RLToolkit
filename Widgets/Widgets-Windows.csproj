@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72C4572E-2466-4BA4-9676-2C89F8E398C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RLToolkit.Widgets</RootNamespace>
+    <AssemblyName>RLToolkit.Widgets.Windows</AssemblyName>
+    <ReleaseVersion>1.2.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Release\RLToolkit.Widgets.Windows.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="ButtonImage.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.ButtonImage.cs" />
+    <Compile Include="DynamicColumn.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.DynamicColumn.cs" />
+    <Compile Include="DynamicRow.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.DynamicRow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicModules\BasicModules-Windows.csproj">
+      <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
+      <Name>BasicModules-Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer-Windows.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer-Windows</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
