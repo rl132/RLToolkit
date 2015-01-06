@@ -27,7 +27,6 @@
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <GenerateDocumentation>true</GenerateDocumentation>
     <CustomCommands>
       <CustomCommands>
         <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
