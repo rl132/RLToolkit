@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System.Threading;
 
+using RLToolkit.Logger;
+
 namespace RLToolkit.UnitTests
 {
 	public class TestHarness

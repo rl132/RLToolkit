@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Logger
 {
     /// <summary>
     /// Interface that allows the usage of different logger (not yet implemented)

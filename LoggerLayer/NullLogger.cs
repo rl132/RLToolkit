@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit
+namespace RLToolkit.Logger
 {
     /// <summary>
     /// Null logger implementing  the ILogger interface. Note: this logger does nothing.

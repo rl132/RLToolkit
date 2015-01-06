@@ -2,6 +2,8 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
+using RLToolkit.Logger;
+
 namespace RLToolkit.Basic
 {
     /// <summary>

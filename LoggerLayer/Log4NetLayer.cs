@@ -5,12 +5,12 @@ using System.Reflection;
 using log4net;
 using log4net.Config;
 
-namespace RLToolkit
+namespace RLToolkit.Logger
 {
     /// <summary>
     /// Log4Net implementing  the ILogger interface. 
     /// </summary>
-	public class Log4NetLayer : ILogger
+    public class Log4NetLayer : ILogger
 	{
         #region Variables
 		private readonly ILog log;

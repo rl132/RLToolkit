@@ -2,6 +2,8 @@
 using System.Drawing;
 using Gtk;
 
+using RLToolkit.Logger;
+
 // TODO: RL
 // - Add a way to initialize with an image
 // - Add check on size if it's a value of 2^n

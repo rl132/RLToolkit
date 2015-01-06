@@ -1,6 +1,6 @@
 using System;
 
-using RLToolkit;
+using RLToolkit.Logger;
 
 namespace RLToolkit.Widgets
 {

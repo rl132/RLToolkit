@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 using log4net;
 
-namespace RLToolkit
+namespace RLToolkit.Logger
 {
     /// <summary>
     /// Extennsion class for the logger

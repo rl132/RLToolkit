@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using RLToolkit.Logger;
+
 namespace RLToolkit.Basic
 {
     /// <summary>

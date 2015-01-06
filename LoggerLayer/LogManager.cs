@@ -4,7 +4,7 @@ using System.IO;
 using log4net;
 using log4net.Config;
 
-namespace RLToolkit
+namespace RLToolkit.Logger
 {
     /// <summary>
     /// Helper class that handles the logger

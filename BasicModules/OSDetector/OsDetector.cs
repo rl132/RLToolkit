@@ -1,5 +1,7 @@
 using System;
 
+using RLToolkit.Logger;
+
 namespace RLToolkit.Basic
 {
     /// <summary>

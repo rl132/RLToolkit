@@ -2,6 +2,8 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
+using RLToolkit.Logger;
+
 namespace RLToolkit.Basic
 {
     /// <summary>

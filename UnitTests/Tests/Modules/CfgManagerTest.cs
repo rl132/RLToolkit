@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-using RLToolkit;
-using RLToolkit.Basic;
-using NUnit.Framework;
 using System.Linq;
+
+using NUnit.Framework;
+
+using RLToolkit.Logger;
+using RLToolkit.Basic;
 
 namespace RLToolkit.UnitTests.Modules
 {

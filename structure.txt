@@ -1,7 +1,8 @@
 RLToolkit namespace structure:
 
 * RLToolkit
-  - loggerLayer
+  *Logger
+    -loggerLayer
   * Basic
     -CfgManager
     -CmdRunner

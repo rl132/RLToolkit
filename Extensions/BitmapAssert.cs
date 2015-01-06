@@ -3,6 +3,7 @@ using System.Drawing;
 using NUnit.Framework;
 
 using RLToolkit.Extensions;
+using RLToolkit.Logger;
 
 namespace RLToolkit.Extensions
 {
