@@ -50,7 +50,6 @@
     <Compile Include="gtk-gui\RLToolkit.Widgets.DynamicColumn.cs" />
     <Compile Include="DynamicRow.cs" />
     <Compile Include="gtk-gui\RLToolkit.Widgets.DynamicRow.cs" />
-    <Compile Include="gtk-gui\RLToolkit.Widgets.OutputList.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
