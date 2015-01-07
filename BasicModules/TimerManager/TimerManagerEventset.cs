@@ -16,6 +16,9 @@ namespace RLToolkit.Basic
         /// <summary>The number of milliseconds inbetween ticking</summary>
 		public int timeInbetweenTick;
 
+        /// summary>If the event is paused or not</summary>
+        public bool isPaused = false;
+
         /// <summary>The event handler to call when ticking</summary>
 		public event TimerManagerEventHandler eHandler;
 
