@@ -298,7 +298,7 @@ namespace RLToolkit.UnitTests.Modules
             mre.WaitOne(3000, false);
             Assert.Greater(TimerManager.GetTickCounter(), countNow, "Tick Count should be greater than previously");
         }
-
+        
         [Test]
         public void Timer_Count_Paused()
         {
@@ -314,10 +314,31 @@ namespace RLToolkit.UnitTests.Modules
             , false);
 
             TimerManager.PauseIdent("test16", true);
-            System.Console.WriteLine("count : " + TimerManager.IsEventListFilled());
             int countNow = TimerManager.GetTickCounter();
             mre.WaitOne(3000, false);
             Assert.AreEqual(countNow, TimerManager.GetTickCounter(), "Tick Count should be the same.");
+        }
+        
+        [Test]
+        public void Timer_EventSetFetch_Normal()
+        {
+            TimerManager.AddEventSet("test17", 2456, IncreaseCount, false);
+            TimerManagerEventset retVal = TimerManager.GetEventSetByID("test17");
+
+
+            Assert.AreEqual(2456, retVal.timeInbetweenTick, "Ticking time should be the right thing");
+            Assert.AreEqual("test17", retVal.Id, "ID should be the right thing");
+            Assert.AreEqual(false, retVal.isPaused, "Pause status should be the right thing");
+        }
+
+        [Test]
+        public void Timer_EventSetFetch_NotFound()
+        {
+            TimerManager.AddEventSet("test18", 250, IncreaseCount, false);
+            TimerManagerEventset retVal = TimerManager.GetEventSetByID("test_foo");
+
+
+            Assert.AreEqual(null, retVal, "value returned by the method should be null");
         }
         #endregion
 	}

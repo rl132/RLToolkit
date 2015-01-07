@@ -417,6 +417,31 @@ namespace RLToolkit.Basic
             }
             return tickCount;
         }
+
+        /// <summary>
+        /// Method that will try to fetch the eventSet associated with an ID
+        /// </summary>
+        /// <returns>The event set if the ID is known, null if not found</returns>
+        /// <param name="input">the ID to match</param>
+        public static TimerManagerEventset GetEventSetByID(string input)
+        {
+            if (isVerbose)
+            {
+                LogManager.Instance.Log().Debug("Looking for event: " + input);
+            }
+
+            foreach (TimerManagerEventset t in timerEvents)
+            {
+                if (t.Id.ToLower() == input.ToLower().Trim())
+                {
+                    // that's our man!
+                    return t;
+                }
+            }
+
+            // null if we didn't found anything that matches
+            return null;
+        }
 		#endregion	
 	}
 }
