@@ -11,6 +11,9 @@ namespace RLToolkit.Widgets
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		private global::Gtk.TextView outputList;
 
+        /// <summary>
+        /// Build this instance.
+        /// </summary>
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
