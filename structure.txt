@@ -24,6 +24,8 @@ RLToolkit namespace structure:
     -ButtonImage
     -DynamicColumn
     -DynamicRow
+    -OutputList
+    -GridSelector
   * Wrappers
     -P4Wrapper (not in yet)
     -SVNWrapper (not in yet)

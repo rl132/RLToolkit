@@ -52,6 +52,8 @@
     <Compile Include="gtk-gui\RLToolkit.Widgets.DynamicRow.cs" />
     <Compile Include="OutputList.cs" />
     <Compile Include="gtk-gui\RLToolkit.Widgets.OutputList.cs" />
+    <Compile Include="GridSelector.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.GridSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
