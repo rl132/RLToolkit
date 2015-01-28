@@ -39,6 +39,7 @@
     <Compile Include="ColorExtension.cs" />
     <Compile Include="BitmapAssert.cs" />
     <Compile Include="GtkWidgetExtension.cs" />
+    <Compile Include="ToggleButtonExclusiveSelectionGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoggerLayer\LoggerLayer-Windows.csproj">

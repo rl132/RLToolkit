@@ -20,6 +20,7 @@ RLToolkit namespace structure:
     -BitmapAssert
     -ColorExtension
     -GtkWidgetExtension
+    -ToggleButtonExclusiveSelectionGroup
   * Widgets
     -ButtonImage
     -DynamicColumn

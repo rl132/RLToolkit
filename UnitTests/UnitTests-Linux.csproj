@@ -73,6 +73,7 @@
     <Compile Include="Tests\Modules\XmlHelperTest.cs" />
     <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
     <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
+    <Compile Include="Tests\Extensions\ToggleButtonExclusiveSelectionGroupTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
