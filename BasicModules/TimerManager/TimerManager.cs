@@ -308,7 +308,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns>Returns if the eventset was found</returns>
         /// <param name="Ident">the identifier to look for</param>
-        /// <param name="pause">if we pause or not</param>
+        /// <param name="isPausing">if we pause or not</param>
         public static bool PauseIdent(string Ident, bool isPausing)
         {
             LogManager.Instance.Log().Debug(string.Format("Trying to set pause status to {0} for the Id \"{1}\"", isPausing, Ident));
