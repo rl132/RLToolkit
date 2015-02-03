@@ -10,6 +10,8 @@
     <RootNamespace>RLToolkit.Logger</RootNamespace>
     <AssemblyName>RLToolkit.Logger.Linux</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.LoggerLayer.Linux.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +39,7 @@
     <Compile Include="NullLogger.cs" />
     <Compile Include="LogExtension.cs" />
     <Compile Include="LogManager.cs" />
+    <Compile Include="Properties\AssemblyInfoLinux.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="logger.config">

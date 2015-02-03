@@ -10,6 +10,8 @@
     <RootNamespace>RLToolkit.Extensions</RootNamespace>
     <AssemblyName>RLToolkit.Extensions.Linux</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.Extensions.Linux.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +48,7 @@
     <Compile Include="BitmapAssert.cs" />
     <Compile Include="GtkWidgetExtension.cs" />
     <Compile Include="ToggleButtonExclusiveSelectionGroup.cs" />
+    <Compile Include="Properties\AssemblyInfoLinux.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoggerLayer\LoggerLayer-Linux.csproj">

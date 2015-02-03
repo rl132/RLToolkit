@@ -10,6 +10,8 @@
     <RootNamespace>RLToolkit.UnitTests</RootNamespace>
     <AssemblyName>RLToolkit.UnitTests.Linux</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.UnitTests.Linux.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,6 +76,7 @@
     <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
     <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
     <Compile Include="Tests\Extensions\ToggleButtonExclusiveSelectionGroupTest.cs" />
+    <Compile Include="Properties\AssemblyInfoLinux.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
