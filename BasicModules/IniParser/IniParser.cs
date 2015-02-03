@@ -199,7 +199,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns><c>true</c>, if dictionary config was added, <c>false</c> otherwise.</returns>
         /// <param name="toAdd">the DicConfiguration to add</param>
-		public bool AddDicConf (DicConfiguration toAdd)
+		internal bool AddDicConf (DicConfiguration toAdd)
 		{
             this.Log().Debug(string.Format("trying to add Dictionary configuration: {0}", toAdd.header));
 			bool found = false;

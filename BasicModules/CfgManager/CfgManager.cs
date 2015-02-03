@@ -114,20 +114,20 @@ namespace RLToolkit.Basic
         }
 
         /// <summary>
-        /// Method to fetch the entire Dictionary. Mostly for debugging purposes.
+        /// Method to fetch the entire Dictionary. Internal use only
         /// </summary>
         /// <returns>The dictionary.</returns>
-        public Dictionary<string, string> GetDictionary()
+        internal Dictionary<string, string> GetDictionary()
         {
             this.Log().Debug("Fetching the dictionary");
             return content;
         }
 
         /// <summary>
-        /// Method to overrid the entire dictionary. Mostly for debugging purposes.
+        /// Method to overrid the entire dictionary. Internal use only
         /// </summary>
         /// <param name="input">The new Dictionary to use</param>
-        public void SetDictionary (Dictionary<string, string> input)
+        internal void SetDictionary (Dictionary<string, string> input)
         {
             this.Log().Debug("Manually setting the dictionary");
             content = input;

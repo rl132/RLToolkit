@@ -113,7 +113,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">E.</param>
-        public void OnExitedReceived(object sender, EventArgs e)
+        protected void OnExitedReceived(object sender, EventArgs e)
         {
             // throw it up!
             if (processFinished != null) {

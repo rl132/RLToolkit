@@ -122,7 +122,7 @@ namespace RLToolkit.Basic
         /// Method to fetch the number of EventSet registered. Mostly for internal use only.
         /// </summary>
         /// <returns>The EventSet count.</returns>
-        public static int GetEventSetsCount()
+        internal static int GetEventSetsCount()
 		{
             LogManager.Instance.Log().Debug(string.Format("Getting the EventSet count: {0}", timerEvents.Count));
             return timerEvents.Count;
@@ -170,7 +170,7 @@ namespace RLToolkit.Basic
         /// <summary>
         /// Forces the start of the timer thread. (internal use only)
         /// </summary>
-        public static void ForceStartThread()
+        internal static void ForceStartThread()
         {
             // force the start of the thread for unit tests
             if (isVerbose)
@@ -288,7 +288,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns><c>true</c> if the ident exist; otherwise, <c>false</c>.</returns>
         /// <param name="Ident">The identifier to look for</param>
-		public static bool IsIdentExist (string Ident)
+		internal static bool IsIdentExist (string Ident)
 		{
             LogManager.Instance.Log().Debug(string.Format("Trying to find if Id \"{0}\" exists", Ident));
 			foreach (TimerManagerEventset t in timerEvents)
@@ -348,7 +348,7 @@ namespace RLToolkit.Basic
         /// Method that verify if there's any event registered and not paused
         /// </summary>
         /// <returns>True if it does contain something not paused, else false</returns>
-        public static bool IsEventListFilled()
+        internal static bool IsEventListFilled()
         {
             return IsEventListFilled(true);
         }
@@ -358,7 +358,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <param name="includePaused">If we include or not the paused events in the search</param>
         /// <returns>True if it does contain something, else false</returns>
-        public static bool IsEventListFilled(bool includePaused)
+        internal static bool IsEventListFilled(bool includePaused)
         {
             if (includePaused)
             {
@@ -399,7 +399,7 @@ namespace RLToolkit.Basic
         /// <summary>
         /// Resets the tick counter.
         /// </summary>
-        public static void ResetTickCounter()
+        internal static void ResetTickCounter()
         {
             LogManager.Instance.Log().Debug("reseting the tick counter.");
             tickCount = 0;
@@ -409,7 +409,7 @@ namespace RLToolkit.Basic
         /// Gets the tick counter value
         /// </summary>
         /// <returns>The tick counter value</returns>
-        public static int GetTickCounter()
+        internal static int GetTickCounter()
         {
             if (isVerbose)
             {
@@ -423,7 +423,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns>The event set if the ID is known, null if not found</returns>
         /// <param name="input">the ID to match</param>
-        public static TimerManagerEventset GetEventSetByID(string input)
+        internal static TimerManagerEventset GetEventSetByID(string input)
         {
             if (isVerbose)
             {

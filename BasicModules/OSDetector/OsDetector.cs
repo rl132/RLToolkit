@@ -41,7 +41,7 @@ namespace RLToolkit.Basic
         /// Manually override the operating system. Internal use only
         /// </summary>
         /// <param name="osInput">the new OS to use</param>
-		public static void SetOS (OperatingSystem osInput)
+		internal static void SetOS (OperatingSystem osInput)
 		{
             LogManager.Instance.Log().Debug(string.Format("Setting OS to: {0}", osInput.ToString()));
 			os = osInput;
