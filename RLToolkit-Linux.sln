@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Widgets-Linux", "Widgets\Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests-Linux", "UnitTests\UnitTests-Linux.csproj", "{EF1A5D54-D72D-44F7-A324-817E50D73CF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsTest-Linux", "WidgetsTest\WidgetsTest-Linux.csproj", "{2A070CCD-6C10-4373-AF54-78A030D34805}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A070CCD-6C10-4373-AF54-78A030D34805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A070CCD-6C10-4373-AF54-78A030D34805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A070CCD-6C10-4373-AF54-78A030D34805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A070CCD-6C10-4373-AF54-78A030D34805}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72C4572E-2466-4BA4-9676-2C89F8E398C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,7 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = UnitTests\UnitTests-Linux.csproj
+		StartupItem = WidgetsTest\WidgetsTest-Linux.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

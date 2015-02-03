@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A070CCD-6C10-4373-AF54-78A030D34805}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RLToolkit.Widgets.Tests</RootNamespace>
+    <AssemblyName>RLToolkit.WidgetsTest.Linux</AssemblyName>
+    <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.WidgetsTest.Linux.key</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glade-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="TestDefinitions\OutputListTest.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.Tests.MainWindow.cs" />
+    <Compile Include="BaseSystem\TestDefinition.cs" />
+    <Compile Include="BaseSystem\TestBase.cs" />
+    <Compile Include="TestList.cs" />
+    <Compile Include="TestSelectionDialog.cs" />
+    <Compile Include="Properties\AssemblyInfoLinux.cs" />
+    <Compile Include="gtk-gui\RLToolkit.Widgets.Tests.TestSelectionDialog.cs" />
+    <Compile Include="TestDefinitions\LabelTest.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="TestDefinitions\" />
+    <Folder Include="BaseSystem\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Widgets\Widgets-Linux.csproj">
+      <Project>{72C4572E-2466-4BA4-9676-2C89F8E398C6}</Project>
+      <Name>Widgets-Linux</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer-Linux.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer-Linux</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions\Extensions-Linux.csproj">
+      <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
+      <Name>Extensions-Linux</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BasicModules\BasicModules-Linux.csproj">
+      <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
+      <Name>BasicModules-Linux</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
