@@ -65,7 +65,6 @@ namespace RLToolkit.Widgets
 
         // Global variables
         private List<string> bufferToAdd = new List<string>();
-        private bool isTicking = false;
         private bool isRegistered = false;
         #endregion
 
@@ -89,24 +88,6 @@ namespace RLToolkit.Widgets
 
             // register 
             RegisterEvent();
-
-            // Set the timer to live and set it delay
-            StartTick();
-        }
-
-        /// <summary>
-        /// Method to update the delay of the ticking used in the timer
-        /// </summary>
-        /// <param name="delayMs">Delay in ms.</param>
-        public void SetTimerSpeed(int delayMs)
-        {
-            // TODO: update this. this is not working anymore
-            this.Log().Debug("changing the outputlist delay to " + delayMs.ToString() + "ms");
-            // cache the new speed
-            tickSpeed = delayMs;
-
-            // set a new timer delay in case we want faster or slower for our ticking
-            StartTick();
         }
         #endregion
 
@@ -123,10 +104,6 @@ namespace RLToolkit.Widgets
             if (!isRegistered)
             {
                 this.Log().Warn("Event failed to register.");
-            } else
-            {
-                // set the event to pause
-                TimerManager.PauseIdent(identifier, true);
             }
         }
 
@@ -149,25 +126,6 @@ namespace RLToolkit.Widgets
         }
         #endregion
 
-        #region Start/Stop Ticking
-        private void StartTick()
-        {
-            this.Log().Debug("Trying to start the ticking");
-
-            // unpause
-            isTicking = true;
-            TimerManager.PauseIdent(identifier, false);
-        }
-
-        private void StopTick()
-        {
-            this.Log().Debug("Trying to stop the ticking");
-
-            isTicking = false;
-            TimerManager.PauseIdent(identifier, true);
-        }
-        #endregion
-
         #region Data Methods
         /// <summary>
         /// Method to queue the new data to output
@@ -176,12 +134,6 @@ namespace RLToolkit.Widgets
         public void QueueData(string data)
         {
             this.Log().Debug("Adding data to buffer:" + Environment.NewLine + data);
-
-            if (!isTicking)
-            {
-                // if we were sleeping, wake up!
-                StartTick();
-            }
 
             // put the data to be added to the list
             bufferToAdd.Add(data);
@@ -196,9 +148,6 @@ namespace RLToolkit.Widgets
             // clean the output list, queued messages and buffer
             bufferToAdd.Clear();
             outputList.Buffer.Clear();
-
-            // force to sleep
-            isTicking = false;
         }
         #endregion
 
@@ -211,7 +160,6 @@ namespace RLToolkit.Widgets
             {
                 this.Log().Debug("No more data to add, stopping the ticking");
                 // don't tick unnecesarly
-                StopTick();
                 return;
             }
 
@@ -223,7 +171,8 @@ namespace RLToolkit.Widgets
             this.Log().Debug("Trying to add " + toAdd.Count.ToString() + " items");
 
             // invoke to make sure it runs on the UI thread (and update the UI properly)
-            Gtk.Application.Invoke (delegate {
+            Gtk.Application.Invoke(delegate
+            {
                 TextIter mIter = outputList.Buffer.EndIter;
                 StringBuilder stringToAdd = new StringBuilder(""); // TODO: not sure if we should do this. to see
                 foreach (string s in toAdd)
