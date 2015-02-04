@@ -43,6 +43,7 @@
       <widget class="Gtk.VBox" id="vboxMain">
         <property name="MemberName" />
         <property name="Spacing">6</property>
+        <property name="BorderWidth">10</property>
         <child>
           <widget class="Gtk.MenuBar" id="mnu">
             <property name="MemberName" />
@@ -131,6 +132,7 @@
           <widget class="Gtk.VBox" id="vboxWidget">
             <property name="MemberName" />
             <property name="Spacing">6</property>
+            <property name="BorderWidth">6</property>
             <child>
               <placeholder />
             </child>
@@ -138,6 +140,7 @@
           <packing>
             <property name="Position">3</property>
             <property name="AutoSize">True</property>
+            <property name="Padding">5</property>
           </packing>
         </child>
         <child>

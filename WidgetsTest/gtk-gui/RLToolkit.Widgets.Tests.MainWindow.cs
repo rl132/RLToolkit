@@ -58,6 +58,7 @@ namespace RLToolkit.Widgets.Tests
 			this.vboxMain = new global::Gtk.VBox ();
 			this.vboxMain.Name = "vboxMain";
 			this.vboxMain.Spacing = 6;
+			this.vboxMain.BorderWidth = ((uint)(10));
 			// Container child vboxMain.Gtk.Box+BoxChild
 			this.UIManager.AddUiFromString ("<ui><menubar name='mnu'><menu name='mnuFile' action='mnuFile'><menuitem name='SelectTestAction' action='SelectTestAction'/><menuitem name='mnuQuit' action='mnuQuit'/></menu></menubar></ui>");
 			this.mnu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/mnu")));
@@ -120,9 +121,11 @@ namespace RLToolkit.Widgets.Tests
 			this.vboxWidget = new global::Gtk.VBox ();
 			this.vboxWidget.Name = "vboxWidget";
 			this.vboxWidget.Spacing = 6;
+			this.vboxWidget.BorderWidth = ((uint)(6));
 			this.vboxMain.Add (this.vboxWidget);
 			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vboxMain [this.vboxWidget]));
 			w9.Position = 3;
+			w9.Padding = ((uint)(5));
 			// Container child vboxMain.Gtk.Box+BoxChild
 			this.hboxButton = new global::Gtk.HBox ();
 			this.hboxButton.Name = "hboxButton";
