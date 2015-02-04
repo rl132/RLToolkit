@@ -56,7 +56,21 @@ namespace RLToolkit.UnitTests.Modules
 		[Test]
 		public void Timer_Action_AddEvent()
 		{
-            bool add = TimerManager.AddEventSet("test1", 3000, IncreaseCount, false);
+            // need to tick at least once
+            int count = 0;
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            bool add = TimerManager.AddEventSet("test1", 3000, delegate(object sender, TimerManagerEventArg e)
+                 {
+                    count++;
+                    if (count >= 1)
+                    {
+                        mre.Set();
+                    }
+                }
+            , true);
+            mre.WaitOne(2000, false);
+
 			Assert.AreEqual(1, TimerManager.GetEventSetsCount(), "Timer event count should be 1");
 			Assert.AreEqual(true, add, "Adding should have been successful");
 		}
@@ -64,12 +78,29 @@ namespace RLToolkit.UnitTests.Modules
 		[Test]
 		public void Timer_Action_RemoveEvent()
 		{
-			Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 at the start");
+            // need to tick at least once
+            int count = 0;
+            ManualResetEvent mre = new ManualResetEvent(false);
 
-			TimerManager.AddEventSet("test2", 3000, IncreaseCount, false);
-			Assert.AreEqual(true, TimerManager.IsIdentExist("test2"), "The manager should find the 'Test2' ID");
+            TimerManager.AddEventSet("test2", 3000, delegate(object sender, TimerManagerEventArg e)
+                                                {
+                count++;
+                if (count >= 1)
+                {
+                    mre.Set();
+                }
+            }
+            , true);
+            mre.WaitOne(2000, false);
+            Assert.AreEqual(true, TimerManager.IsIdentExist("test2"), "The manager should find the 'Test2' ID");
 
-			bool rem = TimerManager.RemoveEventSet("test2");
+
+            bool rem = TimerManager.RemoveEventSet("test2");
+            // need to tick a 2nd time at least
+            mre.Reset();
+            count = 0;
+            mre.WaitOne(2000, false);
+
 			Assert.AreEqual(true, rem, "Removing should have been successful");
 			Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 after removing");
 		}
@@ -77,13 +108,29 @@ namespace RLToolkit.UnitTests.Modules
 		[Test]
 		public void Timer_Action_ClearEvent()
 		{
-			TimerManager.AddEventSet("test3a", 3000, IncreaseCount, false);
-			TimerManager.AddEventSet("test3b", 3000, IncreaseCount, false);
-			TimerManager.AddEventSet("test3c", 3000, IncreaseCount, false);
-			Assert.AreEqual(3, TimerManager.GetEventSetsCount(), "Timer event count should be 3");
+            int count = 0;
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            TimerManager.AddEventSet("test3a", 3000, IncreaseCount, false);
+            TimerManager.AddEventSet("test3b", 3000, IncreaseCount, false);
+            TimerManager.AddEventSet("test3c", 3000, delegate(object sender, TimerManagerEventArg e)
+                                     {
+                count++;
+                if (count >= 1)
+                {
+                    mre.Set();
+                }
+            }
+            , true);
+            mre.WaitOne(2000, false);
+            Assert.AreEqual(3, TimerManager.GetEventSetsCount(), "Timer event count should be 3");
 
 			TimerManager.ClearAllEventSets();
-			Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 after clearing");
+            // tick a 2nd time
+            mre.Reset();
+            count = 0;
+            mre.WaitOne(2000, false);
+            Assert.AreEqual(0, TimerManager.GetEventSetsCount(), "Timer event count should be 0 after clearing");
 		}
 		#endregion
 
@@ -312,20 +359,31 @@ namespace RLToolkit.UnitTests.Modules
                 // never set the MRE so it waits the full time
             }
             , false);
-
             TimerManager.PauseIdent("test16", true);
             int countNow = TimerManager.GetTickCounter();
             mre.WaitOne(3000, false);
-            Assert.AreEqual(countNow, TimerManager.GetTickCounter(), "Tick Count should be the same.");
+            // the ticking should happen once more to have time to pause the event
+            Assert.AreEqual(countNow+1, TimerManager.GetTickCounter(), "Tick Count should be the same.");
         }
         
         [Test]
         public void Timer_EventSetFetch_Normal()
         {
-            TimerManager.AddEventSet("test17", 2456, IncreaseCount, false);
+            // need to tick at least once
+            int count = 0;
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            TimerManager.AddEventSet("test17", 2456, delegate(object sender, TimerManagerEventArg e)
+                                     {
+                count++;
+                if (count >= 1)
+                {
+                    mre.Set();
+                }
+            }
+            , false);
+            mre.WaitOne(2000, false);
             TimerManagerEventset retVal = TimerManager.GetEventSetByID("test17");
-
-
             Assert.AreEqual(2456, retVal.timeInbetweenTick, "Ticking time should be the right thing");
             Assert.AreEqual("test17", retVal.Id, "ID should be the right thing");
             Assert.AreEqual(false, retVal.isPaused, "Pause status should be the right thing");
@@ -334,10 +392,21 @@ namespace RLToolkit.UnitTests.Modules
         [Test]
         public void Timer_EventSetFetch_NotFound()
         {
-            TimerManager.AddEventSet("test18", 250, IncreaseCount, false);
+            // need to tick at least once
+            int count = 0;
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            TimerManager.AddEventSet("test18", 250, delegate(object sender, TimerManagerEventArg e)
+                                     {
+                count++;
+                if (count >= 1)
+                {
+                    mre.Set();
+                }
+            }
+            , false);
+            mre.WaitOne(2000, false);
             TimerManagerEventset retVal = TimerManager.GetEventSetByID("test_foo");
-
-
             Assert.AreEqual(null, retVal, "value returned by the method should be null");
         }
         #endregion

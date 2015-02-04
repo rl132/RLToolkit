@@ -5,9 +5,6 @@ using System.Threading;
 
 using RLToolkit.Logger;
 
-// TODO: RL - Remove the Start/Stop ticking and do it automatically
-// if we have data to tick.. if no event, no need to tick for nothing.
-
 namespace RLToolkit.Basic
 {
     /// <summary>
@@ -16,11 +13,21 @@ namespace RLToolkit.Basic
 	public static class TimerManager
 	{
 		#region Local Variables
+        // states
 		private static bool isRunning = false;
         private static bool isVerbose = false;
-        private static List<TimerManagerEventset> timerEvents = new List<TimerManagerEventset>();
-		private static Thread tickThread;
+		
+        // ticking-related
+        private static Thread tickThread;
         private static int tickCount = 0;
+
+        // list related
+        private static List<TimerManagerEventset> timerEvents = new List<TimerManagerEventset>();
+        private static List<TimerManagerEventset> deferredAddList = new List<TimerManagerEventset>();
+        private static List<string> deferredRemList = new List<string>();
+        private static List<string> deferredPauseList = new List<string>();
+        private static List<string> deferredUnpauseList = new List<string>();
+        private static bool deferredCleanFlag = false;
 		#endregion
 
         #region initialization
@@ -69,7 +76,7 @@ namespace RLToolkit.Basic
 				e.nextTick = DateTime.UtcNow.AddMilliseconds(ms);
 			}
             LogManager.Instance.Log().Debug(string.Format("Next Tick at: {0}", e.nextTick.ToLongTimeString()));
-			timerEvents.Add(e);
+            deferredAddList.Add(e);
 
             // automatically restart the timer since we added something
             isRunning = true;
@@ -85,37 +92,20 @@ namespace RLToolkit.Basic
         public static bool RemoveEventSet (string ID)
 		{
             LogManager.Instance.Log().Debug(string.Format("Removing EventSet with parameters: ID: {0}", ID));
-			Stack<TimerManagerEventset> st = new Stack<TimerManagerEventset> ();
-			bool found = false;
-
-			foreach (TimerManagerEventset t in timerEvents) {
-				if (ID.ToLower () != t.Id.ToLower ()) {
-					st.Push (t);
-				} else {
-                    LogManager.Instance.Log().Debug("Found the EventSet to remove.");
-					found = true;
-				}
-			}
-
-			// if we haven't found it, gtfo
-            if (!found) {
-                LogManager.Instance.Log().Debug("EventSet to remove not found. Aborting.");
-				return false;
-			}
-
-			// replace the list with the stack since we found it (and removed it)
-			timerEvents = new List<TimerManagerEventset>();
-			foreach (TimerManagerEventset t in st) {
-				timerEvents.Add(t);
-			}
-
-            if (!IsEventListFilled())
+			
+            if (ID.Trim() == "")
             {
-                // shut down the ticking if we're empty
-                isRunning = false;
+                LogManager.Instance.Log().Warn("using an empty ident. Abort");
+                return false;
+            }
+            if (ID == null)
+            {
+                LogManager.Instance.Log().Warn("using an null ident. Abort");
+                return false;
             }
 
-			return true;
+            deferredRemList.Add(ID);
+            return true;
 		}
 
         /// <summary>
@@ -133,10 +123,9 @@ namespace RLToolkit.Basic
         /// </summary>
         public static void ClearAllEventSets ()
 		{
-			// wipe it
-            LogManager.Instance.Log().Debug("Clearing the event list.");
-            timerEvents.Clear();
-            isRunning = false;
+            // schedule to wipe it
+            LogManager.Instance.Log().Debug("Setting the flag to clear the event list.");
+            deferredCleanFlag = true;
 		}
 		#endregion
 
@@ -215,28 +204,67 @@ namespace RLToolkit.Basic
 
                 if (!skip)
                 {
-                    if (!IsEventListFilled())
-                    {
-                        // if we have nothing, don't tick
-                        if (isVerbose)
-                        {
-                            LogManager.Instance.Log().Debug("Timer is empty while ticking. Abort.");
-                        }
-                        skip = true;
-                    }
-                }
-
-                if (!skip)
-                {
                     // increment our counter
                     tickCount++;
+
+                    if (deferredCleanFlag)
+                    {
+                        LogManager.Instance.Log().Info("timer Event Cleared");
+                        timerEvents = new List<TimerManagerEventset>();
+                        deferredCleanFlag = false;
+                        //continue;
+                    }
 
                     // make a new list that will replace the one once we're done with our tick
                     List<TimerManagerEventset> newList = new List<TimerManagerEventset>();
 
-                    foreach (TimerManagerEventset t in timerEvents)
+                    // copy the lists and wipe the old one
+                    List<TimerManagerEventset> defAddListCopy = new List<TimerManagerEventset>(deferredAddList);
+                    List<string> defRemListCopy = new List<string>(deferredRemList);
+                    List<string> defPauListCopy = new List<string>(deferredPauseList);
+                    List<string> defUnpListCopy = new List<string>(deferredUnpauseList);
+                    deferredAddList = new List<TimerManagerEventset>();
+                    deferredRemList = new List<string>();
+                    deferredPauseList = new List<string>();
+                    deferredUnpauseList = new List<string>();
+
+                    List<TimerManagerEventset> currentList = new List<TimerManagerEventset>(timerEvents);
+
+                    // add the new stuff requested
+                    if (defAddListCopy.Count > 0)
                     {
-                        if (DateTime.UtcNow >= t.nextTick)
+                        LogManager.Instance.Log().Debug("Adding " + defAddListCopy.Count.ToString() + " items");
+                        currentList.AddRange(defAddListCopy);
+                    }
+
+                    // check each events
+                    foreach (TimerManagerEventset t in currentList)
+                    {
+                        TimerManagerEventset newT = new TimerManagerEventset(t);
+
+                        if (defRemListCopy.Contains(t.Id))
+                        {
+                            // we need to wipe that one.  don't even bother readding it to the new list
+                            LogManager.Instance.Log().Debug("Removing " + t.Id);
+                            continue;
+                        }
+
+                        if (defPauListCopy.Contains(t.Id))
+                        {
+                            LogManager.Instance.Log().Debug("Pausing " + t.Id);
+                            newT.isPaused = true;
+                            // we're not gonna fire since we just paused it
+                            newList.Add(newT);
+                            continue;
+                        }
+                        if (defUnpListCopy.Contains(t.Id))
+                        {
+                            // wake that one up! 
+                            LogManager.Instance.Log().Debug("Unpausing " + t.Id);
+                            newT.isPaused = false;
+                        }
+
+                        if (DateTime.UtcNow >= newT.nextTick)
                         {// we're ready to tick
 
                             // if we're paused, don't even bother.  next!
@@ -244,26 +272,24 @@ namespace RLToolkit.Basic
                             {
                                 if (isVerbose)
                                 {
-                                    LogManager.Instance.Log().Debug(string.Format("EventSet ID \"{0}\" is ready to tick but is paused.", t.Id));
+                                    LogManager.Instance.Log().Debug(string.Format("EventSet ID \"{0}\" is ready to tick but is paused.", newT.Id));
                                 }
                                 continue;
                             }
-                            LogManager.Instance.Log().Debug(string.Format("EventSet ID \"{0}\" is ready to tick", t.Id));
-                            // cache the old data and add it to the new list after
-                            TimerManagerEventset t2 = t;
-                            t2.nextTick = DateTime.UtcNow.AddMilliseconds(t.timeInbetweenTick);
-                            newList.Add(t2);
-                            LogManager.Instance.Log().Debug(string.Format("Setting new tick time for EventSet ID \"{0}\" to {1}", t2.Id, t2.nextTick.ToLongTimeString()));
+                            LogManager.Instance.Log().Debug(string.Format("EventSet ID \"{0}\" is ready to tick", newT.Id));
+                            newT.nextTick = DateTime.UtcNow.AddMilliseconds(newT.timeInbetweenTick);
+                            newList.Add(newT);
+                            LogManager.Instance.Log().Debug(string.Format("Setting new tick time for EventSet ID \"{0}\" to {1}", newT.Id, newT.nextTick.ToLongTimeString()));
 
                             // fire
                             TimerManagerEventArg param = new TimerManagerEventArg();
                             param.tickTime = DateTime.UtcNow;
                             LogManager.Instance.Log().Debug("Firing event");
-                            t.executeEvent(new object(), param);
+                            newT.executeEvent(new object(), param);
                         } else
                         {
                             // nothing to do, just put back the data in the list
-                            newList.Add(t);
+                            newList.Add(newT);
                         }
                     }
 
@@ -277,6 +303,10 @@ namespace RLToolkit.Basic
                     LogManager.Instance.Log().Debug("Timer Sleeping.");
                 }
                 skip = false;
+
+                // check if we need to tick next time
+                isRunning = IsEventListFilled();
+
 				Thread.Sleep (1000);
 			}
 		}
@@ -288,10 +318,22 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns><c>true</c> if the ident exist; otherwise, <c>false</c>.</returns>
         /// <param name="Ident">The identifier to look for</param>
-		internal static bool IsIdentExist (string Ident)
+        internal static bool IsIdentExist (string Ident)
+        {
+            return IsIdentExist(Ident, timerEvents);
+        }
+
+        /// <summary>
+        /// Method that querry if an Identifier already exists with a provided name, in a specified list
+        /// </summary>
+        /// <returns><c>true</c> if the ident exist; otherwise, <c>false</c>.</returns>
+        /// <param name="Ident">The identifier to look for</param>
+        /// <param name="inputList">what List\<TimerManagerEventset\> to use for the search</param>
+        internal static bool IsIdentExist (string Ident, List<TimerManagerEventset> inputList)
 		{
             LogManager.Instance.Log().Debug(string.Format("Trying to find if Id \"{0}\" exists", Ident));
-			foreach (TimerManagerEventset t in timerEvents)
+            List<TimerManagerEventset> currentList = new List<TimerManagerEventset>(inputList);
+            foreach (TimerManagerEventset t in currentList)
 			{
 				if (t.Id.ToLower() == Ident.ToLower())
 				{
@@ -303,6 +345,8 @@ namespace RLToolkit.Basic
 			return false;
 		}
 
+
+
         /// <summary>
         /// Method to set the pause status of an event set.
         /// </summary>
@@ -312,34 +356,36 @@ namespace RLToolkit.Basic
         public static bool PauseIdent(string Ident, bool isPausing)
         {
             LogManager.Instance.Log().Debug(string.Format("Trying to set pause status to {0} for the Id \"{1}\"", isPausing, Ident));
-            Stack<TimerManagerEventset> st = new Stack<TimerManagerEventset> ();
-            bool found = false;
 
-            foreach (TimerManagerEventset t in timerEvents) {
-                if (Ident.ToLower () != t.Id.ToLower ()) {
-                    st.Push (t);
-                } else {
-                    LogManager.Instance.Log().Debug("Found the EventSet to set pause state to " + isPausing);
-                    found = true;
-                    t.isPaused = isPausing;
-                    st.Push(t);
-                }
+            if (Ident.Trim() == "")
+            {
+                LogManager.Instance.Log().Warn("using an empty ident. Abort");
+                return false;
             }
-
-            // if we haven't found it, gtfo
-            if (!found) {
-                LogManager.Instance.Log().Debug("EventSet to pause not found. Aborting.");
+            if (Ident == null)
+            {
+                LogManager.Instance.Log().Warn("using an null ident. Abort");
                 return false;
             }
 
-            // replace the list with the stack since we found it (and modified it)
-            timerEvents = new List<TimerManagerEventset>();
-            foreach (TimerManagerEventset t in st) {
-                timerEvents.Add(t);
+            if (!IsIdentExist(Ident, timerEvents))
+            {
+                if (!IsIdentExist(Ident, deferredAddList))
+                {
+                    LogManager.Instance.Log().Warn("using an ident that is not found. aborting.");
+                    return false;
+                }
             }
 
-            // if we don't have any more live eventset, pause the whole thing
-            isRunning = IsEventListFilled(true);
+            if (isPausing)
+            {
+                deferredPauseList.Add(Ident);
+            }
+            else
+            {
+                deferredUnpauseList.Add(Ident);
+            }           
+            LogManager.Instance.Log().Debug("Added the ident to be paused/unpaused.");
 
             return true;
         }
@@ -365,7 +411,8 @@ namespace RLToolkit.Basic
                 if (timerEvents.Count > 0)
                 {
                     // we have stuff. but... anything worth checking?
-                    foreach (TimerManagerEventset t in timerEvents)
+                    List<TimerManagerEventset> currentList = new List<TimerManagerEventset>(timerEvents);
+                    foreach (TimerManagerEventset t in currentList)
                     {
                         if (isVerbose)
                         {
@@ -430,7 +477,8 @@ namespace RLToolkit.Basic
                 LogManager.Instance.Log().Debug("Looking for event: " + input);
             }
 
-            foreach (TimerManagerEventset t in timerEvents)
+            List<TimerManagerEventset> currentList = new List<TimerManagerEventset>(timerEvents);
+            foreach (TimerManagerEventset t in currentList)
             {
                 if (t.Id.ToLower() == input.ToLower().Trim())
                 {
