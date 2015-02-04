@@ -20,6 +20,15 @@ Also, there's a few extension:<br>
 -BitmapAssert for nUnit Asserts<br>
 -Color Extension<br>
 -Gtk.Widget Extension<br>
+-ToggleButtonExclusiveSelectionGroup to add exclusive toggle<br>
+<br>
+<br>
+There is also some widgets in the toolkit:<br>
+-ButtonImage<br>
+-DynamicColumn<br>
+-DynamicRow<br>
+-GridSelector<br>
+-OutputList<br>
 <br>
 <br>
 And more coming soon...<br>

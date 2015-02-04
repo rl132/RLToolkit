@@ -37,6 +37,8 @@ RLToolkit namespace structure:
       -All unit tests for the extensions
     * Widgets
       -All unit tests for the widgets (see if it's possible to do)
+  * WidgetsTests
+    - All the Widget tests 
   
 * = namespace 
 - = module

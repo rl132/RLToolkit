@@ -14,6 +14,7 @@ I won't keep track of the actual checks in these lists but it can be helpful if 
 7- Include the documentation files (Readme, licence, how to, structure, etc)
 8- Make a new release on Git and add the proper description
 9- Add the package to the release.
+10- Make a pull commit in the stable branche
 <br>
 <br>
 Note: We should release Linux & Windows, both at the same time. Ideally prepare both windows and linux packages before doing the Git release.<br>
