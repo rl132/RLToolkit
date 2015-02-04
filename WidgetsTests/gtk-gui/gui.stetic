@@ -6,11 +6,11 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../../bin/Debug/RLToolkit.Widgets.Linux.dll" />
-    <widget-library name="../../bin/Debug/RLToolkit.Extensions.Linux.dll" />
-    <widget-library name="../../bin/Debug/RLToolkit.WidgetsTest.Linux.exe" internal="true" />
+    <widget-library name="../../bin/Release/RLToolkit.Widgets.Linux.dll" />
+    <widget-library name="../../bin/Release/RLToolkit.Extensions.Linux.dll" />
+    <widget-library name="../../bin/Release/RLToolkit.WidgetsTests.Linux.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="RLToolkit.Widgets.Tests.MainWindow" design-size="589 555">
+  <widget class="Gtk.Window" id="RLToolkit.WidgetsTests.MainWindow" design-size="589 555">
     <action-group name="Default">
       <action id="mnuFile">
         <property name="Type">Action</property>
@@ -295,7 +295,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Dialog" id="RLToolkit.Widgets.Tests.TestSelectionDialog" design-size="400 279">
+  <widget class="Gtk.Dialog" id="RLToolkit.WidgetsTests.TestSelectionDialog" design-size="400 279">
     <property name="MemberName" />
     <property name="WindowPosition">CenterOnParent</property>
     <property name="Buttons">2</property>

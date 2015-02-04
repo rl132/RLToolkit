@@ -1,7 +1,7 @@
 using System;
 using Gtk;
 
-namespace RLToolkit.Widgets.Tests
+namespace RLToolkit.WidgetsTests
 {
     class MainClass
     {

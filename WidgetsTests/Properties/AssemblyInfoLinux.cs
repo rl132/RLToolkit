@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyTitle("RLToolkit.WidgetsTest.Linux")]
+[assembly: AssemblyTitle("RLToolkit.WidgetsTests.Linux")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]

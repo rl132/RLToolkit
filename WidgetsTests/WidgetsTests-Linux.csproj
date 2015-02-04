@@ -7,11 +7,11 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2A070CCD-6C10-4373-AF54-78A030D34805}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RLToolkit.Widgets.Tests</RootNamespace>
-    <AssemblyName>RLToolkit.WidgetsTest.Linux</AssemblyName>
+    <RootNamespace>RLToolkit.WidgetsTests</RootNamespace>
+    <AssemblyName>RLToolkit.WidgetsTests.Linux</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Properties\RLToolkit.WidgetsTest.Linux.key</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.WidgetsTests.Linux.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,14 +68,14 @@
     <Compile Include="MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TestDefinitions\OutputListTest.cs" />
-    <Compile Include="gtk-gui\RLToolkit.Widgets.Tests.MainWindow.cs" />
     <Compile Include="BaseSystem\TestDefinition.cs" />
     <Compile Include="BaseSystem\TestBase.cs" />
     <Compile Include="TestList.cs" />
     <Compile Include="TestSelectionDialog.cs" />
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
-    <Compile Include="gtk-gui\RLToolkit.Widgets.Tests.TestSelectionDialog.cs" />
     <Compile Include="TestDefinitions\LabelTest.cs" />
+    <Compile Include="gtk-gui\RLToolkit.WidgetsTests.MainWindow.cs" />
+    <Compile Include="gtk-gui\RLToolkit.WidgetsTests.TestSelectionDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using RLToolkit.Widgets;
 
-namespace RLToolkit.Widgets.Tests
+namespace RLToolkit.WidgetsTests
 {
 	public class LabelTest : TestBase
 	{

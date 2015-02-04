@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Gtk;
 
-namespace RLToolkit.Widgets.Tests
+namespace RLToolkit.WidgetsTests
 {
 	public partial class TestSelectionDialog : Gtk.Dialog
 	{

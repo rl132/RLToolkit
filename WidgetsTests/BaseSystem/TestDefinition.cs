@@ -1,6 +1,6 @@
 using System;
 
-namespace RLToolkit.Widgets.Tests
+namespace RLToolkit.WidgetsTests
 {
 	public class TestDefinition
 	{

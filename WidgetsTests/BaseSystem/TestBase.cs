@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RLToolkit.Widgets.Tests
+namespace RLToolkit.WidgetsTests
 {
     public class TestBase
     {
