@@ -181,6 +181,8 @@ namespace RLToolkit.Widgets
             controlState = eState.Horizontal;
             verticalControl.Hide();
             horizontalControl.Show();
+            
+            RefreshControlShown();
         }
 
         /// <summary>
@@ -192,6 +194,8 @@ namespace RLToolkit.Widgets
             controlState = eState.Vertical;
             horizontalControl.Hide();
             verticalControl.Show();
+            
+            RefreshControlShown();
         }
 
         /// <summary>
@@ -203,6 +207,8 @@ namespace RLToolkit.Widgets
             controlState = eState.None;
             horizontalControl.Hide();
             verticalControl.Hide();
+
+            RefreshControlShown();
         }
         #endregion
 

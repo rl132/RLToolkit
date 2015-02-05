@@ -76,6 +76,7 @@
     <Compile Include="TestDefinitions\LabelTest.cs" />
     <Compile Include="gtk-gui\RLToolkit.WidgetsTests.MainWindow.cs" />
     <Compile Include="gtk-gui\RLToolkit.WidgetsTests.TestSelectionDialog.cs" />
+    <Compile Include="TestDefinitions\GrisSelectorTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

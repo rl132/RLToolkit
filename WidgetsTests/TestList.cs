@@ -12,8 +12,9 @@ namespace RLToolkit.WidgetsTests
             // Add all the tests from each module testLists.
             // example:  bigList.AddRange(new widget().listTests);
 			
-			TestList.bigList.AddRange((IEnumerable<TestDefinition>) new OutputListTest().listTests);
-			TestList.bigList.AddRange((IEnumerable<TestDefinition>) new LabelTest().listTests);
+			TestList.bigList.AddRange(new OutputListTest().listTests);
+			TestList.bigList.AddRange(new LabelTest().listTests);
+            TestList.bigList.AddRange(new GridSelectorTest().listTests);
 		}
 
 		public static List<string> GetTestNames()
