@@ -47,7 +47,11 @@ namespace RLToolkit.WidgetsTests
 			lblTestDesc.Text = input.testDesc;
 			lblTestName.Text = input.testName;
 			vboxWidget.Add(input.testWidget);
-			vboxWidget.ShowAll();
+            foreach (Gtk.Widget w in vboxWidget.Children)
+            {
+                w.Show();
+            }
+            vboxWidget.Show();
 		}
 
 		private void CleanTestArea()

@@ -222,6 +222,7 @@ namespace RLToolkit.WidgetsTests
 			this.lblTestDesc = new global::Gtk.Label ();
 			this.lblTestDesc.HeightRequest = 40;
 			this.lblTestDesc.Name = "lblTestDesc";
+			this.lblTestDesc.Wrap = true;
 			this.hBoxTestDesc.Add (this.lblTestDesc);
 			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hBoxTestDesc [this.lblTestDesc]));
 			w19.PackType = ((global::Gtk.PackType)(1));

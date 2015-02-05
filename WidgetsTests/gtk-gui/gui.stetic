@@ -269,6 +269,7 @@
                   <widget class="Gtk.Label" id="lblTestDesc">
                     <property name="MemberName" />
                     <property name="HeightRequest">40</property>
+                    <property name="Wrap">True</property>
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
