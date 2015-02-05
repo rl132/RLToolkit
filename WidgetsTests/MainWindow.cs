@@ -17,11 +17,10 @@ namespace RLToolkit.WidgetsTests
 		
 		private bool showSelectionDialog()
 		{
-			TestSelectionDialog testSelectionDialog = new TestSelectionDialog(TestList.GetTestNames());
-			if (testSelectionDialog.Run() == -5) // TODO: fix dialog result
+			TestSelectionDialog testSelectionDialog = new TestSelectionDialog(TestList.bigList);
+			if (testSelectionDialog.Run() == ResponseType.Ok)
 			{
 				SetTestEnvironment(TestList.FindDefinition(testSelectionDialog.SelectedTest));
-			
 			}
 			return false;
 		}
