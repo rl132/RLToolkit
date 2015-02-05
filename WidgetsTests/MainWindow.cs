@@ -18,7 +18,7 @@ namespace RLToolkit.WidgetsTests
 		private bool showSelectionDialog()
 		{
 			TestSelectionDialog testSelectionDialog = new TestSelectionDialog(TestList.bigList);
-			if (testSelectionDialog.Run() == ResponseType.Ok)
+			if (testSelectionDialog.Run() == (int)ResponseType.Ok)
 			{
 				SetTestEnvironment(TestList.FindDefinition(testSelectionDialog.SelectedTest));
 			}
@@ -28,6 +28,7 @@ namespace RLToolkit.WidgetsTests
 		public void SetTestEnvironment(TestDefinition input)
 		{
 			CleanTestArea();
+            HideButtons();
 			if (input.buttonClick1 != null)
 			{
 				btnClick1.Clicked += input.buttonClick1;
@@ -43,6 +44,7 @@ namespace RLToolkit.WidgetsTests
 				btnClick3.Clicked += input.buttonClick3;
 				oldClick3 = input.buttonClick3;
 			}
+            ShowActiveButtons();
 			lblTestDesc.Text = input.testDesc;
 			lblTestName.Text = input.testName;
 			vboxWidget.Add(input.testWidget);
@@ -52,6 +54,29 @@ namespace RLToolkit.WidgetsTests
             }
             vboxWidget.Show();
 		}
+
+        private void HideButtons()
+        {
+            btnClick1.Hide();
+            btnClick2.Hide();
+            btnClick3.Hide();
+        }
+
+        private void ShowActiveButtons()
+        {
+            if (oldClick1 != null)
+            {
+                btnClick1.Show();
+            }
+            if (oldClick2 != null)
+            {
+                btnClick2.Show();
+            }
+            if (oldClick3 != null)
+            {
+                btnClick3.Show();
+            }
+        }
 
 		private void CleanTestArea()
 		{
