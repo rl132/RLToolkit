@@ -40,8 +40,6 @@ namespace RLToolkit.WidgetsTests
 			info.testDesc = "Test where the GridSelector is initialize with an array of controls. Button 1 will switch intween the differnt mode,";
             info.testWidget = selector1;
             info.buttonClick1 = new EventHandler(onClickSel1SwitchMode);
-			info.buttonClick2 = new EventHandler(onClickSel1Reduce);
-			info.buttonClick3 = new EventHandler(onClickSel1Increase);
 
             return info;            
         }
@@ -62,25 +60,5 @@ namespace RLToolkit.WidgetsTests
                 selector1.SetHorizontalMode();
             }
         }
-
-		public void onClickSel1Reduce(object sender, EventArgs e)
-		{
-            if (selector1.NbCol >= 20)
-            {
-                return;
-            }
-            selector1.NbCol++;
-		}
-
-		public void onClickSel1Increase(object sender, EventArgs e)
-        {
-            if (selector1.NbCol <= 1)
-            {
-                return;
-            }
-            selector1.NbCol--;
-        }
-
-
 	}
 }
