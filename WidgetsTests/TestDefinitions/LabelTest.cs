@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-using RLToolkit.Widgets;
-
 namespace RLToolkit.WidgetsTests
 {
 	public class LabelTest : TestBase
@@ -28,7 +26,6 @@ namespace RLToolkit.WidgetsTests
 			info.buttonClick2 = new EventHandler(onClickZero);
 			
 			return info;
-			
 		}
 
 		public void onClickIncrement(object sender, EventArgs e)

@@ -58,7 +58,7 @@ namespace RLToolkit.WidgetsTests
             ol2.TickSpeed = 100;
             ol2.Initialize();
 
-            // prepare the  testDefinition
+            // prepare the testDefinition
             TestDefinition info = new TestDefinition();
 
             info.testName = "OutputList_Fast";
@@ -110,6 +110,5 @@ namespace RLToolkit.WidgetsTests
         {
             ol3.Clear();
         }
-
 	}
 }
