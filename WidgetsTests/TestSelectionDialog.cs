@@ -53,7 +53,6 @@ namespace RLToolkit.WidgetsTests
             column2.AddAttribute(cellRendererText2, "text", 1);
             this.treeview1.AppendColumn(column2);
 
-
             store = new ListStore(typeof (string), typeof (string));
             this.treeview1.Model = (TreeModel) store;
             foreach (TestDefinition info in inputDefs)
