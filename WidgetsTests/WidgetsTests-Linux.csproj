@@ -77,6 +77,8 @@
     <Compile Include="gtk-gui\RLToolkit.WidgetsTests.MainWindow.cs" />
     <Compile Include="gtk-gui\RLToolkit.WidgetsTests.TestSelectionDialog.cs" />
     <Compile Include="TestDefinitions\GrisSelectorTest.cs" />
+    <Compile Include="TestDefinitions\DynamicRowTest.cs" />
+    <Compile Include="TestDefinitions\DynamicColumnTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

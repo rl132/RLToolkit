@@ -15,6 +15,8 @@ namespace RLToolkit.WidgetsTests
 			TestList.bigList.AddRange(new OutputListTest().listTests);
 			TestList.bigList.AddRange(new LabelTest().listTests);
             TestList.bigList.AddRange(new GridSelectorTest().listTests);
+            TestList.bigList.AddRange(new DynamicRowTest().listTests);
+            TestList.bigList.AddRange(new DynamicColumnTest().listTests);
 		}
 
 		public static List<string> GetTestNames()
