@@ -94,6 +94,30 @@ namespace RLToolkit.Widgets
             this.WidthRequest = newSize;
             UpdateImage ();
         }
+
+        /// <summary>
+        /// Sets the image by forcing a filename in, and updating the image internally
+        /// </summary>
+        /// <param name="filename">Filename of the image to load.</param>
+        public void SetImage(string filename)
+        {
+            this.Log ().Debug ("Force setting a new image from file");
+            filename = filename;
+            fromFile = new Bitmap(filename);
+            UpdateImage ();
+        }
+
+        /// <summary>
+        /// Sets the image by forcing a bitmap in
+        /// </summary>
+        /// <param name="image">the new image</param>
+        public void SetImage(Bitmap image)
+        {
+            this.Log ().Debug ("Force setting a new image from bitmap");
+            filename = null;
+            fromFile = image;
+            UpdateImage ();
+        }
         #endregion
 
         #region helper methods
