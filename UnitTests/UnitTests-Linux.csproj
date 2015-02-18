@@ -77,6 +77,7 @@
     <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
     <Compile Include="Tests\Extensions\ToggleButtonExclusiveSelectionGroupTest.cs" />
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
+    <Compile Include="Tests\Extensions\BitmapExtensionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
@@ -86,6 +87,7 @@
     <Folder Include="Tests\Modules\" />
     <Folder Include="Tests\Extensions\" />
     <Folder Include="TestData\CmdRunner\" />
+    <Folder Include="TestData\BitmapExtension\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicModules\BasicModules-Linux.csproj">
@@ -122,5 +124,6 @@
     <None Include="TestData\TextureHandler\file1_Uneven.bmp" />
     <None Include="TestData\CmdRunner\DummyRunner-Windows.exe" />
     <None Include="TestData\CmdRunner\DummyRunner-Linux.exe" />
+    <None Include="TestData\BitmapExtension\ConvertSource.bmp" />
   </ItemGroup>
 </Project>
