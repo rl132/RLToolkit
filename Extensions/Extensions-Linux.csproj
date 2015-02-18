@@ -41,6 +41,10 @@
     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Package>glib-sharp-2.0</Package>
     </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -49,6 +53,7 @@
     <Compile Include="GtkWidgetExtension.cs" />
     <Compile Include="ToggleButtonExclusiveSelectionGroup.cs" />
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
+    <Compile Include="BitmapExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoggerLayer\LoggerLayer-Linux.csproj">
