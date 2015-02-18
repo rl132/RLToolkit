@@ -3,6 +3,7 @@ using System.Drawing;
 using Gtk;
 
 using RLToolkit.Logger;
+using RLToolkit.Extensions;
 
 // TODO: RL
 // - Add a way to initialize with an image
@@ -124,13 +125,24 @@ namespace RLToolkit.Widgets
         private void UpdateImage()
         {
             this.Log ().Info ("Updating image preview");
-            if ((filename == null) || (filename == "")) {
-                this.Log ().Debug ("No filename, using stock image");
-                img.SetSizeRequest(imageSize,imageSize);
-                img.SetFromStock (Gtk.Stock.No, Gtk.IconSize.Button);
-            } else {
-                this.Log ().Debug ("filename supplied, using file");
-                img.Pixbuf = new Gdk.Pixbuf (filename).ScaleSimple (imageSize, imageSize, Gdk.InterpType.Bilinear);
+            if (string.IsNullOrWhiteSpace(filename)) 
+            {
+                if (fromFile == null)
+                {
+                    this.Log().Debug("No filename nor image, using stock image");
+                    img.SetSizeRequest(imageSize, imageSize);
+                    img.SetFromStock(Gtk.Stock.No, Gtk.IconSize.Button);
+                }
+                else
+                {
+                    this.Log().Debug("No filename but image available");
+                    img.Pixbuf = fromFile.ToPixbuf();
+                }
+            }
+            else
+            {
+                this.Log().Debug("filename supplied, using file");
+                img.Pixbuf = new Gdk.Pixbuf(filename).ScaleSimple(imageSize, imageSize, Gdk.InterpType.Bilinear);
             }
         }
  
