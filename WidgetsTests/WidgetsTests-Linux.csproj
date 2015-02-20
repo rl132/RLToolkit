@@ -24,7 +24,7 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/UITestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
@@ -36,7 +36,7 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/UITestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>

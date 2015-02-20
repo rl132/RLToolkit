@@ -128,7 +128,7 @@ namespace RLToolkit.WidgetsTests
 
         public void onClick3SetImage(object sender, EventArgs e)
         {
-            bImg3.SetImage(new Bitmap(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData", "ButtonImageTest.bmp")));
+            bImg3.SetImage(new Bitmap(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UITestData", "ButtonImageTest.bmp")));
         }
 
         public void onClick3SetStock(object sender, EventArgs e)
