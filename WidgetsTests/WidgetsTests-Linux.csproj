@@ -22,6 +22,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -29,6 +34,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp -r ${ProjectDir}/TestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,6 +67,7 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -79,6 +90,7 @@
     <Compile Include="TestDefinitions\GrisSelectorTest.cs" />
     <Compile Include="TestDefinitions\DynamicRowTest.cs" />
     <Compile Include="TestDefinitions\DynamicColumnTest.cs" />
+    <Compile Include="TestDefinitions\ButtonImageTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
