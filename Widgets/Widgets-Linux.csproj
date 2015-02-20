@@ -72,5 +72,9 @@
       <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
       <Name>LoggerLayer-Linux</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Extensions\Extensions-Linux.csproj">
+      <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
+      <Name>Extensions-Linux</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

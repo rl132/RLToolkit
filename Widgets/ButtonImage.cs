@@ -20,6 +20,7 @@ namespace RLToolkit.Widgets
         private string filename;
         private int imageSize = 64;
         private Bitmap fromFile;
+        private string stockToUse;
 
         #region Constructor and Init
         /// <summary>
@@ -81,6 +82,7 @@ namespace RLToolkit.Widgets
             filename = null;
             imageSize = 64;
             fromFile = null;
+            stockToUse = Gtk.Stock.No;
             UpdateImage ();
         }
 
@@ -103,8 +105,9 @@ namespace RLToolkit.Widgets
         public void SetImage(string filename)
         {
             this.Log ().Debug ("Force setting a new image from file");
-            filename = filename;
+            this.filename = filename;
             fromFile = new Bitmap(filename);
+            stockToUse = Gtk.Stock.No;
             UpdateImage ();
         }
 
@@ -117,6 +120,20 @@ namespace RLToolkit.Widgets
             this.Log ().Debug ("Force setting a new image from bitmap");
             filename = null;
             fromFile = image;
+            stockToUse = Gtk.Stock.No;
+            UpdateImage ();
+        }
+
+        /// <summary>
+        /// Sets the image by forcing a Stock image
+        /// </summary>
+        /// <param name="stk">the new stock to use</param>
+        public void SetImageStock(string stk)
+        {
+            this.Log ().Debug ("Force setting a new image from stock");
+            filename = null;
+            fromFile = null;
+            stockToUse = stk;
             UpdateImage ();
         }
         #endregion
@@ -130,8 +147,12 @@ namespace RLToolkit.Widgets
                 if (fromFile == null)
                 {
                     this.Log().Debug("No filename nor image, using stock image");
-                    img.SetSizeRequest(imageSize, imageSize);
-                    img.SetFromStock(Gtk.Stock.No, Gtk.IconSize.Button);
+                    if (stockToUse != Gtk.Stock.No)
+                    {
+                        // force size since we're not using the no stock
+                        img.SetSizeRequest(imageSize, imageSize);
+                    }
+                    img.SetFromStock(stockToUse, Gtk.IconSize.Button);
                 }
                 else
                 {
