@@ -13,6 +13,7 @@ namespace RLToolkit.WidgetsTests
         {
             Build();
             lblTestCount.Text = TestList.bigList.Count.ToString();
+            HideButtons();
         }
 		
 		private bool showSelectionDialog()
