@@ -78,6 +78,7 @@
     <Compile Include="Tests\Extensions\ToggleButtonExclusiveSelectionGroupTest.cs" />
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
     <Compile Include="Tests\Extensions\BitmapExtensionTest.cs" />
+    <Compile Include="Tests\Modules\CommLayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />

@@ -60,6 +60,8 @@
     <Compile Include="CmdRunner\ListStringOutputHandler.cs" />
     <Compile Include="FileHandler\FileHandler.cs" />
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
+    <Compile Include="CommLayer\UdpReceiver.cs" />
+    <Compile Include="CommLayer\UdpSender.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CfgManager\" />
@@ -72,6 +74,7 @@
     <Folder Include="TextureHandler\" />
     <Folder Include="TimerManager\" />
     <Folder Include="XmlHelper\" />
+    <Folder Include="CommLayer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoggerLayer\LoggerLayer-Linux.csproj">
