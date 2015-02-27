@@ -328,7 +328,7 @@ namespace RLToolkit.Basic
         /// </summary>
         /// <returns><c>true</c> if the ident exist; otherwise, <c>false</c>.</returns>
         /// <param name="Ident">The identifier to look for</param>
-        /// <param name="inputList">what List\<TimerManagerEventset\> to use for the search</param>
+        /// <param name="inputList">what List&lt;TimerManagerEventset&gt; to use for the search</param>
         internal static bool IsIdentExist (string Ident, List<TimerManagerEventset> inputList)
 		{
             LogManager.Instance.Log().Debug(string.Format("Trying to find if Id \"{0}\" exists", Ident));
