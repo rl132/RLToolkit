@@ -7,9 +7,6 @@ using System.Threading;
 
 using RLToolkit.Logger;
 
-// TODO : RL: Add some better logging & return information if we hit an odd
-//        state like trying to listen while not being initialized.
-
 namespace RLToolkit.Basic
 {
     public class UdpReceiver
@@ -18,15 +15,19 @@ namespace RLToolkit.Basic
         private UdpClient listener;
         private IPEndPoint groupEP;
         private List<Byte[]> receivedBytes = new List<byte[]>();
-
         private static Thread threadListen;
-
         private bool isToClear = false;
         private bool isReady = false;
         private bool isListening = false;
 
+        /// <summary>
+        /// Flag to query in order to know if there's new data available in the buffer.
+        /// </summary>
+        public bool isDataAvailable = false;
+
         public UdpReceiver(int port)
         {
+            this.Log().Debug(string.Format("Trying to open a UDP Receiver on port: {0}", port.ToString()));
             this.port = port;
             listener = new UdpClient(port);
             groupEP = new IPEndPoint(IPAddress.Any, port);
@@ -35,14 +36,17 @@ namespace RLToolkit.Basic
 
         public void StartListen()
         {
+            this.Log().Debug("Trying to start listening on the UDP Receiver");
             if (!isReady)
             {
+                this.Log().Warn("UDP Receiver not initialized.");
                 // not initialized
                 return;
             }
 
             if (isListening)
             {
+                this.Log().Warn("UDP Receiver already listening.");
                 // already listening
                 return;
             }
@@ -54,14 +58,17 @@ namespace RLToolkit.Basic
 
         public void StopListen()
         {
+            this.Log().Debug("Trying to stop listening on the UDP Receiver");
             if (!isReady)
             {
+                this.Log().Warn("UDP Receiver not initialized.");
                 // not initialized
                 return;
             }
 
             if (!isListening)
             {
+                this.Log().Warn("UDP Receiver not listening.");
                 // not listening
                 return;
             }
@@ -72,8 +79,10 @@ namespace RLToolkit.Basic
 
         public void CloseConnection()
         {
+            this.Log().Debug("Trying to close connection on the UDP Receiver");
             if (!isReady)
             {
+                this.Log().Warn("UDP Receiver not initialized.");
                 // not initialized
                 return;
             }
@@ -89,13 +98,16 @@ namespace RLToolkit.Basic
 
         public List<byte[]> GetBytesData()
         {
+            this.Log().Debug("Trying to fetch Receiver data");
             if (isToClear)
             {
+                this.Log().Warn("Trying to fetch an empty byte buffer.");
                 // we're to be cleared anywyas
                 return new List<byte[]>();
             }
 
             List<Byte[]> output = new List<byte[]>(receivedBytes);
+            isDataAvailable = false;
             isToClear = true;
 
             return output;
@@ -103,6 +115,7 @@ namespace RLToolkit.Basic
 
         private void tick()
         {
+            this.Log().Debug("Starting the listen tick");
             // execute on a separate thread.
             while (isListening)
             {
@@ -110,6 +123,7 @@ namespace RLToolkit.Basic
                 {
                     // will wait until we have something received
                     byte[] bytesIn = listener.Receive(ref groupEP);
+                    this.Log().Debug("Got some data");
 
                     if (isToClear)
                     {
@@ -119,6 +133,7 @@ namespace RLToolkit.Basic
                     }
 
                     receivedBytes.Add(bytesIn);
+                    isDataAvailable = true;
                 } 
                 catch (Exception e)
                 {
@@ -132,4 +147,3 @@ namespace RLToolkit.Basic
         }
     }
 }
-
