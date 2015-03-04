@@ -9,8 +9,12 @@ using RLToolkit.Logger;
 
 namespace RLToolkit.Basic
 {
+    /// <summary>
+    /// UDP receiver.
+    /// </summary>
     public class UdpReceiver
     {
+        #region Global variables
         private int port = 11000;
         private UdpClient listener;
         private IPEndPoint groupEP;
@@ -24,7 +28,13 @@ namespace RLToolkit.Basic
         /// Flag to query in order to know if there's new data available in the buffer.
         /// </summary>
         public bool isDataAvailable = false;
+        #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Constructor for the class with a port specified. It will also initialize the Receiver but not start listening.
+        /// </summary>
+        /// <param name="port">The port on which to listen</param>
         public UdpReceiver(int port)
         {
             this.Log().Debug(string.Format("Trying to open a UDP Receiver on port: {0}", port.ToString()));
@@ -33,7 +43,12 @@ namespace RLToolkit.Basic
             groupEP = new IPEndPoint(IPAddress.Any, port);
             isReady = true;
         }
+        #endregion
 
+        #region State control Methods
+        /// <summary>
+        /// Method to start the Listening
+        /// </summary>
         public void StartListen()
         {
             this.Log().Debug("Trying to start listening on the UDP Receiver");
@@ -56,6 +71,9 @@ namespace RLToolkit.Basic
             isListening = true;
         }
 
+        /// <summary>
+        /// Method to Stop the listening
+        /// </summary>
         public void StopListen()
         {
             this.Log().Debug("Trying to stop listening on the UDP Receiver");
@@ -77,6 +95,9 @@ namespace RLToolkit.Basic
             threadListen = null;
         }
 
+        /// <summary>
+        /// Method to close the connection. Will autoStop listening if it was.
+        /// </summary>
         public void CloseConnection()
         {
             this.Log().Debug("Trying to close connection on the UDP Receiver");
@@ -96,6 +117,10 @@ namespace RLToolkit.Basic
             listener.Close();
         }
 
+        /// <summary>
+        /// Method to fetch the bytes received by the listener.
+        /// </summary>
+        /// <returns>a List of Byte Array containing all the messagesreceived.</returns>
         public List<byte[]> GetBytesData()
         {
             this.Log().Debug("Trying to fetch Receiver data");
@@ -112,7 +137,9 @@ namespace RLToolkit.Basic
 
             return output;
         }
+        #endregion
 
+        #region private methods
         private void tick()
         {
             this.Log().Debug("Starting the listen tick");
@@ -145,5 +172,6 @@ namespace RLToolkit.Basic
                 Thread.Sleep(25);
             }
         }
+        #endregion
     }
 }

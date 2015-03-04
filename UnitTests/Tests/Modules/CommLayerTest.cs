@@ -46,7 +46,90 @@ namespace RLToolkit.UnitTests.Modules
             {
                 Assert.AreEqual(Encoding.ASCII.GetString(ret[i]), listData[i], "Data received should be the same.");
             }
+        }
 
+        [Test]
+        public void CommLayer_UDP_SendBytesValid()
+        {
+            List<string> listDataIn = new List<string> { "data1", "data2", "foobar"};
+            List<byte[]> listData = new List<byte[]>();
+            foreach (string str in listDataIn)
+            {
+                listData.Add(Encoding.ASCII.GetBytes(str));
+            }
+
+            UdpReceiver r = new UdpReceiver(15000);
+            UdpSender s = new UdpSender("127.0.0.1", 15000);
+            r.StartListen();
+            s.SendData(listData);
+
+            ManualResetEvent mre = new ManualResetEvent(false);
+            mre.WaitOne(1000);
+
+            List<Byte[]> ret = r.GetBytesData();
+            Assert.AreEqual(listDataIn.Count, ret.Count, "We should have received the same number of items like sent.");
+            for (int i = 0; i < ret.Count; i++)
+            {
+                Assert.AreEqual(Encoding.ASCII.GetString(ret[i]), listDataIn[i], "Data received should be the same.");
+            }
+        }
+
+        [Test]
+        public void CommLayer_UDP_SendWithDelay()
+        {
+            List<string> listData = new List<string> { "data1", "data2", "foobar"};
+            List<string> listData2 = new List<string> { "data3", "dataX", "bloop"};
+
+            UdpSender s = new UdpSender("127.0.0.1", 15000);
+            s.SendData(listData);
+
+            ManualResetEvent mre = new ManualResetEvent(false);
+            mre.WaitOne(1000);
+
+            UdpReceiver r = new UdpReceiver(15000);
+            s.SendData(listData2);
+            r.StartListen();
+            mre.WaitOne(1000);
+
+            List<Byte[]> ret = r.GetBytesData();
+            Assert.AreEqual(listData2.Count, ret.Count, "We should have received the same number of items like sent the second time.");
+            for (int i = 0; i < ret.Count; i++)
+            {
+                Assert.AreEqual(Encoding.ASCII.GetString(ret[i]), listData2[i], "Data received should be the same.");
+            }
+        }
+        #endregion
+
+        #region hardness tests
+        [Test]
+        public void CommLayer_UDP_BadIPFormat()
+        {
+            try
+            {
+                new UdpSender("127.6666.s.4536ss", 15000);
+            }
+            catch (FormatException e)
+            {
+                this.Log().Debug("Expected exception" + Environment.NewLine + e.ToString());
+                // expected
+            }
+        }
+
+        [Test]
+        public void CommLayer_UDP_WrongPort()
+        {
+            List<string> listData = new List<string> { "data1", "data2", "foobar"};
+
+            UdpReceiver r = new UdpReceiver(15000);
+            UdpSender s = new UdpSender("127.0.0.1", 14999);
+            r.StartListen();
+            s.SendData(listData);
+
+            ManualResetEvent mre = new ManualResetEvent(false);
+            mre.WaitOne(1000);
+
+            List<Byte[]> ret = r.GetBytesData();
+            Assert.AreEqual(0, ret.Count, "We should have received nothing.");
         }
         #endregion
     }
