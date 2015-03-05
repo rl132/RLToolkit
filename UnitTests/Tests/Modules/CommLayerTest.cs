@@ -26,7 +26,7 @@ namespace RLToolkit.UnitTests.Modules
         }
         #endregion
 
-        #region Basic
+        #region UDP Basic
         [Test]
         public void CommLayer_UDP_SendTextValid()
         {
@@ -46,6 +46,8 @@ namespace RLToolkit.UnitTests.Modules
             {
                 Assert.AreEqual(Encoding.ASCII.GetString(ret[i]), listData[i], "Data received should be the same.");
             }
+            r.CloseConnection();
+            s.CloseConnection();
         }
 
         [Test]
@@ -72,6 +74,8 @@ namespace RLToolkit.UnitTests.Modules
             {
                 Assert.AreEqual(Encoding.ASCII.GetString(ret[i]), listDataIn[i], "Data received should be the same.");
             }
+            r.CloseConnection();
+            s.CloseConnection();
         }
 
         [Test]
@@ -97,22 +101,27 @@ namespace RLToolkit.UnitTests.Modules
             {
                 Assert.AreEqual(Encoding.ASCII.GetString(ret[i]), listData2[i], "Data received should be the same.");
             }
+            r.CloseConnection();
+            s.CloseConnection();
         }
         #endregion
 
-        #region hardness tests
+        #region UDP hardness tests
         [Test]
         public void CommLayer_UDP_BadIPFormat()
         {
+            UdpSender s;
             try
             {
-                new UdpSender("127.6666.s.4536ss", 15000);
+                s = new UdpSender("127.6666.s.4536ss", 15000);
+                s.CloseConnection();
             }
             catch (FormatException e)
             {
                 this.Log().Debug("Expected exception" + Environment.NewLine + e.ToString());
                 // expected
             }
+
         }
 
         [Test]
@@ -130,6 +139,26 @@ namespace RLToolkit.UnitTests.Modules
 
             List<Byte[]> ret = r.GetBytesData();
             Assert.AreEqual(0, ret.Count, "We should have received nothing.");
+            r.CloseConnection();
+            s.CloseConnection();
+        }
+        #endregion
+
+        #region UDP Get calls
+        [Test]
+        public void CommLayer_UDP_GetSender()
+        {
+            UdpSender s = new UdpSender("127.0.0.1", 16000);
+            Assert.AreEqual(16000, s.GetPort(), "Sender ports should return 16000");
+            s.CloseConnection();
+        }
+
+        [Test]
+        public void CommLayer_UDP_GetReceiver()
+        {
+            UdpReceiver r = new UdpReceiver(17000);
+            Assert.AreEqual(17000, r.GetPort(), "Receiver ports should return 17000");
+            r.CloseConnection();
         }
         #endregion
     }

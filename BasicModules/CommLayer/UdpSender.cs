@@ -38,6 +38,43 @@ namespace RLToolkit.Basic
         }
         #endregion
 
+        #region helper methods
+        /// <summary>
+        /// Fetch the port number
+        /// </summary>
+        /// <returns>The port on which the Sender is opened. -1 if error.</returns>
+        public int GetPort()
+        {
+            if (!isReady)
+            {
+                this.Log().Warn("Truing to fetch port while not ready.");
+                return -1;
+            }
+
+            return port;
+        }
+        #endregion
+
+        #region State control
+        /// <summary>
+        /// Method to close the connection. Will autoStop listening if it was.
+        /// </summary>
+        public void CloseConnection()
+        {
+            this.Log().Debug("Trying to close connection on the UDP Sender");
+            if (!isReady)
+            {
+                this.Log().Warn("UDP Sender not initialized.");
+                // not initialized
+                return;
+            }
+
+            // close the connection
+            sender.Close();
+        }
+
+        #endregion
+
         #region Sender methods
         /// <summary>
         /// Method to send an IEnumerable array of string

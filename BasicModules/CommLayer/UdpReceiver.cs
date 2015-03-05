@@ -116,6 +116,23 @@ namespace RLToolkit.Basic
             // close the connection
             listener.Close();
         }
+        #endregion
+
+        #region helper methods
+        /// <summary>
+        /// Fetch the port number
+        /// </summary>
+        /// <returns>The port on which the Listener is opened. -1 if error.</returns>
+        public int GetPort()
+        {
+            if (!isReady)
+            {
+                this.Log().Warn("Truing to fetch port while not ready.");
+                return -1;
+            }
+
+            return port;
+        }
 
         /// <summary>
         /// Method to fetch the bytes received by the listener.
