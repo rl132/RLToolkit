@@ -179,6 +179,10 @@ namespace RLToolkit.Basic
                     receivedBytes.Add(bytesIn);
                     isDataAvailable = true;
                 } 
+                catch (ThreadAbortException)
+                {
+                    // don't do anything. we just got stopped.
+                }
                 catch (Exception e)
                 {
                     this.Log().Warn("Caught Exception:\n" + e.ToString());
