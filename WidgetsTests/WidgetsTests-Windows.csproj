@@ -28,6 +28,7 @@
         <Command type="AfterBuild" command="xcopy ${ProjectDir}\UITestData ${TargetDir}\UITestData\ /E /Y" workingdir="${SolutionDir}" externalConsole="True" />
       </CustomCommands>
     </CustomCommands>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -40,6 +41,7 @@
         <Command type="AfterBuild" command="xcopy ${ProjectDir}\UITestData ${TargetDir}\UITestData\ /E /Y" workingdir="${SolutionDir}" externalConsole="True" />
       </CustomCommands>
     </CustomCommands>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

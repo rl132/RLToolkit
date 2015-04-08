@@ -27,6 +27,7 @@
         <Command type="AfterBuild" command="cp -r ${ProjectDir}/UITestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -39,6 +40,7 @@
         <Command type="AfterBuild" command="cp -r ${ProjectDir}/UITestData/ ${TargetDir}/" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
