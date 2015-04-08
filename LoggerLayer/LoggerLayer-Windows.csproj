@@ -10,6 +10,8 @@
     <RootNamespace>RLToolkit.Logger</RootNamespace>
     <AssemblyName>RLToolkit.Logger.Windows</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.LoggerLayer.Windows.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +39,7 @@
     <Compile Include="NullLogger.cs" />
     <Compile Include="LogExtension.cs" />
     <Compile Include="LogManager.cs" />
+    <Compile Include="Properties\AssemblyInfoWindows.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="logger.config">

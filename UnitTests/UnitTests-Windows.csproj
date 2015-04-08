@@ -10,6 +10,8 @@
     <RootNamespace>RLToolkit.UnitTests</RootNamespace>
     <AssemblyName>RLToolkit.UnitTests.Windows</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.UnitTests.Windows.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +68,9 @@
     <Compile Include="Tests\Extensions\GtkWidgetExtensionTest.cs" />
     <Compile Include="Tests\Extensions\ColorExtensionTest.cs" />
     <Compile Include="Tests\Extensions\ToggleButtonExclusiveSelectionGroupTest.cs" />
+    <Compile Include="Properties\AssemblyInfoWindows.cs" />
+    <Compile Include="Tests\Extensions\BitmapExtensionTest.cs" />
+    <Compile Include="Tests\Modules\CommLayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
@@ -75,6 +80,21 @@
     <Folder Include="Tests\Modules\" />
     <Folder Include="Tests\Extensions\" />
     <Folder Include="TestData\CmdRunner\" />
+    <Folder Include="TestData\BitmapExtension\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions\Extensions-Windows.csproj">
+      <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
+      <Name>Extensions-Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoggerLayer\LoggerLayer-Windows.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer-Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BasicModules\BasicModules-Windows.csproj">
+      <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
+      <Name>BasicModules-Windows</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="TestData\CfgManager\file1.ini" />
@@ -97,19 +117,6 @@
     <None Include="TestData\TextureHandler\file1_Uneven.bmp" />
     <None Include="TestData\CmdRunner\DummyRunner-Windows.exe" />
     <None Include="TestData\CmdRunner\DummyRunner-Linux.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BasicModules\BasicModules-Windows.csproj">
-      <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
-      <Name>BasicModules-Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Extensions\Extensions-Windows.csproj">
-      <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
-      <Name>Extensions-Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LoggerLayer\LoggerLayer-Windows.csproj">
-      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
-      <Name>LoggerLayer-Windows</Name>
-    </ProjectReference>
+    <None Include="TestData\BitmapExtension\ConvertSource.bmp" />
   </ItemGroup>
 </Project>

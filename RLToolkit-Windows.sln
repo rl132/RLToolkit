@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Widgets-Windows", "Widgets\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests-Windows", "UnitTests\UnitTests-Windows.csproj", "{EF1A5D54-D72D-44F7-A324-817E50D73CF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsTest-Windows", "WidgetsTest\WidgetsTest-Windows.csproj", "{2A070CCD-6C10-4373-AF54-78A030D34805}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsTests-Windows", "WidgetsTests\WidgetsTests-Windows.csproj", "{2A070CCD-6C10-4373-AF54-78A030D34805}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,7 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = WidgetsTest\WidgetsTest-Windows.csproj
+		StartupItem = WidgetsTests\WidgetsTests-Windows.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

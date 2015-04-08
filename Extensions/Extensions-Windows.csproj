@@ -10,6 +10,8 @@
     <RootNamespace>RLToolkit.Extensions</RootNamespace>
     <AssemblyName>RLToolkit.Extensions.Windows</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.Extensions.Windows.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +35,7 @@
     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -40,6 +43,8 @@
     <Compile Include="BitmapAssert.cs" />
     <Compile Include="GtkWidgetExtension.cs" />
     <Compile Include="ToggleButtonExclusiveSelectionGroup.cs" />
+    <Compile Include="Properties\AssemblyInfoWindows.cs" />
+    <Compile Include="BitmapExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoggerLayer\LoggerLayer-Windows.csproj">
