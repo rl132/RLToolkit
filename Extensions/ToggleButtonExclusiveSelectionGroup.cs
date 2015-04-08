@@ -116,7 +116,7 @@ namespace RLToolkit.Extensions
         /// <summary>
         /// Method to toggle a specific control using it index.
         /// </summary>
-        /// <param name="input">The index of the control in the array to turn on.</param>
+        /// <param name="index">The index of the control in the array to turn on.</param>
         /// <returns>True, if the selection is successful</returns>
         /// <remarks>Will unselect the current selection if there is.</remarks>
         public bool Select(int index)
@@ -168,6 +168,10 @@ namespace RLToolkit.Extensions
             return Select(index);
         }
 
+        /// <summary>
+        /// Method to unselect the whole group
+        /// </summary>
+        /// <returns>True, if the selection is unselected, False if nothing selected.</returns>
         public bool Unselect()
         {
             if (selected == -1)
