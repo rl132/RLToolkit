@@ -14,10 +14,13 @@ Currently in the toolkit:<br>
 -StringCrypt<br>
 -TextureHandler<br>
 -XML Helper (read/write, Random helper funcs)<br>
+-Simple Communication Layer<br>
+-Environment Variable Search/Resolver<br>
 <br>
 <br>
 Also, there's a few extension:<br>
 -BitmapAssert for nUnit Asserts<br>
+-Bitmap Extension<br>
 -Color Extension<br>
 -Gtk.Widget Extension<br>
 -ToggleButtonExclusiveSelectionGroup to add exclusive toggle<br>

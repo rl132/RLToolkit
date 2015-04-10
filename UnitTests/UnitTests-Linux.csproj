@@ -79,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
     <Compile Include="Tests\Extensions\BitmapExtensionTest.cs" />
     <Compile Include="Tests\Modules\CommLayerTest.cs" />
+    <Compile Include="Tests\Modules\EnvVarSearchTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseSystem\" />
@@ -89,6 +90,7 @@
     <Folder Include="Tests\Extensions\" />
     <Folder Include="TestData\CmdRunner\" />
     <Folder Include="TestData\BitmapExtension\" />
+    <Folder Include="TestData\EnvVarSearch\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicModules\BasicModules-Linux.csproj">
@@ -126,5 +128,6 @@
     <None Include="TestData\CmdRunner\DummyRunner-Windows.exe" />
     <None Include="TestData\CmdRunner\DummyRunner-Linux.exe" />
     <None Include="TestData\BitmapExtension\ConvertSource.bmp" />
+    <None Include="TestData\EnvVarSearch\EnvVarSearch_File.txt" />
   </ItemGroup>
 </Project>

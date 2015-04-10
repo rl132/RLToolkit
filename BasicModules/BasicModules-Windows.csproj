@@ -62,6 +62,7 @@
     <Compile Include="Properties\AssemblyInfoWindows.cs" />
     <Compile Include="CommLayer\UdpReceiver.cs" />
     <Compile Include="CommLayer\UdpSender.cs" />
+    <Compile Include="EnvVarSearch\EnvVarSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CfgManager\" />
@@ -75,6 +76,7 @@
     <Folder Include="TimerManager\" />
     <Folder Include="XmlHelper\" />
     <Folder Include="CommLayer\" />
+    <Folder Include="EnvVarSearch\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoggerLayer\LoggerLayer-Windows.csproj">
