@@ -55,10 +55,9 @@ namespace RLToolkit.UnitTests.Modules
                 isFound = search.IsPathInEnv("/usr/bin");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - Valid - Windows");
-                setup.Add("PATH", "FIXME");
+                setup.Add("path", @"C:\Windows\system32;C:\Windows");
                 EnvVarSearch search = new EnvVarSearch(setup);
-                isFound = search.IsPathInEnv("");
+                isFound = search.IsPathInEnv(@"C:\Windows\system32");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -79,10 +78,9 @@ namespace RLToolkit.UnitTests.Modules
                 isFound = search.IsPathInEnv("/home/test/folder");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - not found - Windows");
-                setup.Add("PATH", "FIXME");
+                setup.Add("path", @"C:\Windows\system32;C:\Windows");
                 EnvVarSearch search = new EnvVarSearch(setup);
-                isFound = search.IsPathInEnv("");
+                isFound = search.IsPathInEnv(@"C:\home\test\folder");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -103,10 +101,9 @@ namespace RLToolkit.UnitTests.Modules
                 isFound = search.IsPathInEnv("/usr/bin/");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - trailing backslash - Windows");
-                setup.Add("PATH", "FIXME");
+                setup.Add("path", @"C:\Windows\system32;C:\Windows");
                 EnvVarSearch search = new EnvVarSearch(setup);
-                isFound = search.IsPathInEnv("");
+                isFound = search.IsPathInEnv(@"C:\Windows\system32\");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -127,8 +124,9 @@ namespace RLToolkit.UnitTests.Modules
                 retval = search.FindInPath("EnvVarSearch_File.txt");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - Valid - Windows");
-
+                setup.Add("path", @"C:\Windows\system32;C:\Windows;" + AppDomain.CurrentDomain.BaseDirectory);
+                EnvVarSearch search = new EnvVarSearch(setup);
+                retval = search.FindInPath("EnvVarSearch_File.txt");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -149,8 +147,9 @@ namespace RLToolkit.UnitTests.Modules
                 retval = search.FindInPath(@"TestData/");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - Valid - Windows");
-
+                setup.Add("path", @"C:\Windows\system32;C:\Windows;" + AppDomain.CurrentDomain.BaseDirectory);
+                EnvVarSearch search = new EnvVarSearch(setup);
+                retval = search.FindInPath(@"TestData\");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -171,8 +170,9 @@ namespace RLToolkit.UnitTests.Modules
                 retval = search.FindInPath(@"FooBarSomethingFolder.exe");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - Valid - Windows");
-
+                setup.Add("path", @"C:\Windows\system32;C:\Windows");
+                EnvVarSearch search = new EnvVarSearch(setup);
+                retval = search.FindInPath(@"FooBarSomethingFolder.exe");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -193,8 +193,9 @@ namespace RLToolkit.UnitTests.Modules
                 retval = search.FindInPath(@"FooBarSomethingFolder/");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - Valid - Windows");
-
+                setup.Add("path", @"C:\Windows\system32;C:\Windows");
+                EnvVarSearch search = new EnvVarSearch(setup);
+                retval = search.FindInPath(@"FooBarSomethingFolder/");
             } else
             {
                 Assert.Fail("Bad platform");
@@ -217,8 +218,9 @@ namespace RLToolkit.UnitTests.Modules
                 retval = search.FindInPath("EnvVarSearch_File.txt");
             } else if (os == OsDetector.OsSelection.Windows)
             {
-                Assert.Fail("FixMe - FindInPath - Valid - Windows");
-
+                setup.Add("path", @"C:\Windows\system32;C:\Windows;" + folder_testdata + ";" + baseDir);
+                EnvVarSearch search = new EnvVarSearch(setup);
+                retval = search.FindInPath("EnvVarSearch_File.txt");
             } else
             {
                 Assert.Fail("Bad platform");

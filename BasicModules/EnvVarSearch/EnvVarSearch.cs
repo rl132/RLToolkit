@@ -66,11 +66,20 @@ namespace RLToolkit.Basic
 		public bool IsPathInEnv(string path)
         {
             this.Log().Debug("Trying to search for a path in path envvar: " + path);
-            if (EnvVars.ContainsKey("PATH"))
+            string pathVar = "path";
+            if (OsDetector.DetectOs() == OsDetector.OsSelection.Windows)
+            {
+                pathVar = "path";
+            } else if (OsDetector.DetectOs() == OsDetector.OsSelection.Unix)
+            {
+                pathVar = "PATH";
+            }
+
+            if (EnvVars.ContainsKey(pathVar))
             {
                 // try to get the path
                 string pathValue = "";
-                EnvVars.TryGetValue("PATH", out pathValue);
+                EnvVars.TryGetValue(pathVar, out pathValue);
 
                 if (String.IsNullOrWhiteSpace(pathValue))
                 {
@@ -86,7 +95,15 @@ namespace RLToolkit.Basic
                     path = path.Substring(0, path.Length - 1);
                 }
 
-                string[] arrayPaths = pathValue.Split(new char[] { ';', ':' });
+                string[] arrayPaths = null;
+                if (OsDetector.DetectOs() == OsDetector.OsSelection.Windows)
+                {
+                    arrayPaths = pathValue.Split(new char[] { ';' });
+                } else if (OsDetector.DetectOs() == OsDetector.OsSelection.Unix)
+                {
+                    arrayPaths = pathValue.Split(new char[] { ':' });
+                }
+                 
                 foreach (string s in arrayPaths)
                 {
                     if (string.Compare(s, path, true) == 0)
@@ -108,11 +125,21 @@ namespace RLToolkit.Basic
         public string FindInPath(string path)
 		{
             this.Log().Debug("Trying to resolve a path|file in the path envvar: " + path);
-            if (EnvVars.ContainsKey("PATH"))
+
+            string pathVar = "path";
+            if (OsDetector.DetectOs() == OsDetector.OsSelection.Windows)
+            {
+                pathVar = "path";
+            } else if (OsDetector.DetectOs() == OsDetector.OsSelection.Unix)
+            {
+                pathVar = "PATH";
+            }
+
+            if (EnvVars.ContainsKey(pathVar))
             {
                 // try to get the path
                 string pathValue = "";
-                EnvVars.TryGetValue("PATH", out pathValue);
+                EnvVars.TryGetValue(pathVar, out pathValue);
 
                 if (String.IsNullOrWhiteSpace(pathValue))
                 {
@@ -131,7 +158,15 @@ namespace RLToolkit.Basic
                     path = path.Substring(0, path.Length - 1);
                 }
 
-                string[] arrayPaths = pathValue.Split(new char[] { ';', ':' });
+                string[] arrayPaths = null;
+                if (OsDetector.DetectOs() == OsDetector.OsSelection.Windows)
+                {
+                    arrayPaths = pathValue.Split(new char[] { ';' });
+                } else if (OsDetector.DetectOs() == OsDetector.OsSelection.Unix)
+                {
+                    arrayPaths = pathValue.Split(new char[] { ':' });
+                }
+
                 string toCheck = "";
                 foreach (string s in arrayPaths)
                 {
