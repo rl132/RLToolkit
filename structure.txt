@@ -1,23 +1,29 @@
 RLToolkit namespace structure:
 
 * RLToolkit
+  *Plugin
+    -PluginLayer
   *Logger
     -loggerLayer
   * Basic
     -CfgManager
     -CmdRunner
-    -FileWrapper
+    -CommLayer
+    -EnvVarSearch
+    -FileHandler
     -IniParser
-    -OSDetector
-    -TimerManager
-    -XmlHelper
     -MD5Helper
+    -OSDetector
     -StringCrypt
     -TextureHandler
+    -TimerManager
+    -XmlHelper
+
     -MailSystem (not in yet)
     -OBJLoader (not in yet)
   * Extensions
     -BitmapAssert
+    -BitmapExtension
     -ColorExtension
     -GtkWidgetExtension
     -ToggleButtonExclusiveSelectionGroup
@@ -35,8 +41,6 @@ RLToolkit namespace structure:
       -All unit tests for the modules
     * Extensions
       -All unit tests for the extensions
-    * Widgets
-      -All unit tests for the widgets (see if it's possible to do)
   * WidgetsTests
     - All the Widget tests 
   

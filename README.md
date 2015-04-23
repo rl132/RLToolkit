@@ -18,6 +18,10 @@ Currently in the toolkit:<br>
 -Environment Variable Search/Resolver<br>
 <br>
 <br>
+The toolkit also has a Plugin System to extends some functionalities.<br>
+See the plugin wiki page to learn how to use this.<br>
+<br>
+<br>
 Also, there's a few extension:<br>
 -BitmapAssert for nUnit Asserts<br>
 -Bitmap Extension<br>
