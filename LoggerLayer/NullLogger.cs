@@ -7,9 +7,36 @@ namespace RLToolkit.Logger
     /// </summary>
 	public class NullLogger : ILogger
 	{
-		// RL: no longer used. will be when we migrate to
-		// the new logging system that will have interchangeable 
-		// logger implementation.
+        #region Logger-Trace
+        /// <summary>
+        /// Log an entry under the trace level
+        /// </summary>
+        /// <param name="message">Message.</param>
+        public void Trace (string message)
+        {
+            // do nothing
+        }
+
+        /// <summary>
+        /// Log an entry under the trace level
+        /// </summary>
+        /// <param name="message">Message.</param>
+        /// <param name="param">Parameter for the string.Format</param>
+        public void Trace (string message, object[] param)
+        {
+            // do nothing
+        }
+
+        /// <summary>
+        /// Log an entry under the trace level
+        /// </summary>
+        /// <param name="message">Message.</param>
+        /// <param name="e">E.</param>
+        public void Trace (string message, Exception e)
+        {
+            // do nothing
+        }
+        #endregion
 
         /// <summary>
         /// Log an entry under the debug level

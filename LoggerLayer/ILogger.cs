@@ -1,13 +1,29 @@
 using System;
 
+using RLToolkit.Plugin;
+
 namespace RLToolkit.Logger
 {
     /// <summary>
-    /// Interface that allows the usage of different logger (not yet implemented)
+    /// Interface that allows the usage of different logger
     /// </summary>
 	public interface ILogger
 	{
-		// TODO: Add more way to implement the logger interface. 
+        #region Trace
+        /// <summary>Log an entry under the trace level</summary>
+        /// <param name="message">Message.</param>
+        void Trace(string message);
+
+        /// <summary>Log an entry under the trace level</summary>
+        /// <param name="message">Message.</param>
+        /// <param name="param">Parameter for the string.Format</param>
+        void Trace(string message, object[] param);
+
+        /// <summary>Log an entry under the trace level</summary>
+        /// <param name="message">Message.</param>
+        /// <param name="e">Supply an exception</param>
+        void Trace(string message, Exception e);
+        #endregion
 
         #region Debug
         /// <summary>Log an entry under the debug level</summary>

@@ -76,5 +76,9 @@
       <Project>{87CC381E-DA10-4ECF-9584-AF6620F27B55}</Project>
       <Name>Extensions-Linux</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PluginLayer\PluginLayer-Linux.csproj">
+      <Project>{E65AA844-6AFB-4DD0-937E-421BF7320496}</Project>
+      <Name>PluginLayer-Linux</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

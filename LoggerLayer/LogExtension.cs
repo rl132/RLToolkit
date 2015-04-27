@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Concurrent;
 
-using log4net;
-
 namespace RLToolkit.Logger
 {
     /// <summary>
@@ -29,7 +27,8 @@ namespace RLToolkit.Logger
         /// <param name="objectName">Object name.</param>
 		public static ILogger Log(this string objectName)
 		{
-			return dico.GetOrAdd(objectName, new Log4NetLayer(log4net.LogManager.GetLogger(objectName)));
+            Console.WriteLine("logging for " + objectName);
+            return dico.GetOrAdd(objectName, LogManager.loggerFactory.CreateLogger(objectName));
 		}
 	}
 }

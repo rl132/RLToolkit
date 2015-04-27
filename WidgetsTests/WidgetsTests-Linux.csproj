@@ -116,5 +116,9 @@
       <Project>{0FE41BB6-9A31-497D-8CF1-7E2851101CFE}</Project>
       <Name>BasicModules-Linux</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PluginLayer\PluginLayer-Linux.csproj">
+      <Project>{E65AA844-6AFB-4DD0-937E-421BF7320496}</Project>
+      <Name>PluginLayer-Linux</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

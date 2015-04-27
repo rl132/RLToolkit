@@ -83,5 +83,9 @@
       <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
       <Name>LoggerLayer-Linux</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PluginLayer\PluginLayer-Linux.csproj">
+      <Project>{E65AA844-6AFB-4DD0-937E-421BF7320496}</Project>
+      <Name>PluginLayer-Linux</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

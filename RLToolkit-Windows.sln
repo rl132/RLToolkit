@@ -24,6 +24,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsTests-Windows", "Wid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLayer-Windows", "PluginLayer\PluginLayer-Windows.csproj", "{E65AA844-6AFB-4DD0-937E-421BF7320496}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{8A12D020-434E-47D9-B4DD-05D727B2AA65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4NetLogger-Windows", "Loggers\Log4NetLogger\Log4NetLogger-Windows.csproj", "{8E23F2F7-F5D8-462E-9355-36DF578FE3F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87CC381E-DA10-4ECF-9584-AF6620F27B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E23F2F7-F5D8-462E-9355-36DF578FE3F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E23F2F7-F5D8-462E-9355-36DF578FE3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E23F2F7-F5D8-462E-9355-36DF578FE3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E23F2F7-F5D8-462E-9355-36DF578FE3F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B488EE1B-7DBB-4D53-A48B-AED51707F12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,6 +68,7 @@ Global
 		{EF1A5D54-D72D-44F7-A324-817E50D73CF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{8E23F2F7-F5D8-462E-9355-36DF578FE3F4} = {8A12D020-434E-47D9-B4DD-05D727B2AA65}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = WidgetsTests\WidgetsTests-Windows.csproj

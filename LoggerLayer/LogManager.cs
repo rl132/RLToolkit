@@ -1,8 +1,11 @@
 using System;
 using System.Threading;
 using System.IO;
-using log4net;
-using log4net.Config;
+using System.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+
+using RLToolkit.Plugin;
 
 namespace RLToolkit.Logger
 {
@@ -12,10 +15,12 @@ namespace RLToolkit.Logger
 	public class LogManager
 	{
         /// <summary>The default config file.</summary>
-		public const string defaultConfigFile = @"logger.config";
-		private static readonly Lazy<LogManager> _managerInstance = new Lazy<LogManager>(() => new LogManager(), LazyThreadSafetyMode.ExecutionAndPublication);       
+        private static readonly Lazy<LogManager> _managerInstance = new Lazy<LogManager>(() => new LogManager(), LazyThreadSafetyMode.ExecutionAndPublication);       
 
-        /// <summary>Gets the instance of the logger</summary>
+        /// <summary>The factory to use to create the desired logger</summary>
+        public static ILoggerFactory loggerFactory;
+
+        /// <summary>Gets the instance of the log manager</summary>
         /// <value>The instance.</value>
 		public static LogManager Instance 
         {
@@ -24,15 +29,31 @@ namespace RLToolkit.Logger
 
 		private LogManager ()
 		{
-			string filePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, defaultConfigFile);
-			if (File.Exists (filePath)) {
-				Console.WriteLine("Using the following configuration file for Log4Net:\n" + filePath);
-				XmlConfigurator.ConfigureAndWatch (new FileInfo (filePath));
-			} else {
-				// file not found!
-				Console.WriteLine("Configuration file for Log4Net not found:\n" + filePath);
-                XmlConfigurator.Configure();
-			}
+			// try to get the logging plugins.
+            IEnumerable<ILoggerFactory> rawPlugins = PluginLibrary.Instance.GetPluginByType(typeof(ILoggerFactory), -1).OfType<ILoggerFactory>();
+
+            List<ILoggerFactory> plugins = new List<ILoggerFactory>();
+            foreach (ILoggerFactory f in rawPlugins)
+            {
+                if (f.GetType() != typeof(NullLoggerFactory))
+                {
+                    plugins.Add(f);
+                }
+            }
+
+            if (plugins.Count() == 0)
+            {
+                // Null logger
+                Console.WriteLine("ERROR: NO LOGGER FOUND, USING NULL LOGGER");
+                loggerFactory = new NullLoggerFactory();
+                return;
+            } else if (plugins.Count() > 1)
+            {
+                Console.WriteLine("ERROR: MORE THAN ONE LOGGER FOUND, USING THE FIRST ONE (" + plugins.ElementAt(0).GetType().Name + ")");
+            }
+
+            // fetch the info from the plugin
+            loggerFactory = plugins.ElementAt(0);
 		}
 	}
 }

@@ -10,16 +10,31 @@ namespace RLToolkit.Logger
     /// <summary>
     /// Log4Net implementing  the ILogger interface. 
     /// </summary>
-    public class Log4NetLayer : ILogger
+    public class Log4NetLogger : ILogger
 	{
         #region Variables
 		private readonly ILog log;
         #endregion
 
+        #region Constants
+        /// <summary>The default config file for log4net.</summary>
+        public const string defaultConfigFile = @"logger.config";
+        #endregion
+
         #region Init
         /// <summary>Report that the system if functional on firat usage</summary>
-		static Log4NetLayer ()
+		static Log4NetLogger ()
 		{
+            string filePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, defaultConfigFile);
+            if (File.Exists (filePath)) {
+                Console.WriteLine("Using the following configuration file for Log4Net:\n" + filePath);
+                XmlConfigurator.ConfigureAndWatch (new FileInfo (filePath));
+            } else {
+                // file not found!
+                Console.WriteLine("Configuration file for Log4Net not found:\n" + filePath);
+                XmlConfigurator.Configure();
+            }
+
 			LogManager.Instance.Log().Info("Logging system ready.");
 		}
 
@@ -27,11 +42,43 @@ namespace RLToolkit.Logger
         /// Constructor that initialiuze the internal logger
         /// </summary>
         /// <param name="logIn">Logger input</param>
-		public Log4NetLayer (ILog logIn)
+		public Log4NetLogger (ILog logIn)
 		{
 			log = logIn;
 		}
         #endregion
+
+        #region Logger-Trace
+        /// <summary>
+        /// Log an entry under the trace level
+        /// </summary>
+        /// <param name="message">Message.</param>
+        public void Trace (string message)
+        {
+
+        }
+
+        /// <summary>
+        /// Log an entry under the trace level
+        /// </summary>
+        /// <param name="message">Message.</param>
+        /// <param name="param">Parameter for the string.Format</param>
+        public void Trace (string message, object[] param)
+        {
+
+        }
+
+        /// <summary>
+        /// Log an entry under the trace level
+        /// </summary>
+        /// <param name="message">Message.</param>
+        /// <param name="e">E.</param>
+        public void Trace (string message, Exception e)
+        {
+
+        }
+        #endregion
+
 
         #region Logger-Debug
         /// <summary>

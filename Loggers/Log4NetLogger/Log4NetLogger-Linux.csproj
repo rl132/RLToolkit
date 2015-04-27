@@ -3,47 +3,62 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</ProjectGuid>
+    <ProjectGuid>{8E23F2F7-F5D8-462E-9355-36DF578FE3F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>RLToolkit.Logger</RootNamespace>
-    <AssemblyName>RLToolkit.Logger.Linux</AssemblyName>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Properties\RLToolkit.LoggerLayer.Linux.key</AssemblyOriginatorKeyFile>
+    <AssemblyName>RLToolkit.Logger.Log4NetLogger.Linux</AssemblyName>
     <ReleaseVersion>1.2.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\RLToolkit.Logger.Log4NetLogger.Linux.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>..\..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release</OutputPath>
+    <OutputPath>..\..\bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
     <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="ILogger.cs" />
-    <Compile Include="LogExtension.cs" />
-    <Compile Include="LogManager.cs" />
+    <Compile Include="Log4NetLoggerFactory.cs" />
+    <Compile Include="Log4NetLogger.cs" />
     <Compile Include="Properties\AssemblyInfoLinux.cs" />
-    <Compile Include="NullLogger.cs" />
-    <Compile Include="ILoggerFactory.cs" />
-    <Compile Include="NullLoggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PluginLayer\PluginLayer-Linux.csproj">
+    <ProjectReference Include="..\..\LoggerLayer\LoggerLayer-Linux.csproj">
+      <Project>{B488EE1B-7DBB-4D53-A48B-AED51707F12B}</Project>
+      <Name>LoggerLayer-Linux</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PluginLayer\PluginLayer-Linux.csproj">
       <Project>{E65AA844-6AFB-4DD0-937E-421BF7320496}</Project>
       <Name>PluginLayer-Linux</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="logger.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
