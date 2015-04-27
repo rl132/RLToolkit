@@ -7,8 +7,8 @@ Target for 1.2 release:<br>
 -~~Assembly signing and internal method migration for testing~~<br>
 -~~Widget testing application/framework~~<br>
 -~~Add a Plugin Manager system to be able to load components (PoC Logging Layers)~~<br>
--Detach the logging layer from Log4Net and have a configuration with plugins/dlls(default will be the null logger)<br>
--Add a trace level in the logger interface<br>
+-~~Detach the logging layer from Log4Net and have a configuration with plugins/dlls(default will be the null logger)~~<br>
+-~~Add a trace level in the logger interface~~<br>
 -NuGet Package deployment for the toolkit<br>
 -NAnt build file(s) for windows and linux builds <br>
 <br>

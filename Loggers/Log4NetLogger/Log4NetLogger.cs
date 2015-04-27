@@ -55,7 +55,9 @@ namespace RLToolkit.Logger
         /// <param name="message">Message.</param>
         public void Trace (string message)
         {
-
+            if (log.IsDebugEnabled && message != null) {
+                log.Debug("TRACE-" + message);
+            }
         }
 
         /// <summary>
@@ -65,7 +67,9 @@ namespace RLToolkit.Logger
         /// <param name="param">Parameter for the string.Format</param>
         public void Trace (string message, object[] param)
         {
-
+            if (log.IsDebugEnabled && message != null) {
+                log.Debug(string.Format ("TRACE-" + message, param));
+            }
         }
 
         /// <summary>
@@ -75,6 +79,9 @@ namespace RLToolkit.Logger
         /// <param name="e">E.</param>
         public void Trace (string message, Exception e)
         {
+            if (log.IsDebugEnabled && message != null && e != null) {
+                log.Debug("TRACE-Exception thrown: " + message + Environment.NewLine + e.ToString());
+            }
 
         }
         #endregion
