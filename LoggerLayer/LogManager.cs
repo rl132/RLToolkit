@@ -52,6 +52,7 @@ namespace RLToolkit.Logger
                 Console.WriteLine("ERROR: MORE THAN ONE LOGGER FOUND, USING THE FIRST ONE (" + plugins.ElementAt(0).GetType().Name + ")");
             }
 
+            Console.WriteLine("Info: using logger " + plugins.ElementAt(0).GetType().Name);
             // fetch the info from the plugin
             loggerFactory = plugins.ElementAt(0);
 		}

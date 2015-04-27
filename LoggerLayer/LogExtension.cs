@@ -27,7 +27,6 @@ namespace RLToolkit.Logger
         /// <param name="objectName">Object name.</param>
 		public static ILogger Log(this string objectName)
 		{
-            Console.WriteLine("logging for " + objectName);
             return dico.GetOrAdd(objectName, LogManager.loggerFactory.CreateLogger(objectName));
 		}
 	}
